@@ -49,7 +49,7 @@ export async function GET() {
     const urlsAR = posts.map(
       (item) =>
         `<url>
-        <loc>${BASE_URL}/ar/${item.slug}</loc>
+        <loc>${BASE_URL}/${item.slug}</loc>
         <lastmod>${new Date(item.created_at).toISOString()}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
