@@ -169,13 +169,13 @@ export default async function () {
           <div className=""></div>
 
           <div className="space-y-7">
-            <h3 className="font-semibold text-3xl text-primary">Firewalls</h3>
+            <h3 className="font-semibold text-3xl text-primary">
+              <Translate id="ensign_services.box4.title" />
+            </h3>
 
             <div className="space-y-5 ">
               <p className="text-lg leading-7">
-                Ensign utilizes its experience in the open-source field to
-                present a cost effective modular firewall with the following
-                features:
+                <Translate id="ensign_services.box4.p1" />
               </p>
               <MotionList list={firewallsList} />
             </div>

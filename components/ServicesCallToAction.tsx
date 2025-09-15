@@ -59,10 +59,10 @@ const ServicesCallToAction = () => {
           </motion.figure>
 
           <div className="space-y-1 text-center relative z-10">
-            <p className="text-lg font-medium">
+            <p className="text-2xl font-semibold">
               <Translate id="call_to_action2.title" />
             </p>
-            <p className="text-base font-light relative z-10">
+            <p className="text-xl font-light relative z-10">
               <Translate id="call_to_action2.subtitle" />
             </p>
           </div>

@@ -61,11 +61,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ContactUsPage() {
-  const locale = await getLocale()
-  const lat = 30.0963312
-  const lng = 31.3111739
-  const zoom = 18
-
   return (
     <>
       <HeroPage
@@ -111,9 +106,9 @@ export default async function ContactUsPage() {
 
       <Section className="py-10">
         <Container>
-          <div className="" style={{height:"300px"}}>
+          <div className="" style={{ height: "300px" }}>
             <iframe
-              src={`https://www.google.com/maps?q=${lat},${lng}&z=${zoom}&hl=${locale}&output=embed`}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.8945!2d39.9591255!3d21.3245354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c207e0cb085917%3A0xc67f3340249f45fc!2sWadi%20Makkah%20Company!5e0!3m2!1sen!2ssa!4v1697040000000!5m2!1sen!2ssa"
               width="100%"
               height="100%"
               style={{ border: 0 }}

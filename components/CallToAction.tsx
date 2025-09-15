@@ -40,20 +40,26 @@ const CallToAction = () => {
               backgroundPosition: "center center"
             }}
           />
-          <figure className="mx-auto relative z-10">
+          <motion.figure
+            className="mx-auto relative z-10"
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.3 }}
+          >
             <Image
               src="/logo_on_white.svg"
               alt="Namaa logo"
               width={214}
               height={127}
-              className="w-[70%] h-auto"
+              className="w-[70%] h-auto mx-auto"
             />
-          </figure>
+          </motion.figure>
           <div className="space-y-1 text-center relative z-10">
-            <p className="text-lg font-medium">
+            <p className="text-2xl font-semibold">
               <Translate id="call_to_action1.title" />
             </p>
-            <p className="text-base font-light">
+            <p className="text-xl font-light">
               <Translate id="call_to_action1.subtitle" />
             </p>
           </div>

@@ -113,9 +113,6 @@ export default function SocialMediaPage() {
                 <Translate id="graphic_design.box2.p2" />
               </p>
 
-              <p className="text-md font-light leading-8">
-                <Translate id="graphic_design.box2.p3" />
-              </p>
             </div>
 
             <div className="flex flex-col justify-end">

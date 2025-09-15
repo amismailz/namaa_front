@@ -1,379 +1,381 @@
 {
   "navbar": {
-    "home": "Home",
-    "about_us": "About Us",
-    "portfilio": "Portfilio",
-    "services": "Services",
-    "ensign_services": "Namaa Services",
-    "blog": "Blog",
-    "contact_us": "Contact Us",
-    "packages": "Packages Pricing",
-    "jobs": "Jobs",
-    "web_design": "Web Design",
-    "website_design": "Website Design",
-    "graphic_design": "Graphic Design",
-    "logo_design": "Logo Design",
-    "web_development": "Web Development",
-    "website_development": "Website Development",
-    "web_multimedia": "Web Multimedia",
-    "web_host": "Web Hosting",
-    "web_marketing": "Web Marketing",
-    "email_marketing": "Email Marketing",
-    "e_commerce": "E-Commerce",
-    "seo": "SEO",
-    "professional_design": "Professional Design",
+    "home": "الصفحة الرئيسية",
+    "about_us": "معلومات عنا",
+    "portfilio": "اعمالنا",
+    "services": "خدمات",
+    "ensign_services": "Namaa خدمات",
+    "blog": "المقالات",
+    "contact_us": "اتصل بنا",
+    "packages": "تسعير الباقات",
+    "jobs": "وظائف",
+    "web_design": "التصميم",
+    "website_design": "تصميم المواقع",
+    "graphic_design": "تصميم الجرافيك",
+    "logo_design": "تصميم الشعار",
+    "web_development": "التطوير",
+    "website_development": "تطوير المواقع",
+    "web_multimedia": "الوسائط المتعددة",
+    "web_host": "إستضافة المواقع",
+    "web_marketing": "التسويق الإلكتروني",
+    "email_marketing": "التسويق عبر البريد الإلكتروني",
+    "e_commerce": "التجارة الإلكترونية",
+    "seo": "تحسين محركات البحث",
+    "professional_design": "التصميم الإحترافي",
     "html_css": "HTML/CSS",
-    "social_media": "Social Media",
-    "faq": "FAQ",
-    "terms": "Terms",
-    "privacy_policy": "Privacy Policy",
-    "legal_disclaimers": "Legal Disclaimers",
-    "phone": "Phone",
-    "cell_phone": "Cell Phone",
-    "tax_id": "Tax ID",
-    "post_code": "Post Code",
-    "address": "Address",
-    "email": "Email"
+    "social_media": "وسائل التواصل الإجتماعي",
+    "faq": "الاسئلة المتكررة",
+    "terms": "الشروط",
+    "privacy_policy": "سياسة الإستخدام والخصوصية",
+    "legal_disclaimers": "إخلاء المسئولية القانونية",
+    "phone": "الهاتف",
+    "cell_phone": "الهاتف المحمول",
+    "tax_id": "الرقم الضريبي",
+    "post_code": "الرقم البريدي",
+    "address": "العنوان",
+    "email": "البريد الإلكتروني"
   },
   "footer": {
-    "contact": "Contact",
-    "important_links": "Important Links",
-    "copyrights": "<linkTag>{siteName}</linkTag> {dateYear} © All rights reserved."
+    "contact": "التواصل",
+    "important_links": "روابط هامة",
+    "copyrights": "<linkTag>{siteName}</linkTag> {dateYear} جميع الحقوق محفوظة. © "
   },
   "actions": {
-    "request_now": "Request Now",
-    "apply_now": "Apply Now",
-    "read_more": "Read More",
-    "send_now": "Send Now",
-    "more": "More",
-    "contact_us": "Contact Us",
-    "about_us": "About Us",
-    "send_message": "Send Message",
-    "cancel": "Cancel"
+    "request_now": "اطلب الخدمة الآن",
+    "apply_now": "قدم الآن",
+    "read_more": "قرأة المزيد",
+    "send_now": "ارسل الآن",
+    "more": "المزيد",
+    "contact_us": "اتصل بنا",
+    "about_us": "اعرف اكتر",
+    "send_message": "ارسل لنا رسالتك",
+    "cancel": "إلغاء"
   },
   "form": {
-    "name": "Name",
-    "phone": "Phone",
-    "email": "Email",
-    "message": "Message",
-    "select_services": "Select Services",
-    "select_cv": "Attach Resume"
+    "name": "الاسم",
+    "phone": "الهاتف",
+    "email": "البريد الإلكتروني",
+    "message": "الرسالة",
+    "select_services": "اختر الخدمة",
+    "select_cv": "ارفع سيرتك الذاتية"
   },
   "validation": {
-    "required_field": "This field is required!",
-    "max_char_255": "Max characters allowed is 255 characters",
-    "invalid_phone_number": "Invalid phone number!",
-    "invalid_email": "Email is not correct!",
-    "required_goals": "Goal cannot be empty",
-    "min_goals": "At least one goal is required"
+    "required_field": "بيانات هذا الحقل مطلوبة",
+    "max_char_255": "الحد الاقصي للحروف المٌدخلة هو 225",
+    "invalid_phone_number": "رقم هاتف غير صحيح!",
+    "invalid_email": "البريد الإلكتروني غير صحيح",
+    "required_goals": "ادخل الاهداف المطلوبة!",
+    "min_goals": "ادخل هدف واحد علي الاقل"
   },
   "clients": {
-    "tagline": "Meet Our Clients",
-    "title": "They Believe In Us"
+    "tagline": "تعرف علي عملائنا",
+    "title": "إنهم يؤمنون بنا"
   },
   "call_to_action1": {
-    "title": "Do You Want To Boost Your Business?",
-    "subtitle": "drop us a line and keep in touch Website Design Agency And Web Development in Saudi"
+    "title": "هل تريد تعزيز عملك؟",
+    "subtitle": "مراسلتنا على الخط والبقاء على اتصال شركة تصميم مواقع وادارة محتوى"
   },
   "call_to_action2": {
-    "title": "We strive to make our clients happy",
-    "subtitle": "So, let's be happy together",
-    "action_button": "Meet Portofilio"
+    "title": "نحن نسعى جاهدين لجعل عملائنا سعداء",
+    "subtitle": "لذا دعونا نكون سعداء معًا",
+    "action_button": "تعرف علي سابقة اعمالنا"
   },
   "home": {
     "main_banner": {
-      "digital_market": "Digital Marketing",
-      "digital_market_tagline": "for your business",
-      "p1": "Namaa Agency is famous for being #1 in digital marketing and advertising in Saudi.",
-      "experience": "Years Experience",
-      "project_completed": "Projects Completed"
+      "digital_market": "تسويق إلكتروني",
+      "digital_market_tagline": "لمجالات عملك",
+      "p1": "شركة تسويق الكتروني “وكالة حامل الراية” متميزين في تصميم المواقع والتسويق الالكتروني  وتطوير الويب في كافة المجالات الطبية والسياحية والرياضية والاثاث والمجوهرات وغيرها من المواقع الالكترونية بأعلى جوده وسعر اقل.",
+      "experience": "من سنوات الخبرة",
+      "project_completed": "مشاريع مُكتملة"
     },
     "development_section": {
-      "tagline": "well known for their professionalism",
-      "title": "Website Design Agency And Web Development In Saudi​",
-      "p1": "To help brands penetrate new markets, empower existing markets, and compete at the highest level, we offer a fully integrated creative solution set. we oversee all aspects that help customers to understand the brand better."
+      "tagline": "معروفون باحترافيتهم",
+      "title": "وكالة تصميم مواقع الويب وتطوير الويب في السعودية",
+      "p1": "لمساعدة العلامات التجارية على اختراق أسواق جديدة، وتمكين الأسواق الحالية، والتنافس على أعلى مستوى، فإننا نقدم مجموعة حلول إبداعية متكاملة بالكامل. نحن نشرف على جميع الجوانب التي تساعد العملاء على فهم العلامة التجارية بشكل أفضل."
     }
   },
   "about_us": {
-    "tagline": "well known for their professionalism",
-    "title": "About Namaa Agency",
-    "short_descraption": "We can begin with establishing or solidifying your brand, continue on through graphic and web design, apply technical proficiency in programming your site and any custom applications, and onward to a long-term partnership.",
-    "pragraph1": "We can begin with establishing or solidifying your brand, continue on through graphic and web design, apply technical proficiency in programming your site and any custom applications, and onward to a long-term partnership.",
-    "pragraph2": "We work with you to effectively promote your products and services to your target audience and facilitate the user’s experience. We are committed to our customers in the development and improvement of their brand.",
+    "tagline": "معروفون باحترافيتهم",
+    "title": "معلومات عن وكالة Ensign",
+    "short_descraption": "يمكننا أن نبدأ بتأسيس أو تعزيز علامتك التجارية، ثم نستمر من خلال التصميم الجرافيكي وتصميم الويب، ونطبق الكفاءة الفنية في برمجة موقعك وأي تطبيقات مخصصة، ثم ننتقل إلى شراكة طويلة الأمد.",
+    "pragraph1": "لا يتوقف التسويق الرقمي أبدًا ويمكننا أن نبقيك مرئيًا من خلال تحسين محرك البحث والتسويق عبر وسائل التواصل الاجتماعي وتسويق المحتوى والدعم الفني والتصميم الجرافيكي المستمر.",
+    "pragraph2": "نحن نعمل معك للترويج لمنتجاتك وخدماتك بشكل فعال لجمهورك المستهدف وتسهيل تجربة المستخدم. نحن ملتزمون تجاه عملائنا في تطوير وتحسين علامتهم التجارية.",
     "about_marketing": {
-      "tagline": "CHECK OUT OUR",
-      "title": "MARKETING SERVICES!",
+      "tagline": "تحقق من خدماتنا",
+      "title": "خدمات التسويق!",
+      "title2": "وكالة حامل الراية",
+      "p1": "يمكننا أن نبدأ بتأسيس أو ترسيخ علامتك التجارية ، والمتابعة من خلال تصميم الجرافيك وتصميم الويب ، وتطبيق الكفاءة التقنية في برمجة موقعك وأي تطبيقات مخصصة ، وما بعد ذلك إلى شراكة طويلة الأمد.",
+      "p2": "التسويق الرقمي لا يتوقف أبدًا ويمكننا إبقائك مرئيًا من خلال تحسين محرك البحث وتسويق الوسائط الاجتماعية وتسويق المحتوى والدعم الفني والتصميم الجرافيكي المستمر.",
+      "p3": "نحن نعمل معك للترويج الفعال لمنتجاتك وخدماتك لجمهورك المستهدف وتسهيل تجربة المستخدم.",
       "listing": {
-        "item1": "Full Social Media Management.",
-        "item2": "search engine optimization and web services.",
-        "item3": "We build attractive and exclusive designs.",
-        "item4": "Paid Media Advertising.",
-        "item5": "Attractive designs make visitors stay longer.",
-        "item6": "We create a simple and user-friendly interface.",
-        "item7": "We make your site support all types of devices.",
-        "item8": "We enhance your social networks.",
-        "item9": "We analyze your site and build an along-term strategy for success."
+        "item1": "إدارة كاملة لوسائل التواصل الاجتماعي.",
+        "item2": "تحسين محركات البحث وخدمات الويب.",
+        "item3": "نصمم تصاميم جذابة وحصرية.",
+        "item4": "إعلانات مدفوعة.",
+        "item5": "تصاميم جذابة تطيل بقاء الزوار.",
+        "item6": "نصمم واجهة مستخدم بسيطة وسهلة الاستخدام.",
+        "item7": "نجعل موقعك متوافقًا مع جميع أنواع الأجهزة.",
+        "item8": "نعزز شبكاتك الاجتماعية.",
+        "item9": "نحلل موقعك ونضع استراتيجية طويلة الأمد للنجاح."
       }
     }
   },
   "contact_us": {
-    "title": "Don’t Wait, Contact Us Now!",
-    "subtitle": "We Would Be Happy To Meet You And Know More About Your Business",
-    "note": "You'll find us all week days from 9 am till 5 pm Except Friday."
+    "title": "تواصل معنا الآن!",
+    "subtitle": "يسعدنا مقابلتك ومعرفة المزيد عن عملك",
+    "note": "نستقبلكم طوال أيام الأسبوع من الساعة 9 صباحًا حتى 5 مساءً ما عدا الجمعة."
   },
   "services": {
-    "hero_title": "Our Services",
-    "hero_subtitle": "Just Say the Word, We Can Do it all!",
-    "tagline": "A Step-By-Step Roadmap To Success",
-    "title": "One-Stop Digital Agency",
-    "descraption": "At Namaa Agency, we provide integrated digital marketing solutions designed to elevate your brand. From crafting data-driven strategies to flawless execution, we are your dedicated partners in navigating the digital landscape and achieving measurable growth.",
-    "title2": "Digital Marketing Namaa Agency The Best One in Saudi",
+    "hero_title": "خدماتنا",
+    "hero_subtitle": "وكالة حامل الراية للتسويق هي الأفضل في السعودية",
+    "tagline": "خطوة بخطوة للنجاح",
+    "title": "وكالة حامل الراية",
+    "descraption": "متميزون في تصميم مواقع وادراة صفحات السوشيال ميديا وتصميم هويات وانتاج الفيديوهات المتحركة, متميزين في تنظيم الحملات الإعلانية على الفيسبوك وانستجرام وجوجل و تقديم الخدمات المتكاملة في ادارة شركتك التجاريه ، بالاضافة لحلول الويب و البرمجة و خدمات استضافة المواقع و السيرفرات , منذ بدايتنا و نحن نضع عنصر التميز و الإبداع نصب أعيننا نعمل منذ أكثر من 20 سنه بفريق عمل ممتاز و مؤهل حيث يتكون فريقنا من مسوقين و مصممين ومطورين لنطور و نبتكر.",
+    "title2": "Digital Marketing Namaa Agency The Best One in Egypt",
     "tagline2": "Attractive website shows professionalism",
     "request_service": "Request a Service",
     "request_service_descraption": "El Motaheda spends a lot of time to analyze client needs and requirements to create the best fit solution. Please share your details below so we can help you better.",
     "box1": {
-      "title": "Increase Sales",
-      "descraption": "We craft targeted marketing campaigns that connect with your ideal customers and drive them to action. Our strategies are designed not just to boost your online visibility, but to convert leads into loyal customers and deliver tangible growth to your bottom line."
+      "title": "زيادة المبيعات",
+      "descraption": "نصمم حملات تسويقية مستهدفة تتواصل مع عملائكم المثاليين وتحثهم على اتخاذ إجراء. استراتيجياتنا مصممة ليس فقط لتعزيز حضوركم على الإنترنت، بل لتحويل العملاء المحتملين إلى عملاء أوفياء وتحقيق نمو ملموس في أرباحكم."
     },
     "box2": {
-      "title": "The ROI Experts",
-      "descraption": "Every penny of your marketing budget matters. We are obsessed with performance and data, focusing relentlessly on maximizing your Return On Investment (ROI). We track every campaign meticulously to ensure your investment yields the best possible results."
+      "title": "خبراء عائد الاستثمار",
+      "descraption": "كل قرش من ميزانيتك التسويقية مهم. نحن نهتم بالأداء والبيانات، ونركز بلا كلل على تعظيم عائد استثمارك. نتابع كل حملة بدقة لضمان تحقيق استثمارك أفضل النتائج الممكنة."
     },
     "box3": {
-      "title": "Best Practices",
-      "descraption": "The digital world is always evolving, and so are we. We stay ahead of the curve by continuously testing, learning, and implementing the latest industry best practices. This agile approach allows us to adapt and optimize your campaigns for sustained success."
+      "title": "أفضل الممارسات",
+      "descraption": "العالم الرقمي في تطور مستمر، ونحن كذلك. نواكب أحدث التطورات من خلال الاختبار والتعلم وتطبيق أحدث الممارسات في هذا المجال. يتيح لنا هذا النهج المرن تكييف حملاتكم وتحسينها لتحقيق نجاح مستدام."
     },
-    "social_short_content": "Namaa Agency offers comprehensive digital solutions from content to advertising. We manage marketing campaigns with integrated plans and up-to-date tools.",
-    "seo_short_content": "(SEO) is the process of developing websites to suit the requirements of different search engines such as Google or Bing scenes appearing in the first search results for business keywords and terms from potential customers for companies.",
-    "professional_short_content": "Professional Design - Custom designed to meet your business needs.",
-    "html_css_short_content": "HTML5/ CSS3 (100% Responsive layout compatible with all smart phones and tablet devices).",
-    "web_design_short_content": "The key and most important step in the process of getting a website is the selection of a good design. With Ensign, the target is to make your task easy and help you out in your project."
+    "social_short_content": "تقدم Namaa Agency حلولاً رقمية متنوعة وشاملة من المحتوى الاستثنائي الفريد إلى الإعلان والترويج لعلاماتك التجارية عبر مجموعة واسعة من خدمات التسويق الرقمي التي تساعد علامتك التجارية على بناء علاقات إبداعية ...",
+    "seo_short_content": "(SEO) هي عملية تطوير مواقع الويب لتناسب متطلبات محركات البحث المختلفة مثل Google أو Bing لظهور المشاهد في نتائج البحث الأولى للكلمات الرئيسية والمصطلحات التجارية من العملاء المحتملين للشركات.",
+    "professional_short_content": "تصميم احترافي - مصمم خصيصًا لتلبية احتياجات عملك",
+    "html_css_short_content": "HTML5 / CSS3 (تخطيط مستجيب 100٪ متوافق مع جميع الهواتف الذكية والأجهزة اللوحية).",
+    "web_design_short_content": "قابلة للتطوير في التصميم - تتوفر وحدات وأنماط تصميم إضافية كلما زادت احتياجاتك"
   },
   "ensign_services": {
-    "hero_title": "Namaa Services",
+    "hero_title": "Namaa خدمات",
     "box1": {
-      "title": "Network Infrastructure",
-      "p1": "Namaa provides solutions for your Network, whatever your needs are. Backed up with its long experience in different environment, Namaa provides the best solutions with the most suitable cost to satisfy its customers.",
-      "p2": "the network covered by Namaa varies between Wired Ethernet (CAT6 cables), Fiber cables, Wireless on 2.4GHz and Wireless on 5GHz.",
-      "p3": "Namaa offers the passive and active components needed for the network. This includes and not limited to Switches, Access Points, Controllers and Servers."
+      "title": "البنية التحتية للشبكة",
+      "p1": "تقدم إنساين حلولاً لشبكتك، مهما كانت احتياجاتك. بفضل خبرتها الطويلة في مختلف البيئات، توفر إنساين أفضل الحلول بأفضل الأسعار لإرضاء عملائها.",
+      "p2": "تتنوع الشبكة التي تغطيها شركة Namaa بين شبكة Ethernet السلكية (كابلات CAT6)، وكابلات الألياف، والشبكة اللاسلكية على 2.4 جيجاهرتز، والشبكة اللاسلكية على 5 جيجاهرتز.",
+      "p3": "توفر شركة Namaa المكونات السلبية والنشطة اللازمة للشبكة. وهذا يشمل، على سبيل المثال لا الحصر، المفاتيح ونقاط الوصول ووحدات التحكم والخوادم."
     },
     "box2": {
-      "title": "Consultancy",
-      "p1": "Whenever you feel that you need someone to give you a hand in your network, Namaa comes with its experience to give you the needed help with the fastest support with the most convenient price to solve your problem and resume your service as soon as possible.",
-      "p2": "Namaa helps you to plan and design your network with the latest technologies for the best results and performance. Namaa is committed to offer the best advice to its clients to guarantee the service quality."
+      "title": "الاستشارات",
+      "p1": "عندما تشعر أنك بحاجة إلى شخص ما لمساعدتك في شبكتك، تأتي شركة Namaa بخبرتها لتزويدك بالمساعدة اللازمة مع أسرع دعم بالسعر الأكثر ملاءمة لحل مشكلتك واستئناف خدمتك في أسرع وقت ممكن.",
+      "p2": "تساعدك إنساين في تخطيط وتصميم شبكتك بأحدث التقنيات لتحقيق أفضل النتائج والأداء. تلتزم إنساين بتقديم أفضل الاستشارات لعملائها لضمان جودة الخدمة."
     },
     "box3": {
       "title": "IPPBX",
-      "p1": "Namaa offers the latest technology of VOIP based on the well known Opensource IPPBX, Astersik. By having such a service from Ensign, you will get",
+      "p1": "تقدم Namaa أحدث تقنيات VOIP المستندة إلى نظام IPPBX مفتوح المصدر المعروف، Astersik. باستخدام هذه الخدمة من Ensign، ستحصل على...",
       "listing": {
-        "item1": "Complete replacement of the Legacy PBX",
-        "item2": "Lower operational cost",
-        "item3": "Easy configuration and administration",
-        "item4": "Easy to relocate phones",
-        "item5": "Uses the date infrastructure",
-        "item6": "Simplicity of connecting branches",
-        "item7": "Supports roaming users",
-        "item8": "Simple IVR implementation with high flexibility",
-        "item9": "Supports VOICE Mail",
-        "item10": "Supports grouping of extensions",
-        "item11": "Recording of Inbound and Outbound calls",
-        "item12": "Control of outbound calls with PIN codes",
-        "item13": "Routing outside calls per destination saving cost",
-        "item14": "Rapid deployment with minimum"
+        "item1": "استبدال كامل لنظام PBX القديم",
+        "item2": "تكلفة تشغيلية أقل",
+        "item3": "سهولة التهيئة والإدارة",
+        "item4": "سهولة نقل الهواتف",
+        "item5": "استخدام البنية التحتية للبيانات",
+        "item6": "سهولة ربط الفروع",
+        "item7": "دعم المستخدمين المتجولين",
+        "item8": "تطبيق بسيط لنظام الرد الصوتي التفاعلي مع مرونة عالية",
+        "item9": "دعم البريد الصوتي",
+        "item10": "دعم تجميع الامتدادات",
+        "item11": "تسجيل المكالمات الواردة والصادرة",
+        "item12": "التحكم في المكالمات الصادرة باستخدام رموز PIN",
+        "item13": "توجيه المكالمات الخارجية لكل وجهة وتوفير التكلفة",
+        "item14": "نشر سريع بأقل تكلفة"
       }
     },
     "box4": {
-      "title": "Firewalls",
-      "p1": "Namaa utilizes its experience in the open-source field to present a cost effective modular firewall with the following features:",
+      "title": "جدران الحماية",
+      "p1": "تستغل شركة Namaa خبرتها في مجال المصادر المفتوحة لتقديم جدار حماية معياري فعال من حيث التكلفة مع الميزات التالية:",
       "listing": {
-        "item1": "Based on secure Linux OS for better performance and security",
-        "item2": "Integrated with Proxy server for browsing control and reporting",
-        "item3": "Integrated with QoS system for BW control",
-        "item4": "Built-in DHCP server",
-        "item5": "Real-Time monitoring tools",
-        "item6": "Integrated with WebServer",
-        "item7": "Integrated with Backup system for the company sensitive files through the network",
-        "item8": "Free command-line Anti-Virus"
+        "item1": "مبني على نظام تشغيل لينكس آمن لتحسين الأداء والأمان",
+        "item2": "متكامل مع خادم وكيل للتحكم في التصفح وإعداد التقارير",
+        "item3": "متكامل مع نظام جودة الخدمة للتحكم في شبكة النطاق العريض",
+        "item4": "خادم DHCP مدمج",
+        "item5": "أدوات مراقبة آنية",
+        "item6": "متكامل مع خادم الويب",
+        "item7": "متكامل مع نظام نسخ احتياطي لملفات الشركة الحساسة عبر الشبكة",
+        "item8": "برنامج مكافحة فيروسات مجاني يعمل عبر سطر الأوامر"
       }
     }
   },
   "website_development": {
-    "title": "Website Development",
-    "p1": "Website promotes awareness of your brand leading to more sales, Builds relationships with customers, vendors, and shareholders through your online identity , Contributes to get more traffic from search engines ,and communicates more effectively. Either you are looking for a dynamic or a static website ; we can help you acquire both. We offer websites on jsp, asp,and php Specifically designed to target customers and promote your presence on the Internet. We offer websites at:",
-    "p2": "Specifically designed to target customers and promote your presence on the Internet",
+    "title": "تطوير المواقع",
+    "p1": "يعزز موقع الويب من الوعي بعلامتك التجارية مما يؤدي إلى المزيد من المبيعات ، ويبني علاقات مع العملاء والموردين والمساهمين من خلال هويتك عبر الإنترنت ، ويساهم في الحصول على المزيد من الزيارات من محركات البحث ، ويتواصل بشكل أكثر فعالية. إما أنك تبحث عن موقع ديناميكي أو ثابت ؛ يمكننا مساعدتك في الحصول على كليهما. نحن نقدم مواقع ويب على:",
+    "p2": "تم تصميمه خصيصًا لاستهداف العملاء وتعزيز تواجدك على الإنترنت",
     "listing": {
-      "item1": "(html) Technology to fixed locations",
-      "item2": "(php) Technology for dynamic sites",
-      "item3": "(ASP) Technology for Internet applications.",
-      "item4": "(JSP) Technology for Internet applications."
+      "item1": "(html) تكنولوجيا المواقع الثابتة",
+      "item2": "تقنية (php) للمواقع الديناميكية",
+      "item3": " تقنية (ASP) لتطبيقات الإنترنت.",
+      "item4": "تقنية (JSP) لتطبيقات الإنترنت"
     }
   },
   "web_multimedia": {
-    "title": "Web Multi-Media",
-    "p1": "Multimedia has a regarded effect in people’s interest, It gains popularity on the Web with several technologies to support use of creative animation, video, 3D models,and audio to supplement the traditional media of text and images.One thing that makes a website more appealing and ranks it’s popularity high besides a colorful layout, is the multimedia it has.Adding a video for example will provide the main content of the website,besides any information you want to add about your business."
+    "title": "الوسائط المتعددة على الويب",
+    "p1": "تتمتع الوسائط المتعددة بتأثير كبير في اهتمام الناس، وهي تكتسب شعبية على الويب من خلال العديد من التقنيات لدعم استخدام الرسوم المتحركة الإبداعية والفيديو والنماذج ثلاثية الأبعاد والصوت لتكملة الوسائط التقليدية للنصوص والصور. أحد الأشياء التي تجعل موقع الويب أكثر جاذبية وترفع شعبيته إلى جانب التصميم الملون، هو الوسائط المتعددة التي يحتوي عليها. إضافة مقطع فيديو على سبيل المثال سيوفر المحتوى الرئيسي لموقع الويب، بالإضافة إلى أي معلومات تريد إضافتها حول عملك."
   },
   "web_hosting": {
-    "title": "Web Hosting",
-    "p1": "As your business grows, you should always choose your web server with great care. After all it is what keeps your business up and running. In this field, Namaa agency offers services to host your website, and online systems for storing information, images, videos, or other content that can be accessed via the World Wide Web. We offer 1 MB ,5 MB and 15 MB Hosting Packages. We also offer custom web hosting as per your requirements."
+    "title": "استضافة الموقع",
+    "p1": "مع نمو عملك ، يجب عليك دائمًا اختيار خادم الويب الخاص بك بعناية فائقة. بعد كل هذا هو ما يحافظ على عملك وتشغيله. في هذا المجال ، تقدم وكالة Namaa خدمات لاستضافة موقع الويب الخاص بك وأنظمة عبر الإنترنت لتخزين المعلومات أو الصور أو مقاطع الفيديو أو أي محتوى آخر يمكن الوصول إليه عبر شبكة الويب العالمية. نحن نقدم باقات استضافة 1 ميجا بايت ، 5 ميجا بايت و 15 ميجا بايت. نحن نقدم أيضًا استضافة ويب مخصصة وفقًا لمتطلباتك."
   },
   "social_media": {
-    "title": "Social Media",
-    "p1": "Namaa Agency offers comprehensive diverse digital solutions from unique extraordinary content to advertising and promoting your brands across a wide range of digital marketing services that help your brand build inventive relationships. We have gained our leadership from our ability to manage marketing campaigns through social networking sites with integrated plans based on information and studies. This is, in addition to permanent access to all the tools and updates that occur on these platforms. ​"
+    "title": "وسائل التواصل الاجتماعي",
+    "p1": "تقدم Namaa Agency حلولاً رقمية متنوعة وشاملة من المحتوى الاستثنائي الفريد إلى الإعلان والترويج لعلاماتك التجارية عبر مجموعة واسعة من خدمات التسويق الرقمي التي تساعد علامتك التجارية على بناء علاقات إبداعية. اكتسبنا ريادتنا من قدرتنا على إدارة الحملات التسويقية عبر مواقع التواصل الاجتماعي بخطط متكاملة مبنية على معلومات ودراسات. هذا بالإضافة إلى الوصول الدائم إلى جميع الأدوات والتحديثات التي تحدث على هذه الأنظمة الأساسية. ​"
   },
   "website_design": {
     "box1": {
-      "title": "Website Design",
-      "p1": "The key and most important step in the process of getting a website is the selection of a good design. With Ensign, the target is to make your task easy and help you out in your project.",
-      "p2": "Many business firms and individuals have made us their choice and they’re happy from our output. It doesn’t matter if you’ve a big company or a small one. We have the time, creativity and most importantly expertise to form and be an integral part of your web marketing solution."
+      "title": "تصميم المواقع",
+      "p1": "الخطوة الأساسية والأكثر أهمية في عملية الحصول على موقع ويب هي اختيار التصميم الجيد. مع Namaa ، الهدف هو تسهيل مهمتك ومساعدتك في مشروعك.",
+      "p2": "لقد جعلنا العديد من الشركات التجارية والأفراد خيارهم وهم سعداء بالإنتاج منا. حتى لو كانت شركتك صغيرة أو كبيرة ، وليست مشكلة كبيرة ، فلدينا الوقت والإبداع والأهم من ذلك الخبرة لتشكيل وأن تكون جزءًا لا يتجزأ من حل التسويق عبر الويب الخاص بك."
     },
     "box2": {
-      "title": "Our Strong Points",
-      "p1": "The key and most important step in the process of getting a website is the selection of a good design. With Ensign, the target is to make your task easy and help you out in your project.We work with you to effectively promote your products and services to your target audience and facilitate the user’s experience.",
-      "p2": "Many business firms and individuals have made us their choice and they’re happy from our output. It doesn’t matter if you’ve a big company or a small one. We have the time, creativity and most importantly expertise to form and be an integral part of your web marketing solution."
+      "title": "نقاطنا القوية",
+      "p1": "الخطوة الأساسية والأكثر أهمية في عملية الحصول على موقع ويب هي اختيار التصميم الجيد. مع Namaa ، الهدف هو تسهيل مهمتك ومساعدتك في مشروعك. لقد جعلنا العديد من الشركات التجارية والأفراد خيارهم وهم سعداء بالإنتاج منا. حتى لو كانت شركتك صغيرة أو كبيرة ، وليست مشكلة كبيرة ، فلدينا الوقت والإبداع والأهم من ذلك الخبرة لتشكيل وأن تكون جزءًا لا يتجزأ من حل التسويق عبر الويب الخاص بك.",
+      "p2": "لقد اختارتنا العديد من الشركات والأفراد، وهم راضون عن منتجاتنا. سواءً كانت شركتك كبيرة أم صغيرة، فنحن نمتلك الوقت والإبداع، والأهم من ذلك الخبرة، لنكون جزءًا لا يتجزأ من حلول التسويق الإلكتروني الخاصة بك."
     },
     "box3": {
-      "title": "Company Strengths at a glance",
+      "title": "نقاط القوة في الشركة في لمحة",
       "progress": {
-        "item1": "PSD Design Only",
-        "item2": "Responsive Design",
-        "item3": "Creative & Attractive Design",
-        "item4": "​Unlimited Pages"
+        "item1": "تصميم PSD",
+        "item2": "الرسم المتجاوب مع الهواتف الذكية والتابلت",
+        "item3": "تصميم مبتكر وجذاب",
+        "item4": "​صفحات غير محدودة"
       }
     }
   },
   "graphic_design": {
     "box1": {
-      "title": "Graphic Design",
-      "p1": "Graphic design is an innovative process that combines art and technology to communicate ideas. Our designer work with a number of communication tools in order to impart your message to your targeted audience. Best graphic design evokes positive impressions about your business. They offer a basic idea of what the website is about and create a unique look on the website which makes it stand out from the crowd. They help in building up the reliability of the business among prospective clients. We appreciate your business and in accordance with its requirement and peculiarity we show our creativity. We customize thing accordingly and present the best possible graphic design in front of you that might help in marketing your business."
+      "title": "التصميم الجرافيك",
+      "p1": "التصميم الجرافيك هو عملية مبتكرة تجمع بين الفن والتكنولوجيا لتوصيل الأفكار. يعمل مصممنا مع عدد من أدوات الاتصال من أجل نقل رسالتك إلى جمهورك المستهدف. يثير أفضل تصميم رسومي انطباعات إيجابية عن عملك. إنهم يقدمون فكرة أساسية عما يدور حوله موقع الويب ويخلقون مظهرًا فريدًا على موقع الويب مما يجعله متميزًا عن الآخرين. أنها تساعد في بناء موثوقية الأعمال التجارية بين العملاء المحتملين. نحن نقدر عملك ووفقًا لمتطلباته وخصوصياته نظهر إبداعنا. نحن نخصص الشيء وفقًا لذلك ونقدم أمامك أفضل تصميم رسومي ممكن قد يساعد في تسويق عملك."
     },
     "box2": {
-      "title": "Flat UI Design",
-      "p1": "Flat design is remarkably attractive and controversial in world of user interface. Flat design doesn’t indicate that anything hinting at dimensionality is out of position. However the entire trajectory of the pattern is towards simplicity and minimalism. The buttons are plain fields of color with pointed corners. There’s not a drop off shadow, beveled border or gradient to be observed.",
-      "p2": "Flat design possesses all the crucial characteristics that can make a site as functional as it is beautiful. It recognizes that a sense of knowledge is very important to the user experience, but it generates this sense in such a way that suits with the platform. Simultaneously, it’s surprisingly able to accept new discoveries, traits and ideas. Flat design brings us a step closer to a new paradigm of digital design, exactly where the overall performance and artistic work are in complete harmony.",
-      "p3": "Rest we do have experienced UI flat designers who will provide you flat and trendy UI designs with great blend of colors. So let us know your requirement and we assure to design the best UI for you."
+      "title": "تصميم مسطح لواجهة المستخدم",
+      "p1": "التصميم المسطح جذابٌ للغاية ومثيرٌ للجدل في عالم واجهات المستخدم. لا يعني التصميم المسطح أن أي شيء يُلمح إلى الأبعاد غير مناسب. ومع ذلك، يتجه النمط بأكمله نحو البساطة والبساطة. الأزرار عبارة عن حقول ألوان بسيطة بزوايا مدببة. لا يوجد ظلٌّ منسدل، أو حدودٌ مشطوفة، أو تدرجٌ لونيٌّ يُلاحظ.",
+      "p2": "لدينا مصممو واجهات مستخدم مسطحة ذوو خبرة، سيقدمون لك تصاميم واجهات مستخدم مسطحة وعصرية بمزيج رائع من الألوان. لذا، أخبرنا بمتطلباتك، وسنضمن لك تصميم واجهة المستخدم المثالية."
     },
     "box3": {
-      "title": "User Interface",
-      "p1": "High-quality design can often be the blend of artful imagination along with the wonder of simplicity. An effective user interface foresees user requirements,communication and generates confident.",
-      "p2": "Rudra UI designer’s understand your requirement very well and develop a UI that totally supports your brand. As a user interface design organization, we don’t simply try to make your design operational in fact we ensure that it ought to be customer oriented and brand-supportive as well. Furthermore, we offer user interface design style strategies which allow you to do all potential application edits, tweaks and updations to design as needed"
+      "title": "واجهة المستخدم",
+      "p1": "غالبًا ما يكون التصميم عالي الجودة مزيجًا من الخيال الفني جنبًا إلى جنب مع عجب البساطة. تتوقع واجهة المستخدم الفعالة متطلبات المستخدم والتواصل وتولد الثقة. يفهم مصمم Rudra UI متطلباتك جيدًا ويطور واجهة مستخدم تدعم علامتك التجارية تمامًا.",
+      "p2": "بصفتنا مؤسسة لتصميم واجهة المستخدم ، فإننا لا نحاول ببساطة تشغيل تصميمك في الواقع ، فنحن نضمن أنه يجب أن يكون موجهًا نحو العملاء وداعمًا للعلامة التجارية أيضًا. علاوة على ذلك ، نحن نقدم استراتيجيات نمط تصميم واجهة المستخدم والتي تسمح لك بإجراء جميع عمليات التحرير والتعديلات والتحديثات المحتملة للتطبيق للتصميم حسب الحاجة"
     }
   },
   "logo_design": {
-    "title": "Logo Design",
-    "p1": "Website logo should be designed to capture the target audience.so it should be eye-catching, There are loads of great and creative logo design samples included in our logo design portfolio. We have a Variety of minimum 4-5 designers working on every design project to provide our customers with variety of styles to choose from.",
-    "title2": "The logo design brief",
-    "p2": "This is the initial phase where the client briefs us on their requirement. To get better clarity, we usually send out a logo design questionnaire for the client to fill up.",
-    "title3": "Brand research",
-    "p3": "Once we are fully clear on the requirement, our branding guys start on the job. We research the brand’s current positioning in the market and analyze its strengths and weakness. We compare the brand with its direct and indirect competitors. We share the outcome of the research with the client, providing roadmap on how the logo should be positioned.",
-    "title4": "Concept creation",
-    "p4": "Once the client gives a green signal on our approach, the design team starts developing design mockups. Unlike several other logo design companies, our mockups are fully designed logos and not sketches or scribbles. We present around 6-7 initial designs.",
-    "title5": "Client feedback",
-    "p5": "We expect our clients to actively participate in the logo design process and provide constructive feedback on each design option. We get back to the drawing board to rework on the designs based on the feedback. Two levels of iterations will be carried out.",
-    "title6": "Collateral designs",
-    "p6": "Once the logo design is finalized, we proceed to creating design templates for collaterals like business cards, letterheads, envelops, PowerPoint and Microsoft Word. We will also provide the logo file in several file formats including Jpeg, Tiff, EPS and PSD. For logo design projects for larger business entities, we also deliver a detailed logo user manual and design templates for uniforms, company vehicles, billboards etc."
+    "title": "تصميم الشعار",
+    "p1": "يجب تصميم شعار الموقع الإلكتروني لجذب الجمهور المستهدف، لذا يجب أن يكون ملفتًا للنظر. تضم محفظة تصميم الشعارات لدينا العديد من نماذج الشعارات الرائعة والمبتكرة. يعمل على كل مشروع تصميم لدينا ما لا يقل عن 4-5 مصممين، مما يوفر لعملائنا مجموعة متنوعة من الأنماط للاختيار من بينها.",
+    "title2": "ملخص تصميم الشعار",
+    "p2": "هذه هي المرحلة الأولى التي يُطلعنا فيها العميل على متطلباته. ولتوضيح ذلك، عادةً ما نرسل استبيانًا لتصميم الشعار ليُكمله العميل.",
+    "title3": "أبحاث العلامة التجارية",
+    "p3": "بمجرد أن نتأكد تمامًا من المتطلبات، يبدأ فريقنا المتخصص في بناء الهوية التجارية العمل. نبحث في وضع العلامة التجارية الحالي في السوق، ونحلل نقاط قوتها وضعفها. نقارنها بمنافسيها المباشرين وغير المباشرين. نشارك نتائج البحث مع العميل، ونقدم له خارطة طريق لكيفية وضع الشعار.",
+    "title4": "خلق المفهوم",
+    "p4": "بمجرد موافقة العميل على نهجنا، يبدأ فريق التصميم بتطوير نماذج التصميم. بخلاف العديد من شركات تصميم الشعارات الأخرى، فإن نماذجنا هي شعارات مصممة بالكامل وليست مجرد رسومات أو خربشات. نقدم حوالي 6-7 تصاميم أولية.",
+    "title5": "ردود فعل العملاء",
+    "p5": "نتوقع من عملائنا المشاركة بفعالية في عملية تصميم الشعار وتقديم ملاحظات بناءة حول كل خيار تصميم. نعود إلى نقطة البداية لإعادة صياغة التصاميم بناءً على الملاحظات. سيتم تنفيذ مستويين من التكرارات.",
+    "title6": "التصاميم الجانبية",
+    "p6": "بعد الانتهاء من تصميم الشعار، نبدأ بإعداد قوالب تصميم للمطبوعات الإضافية، مثل بطاقات العمل، ورؤوس الرسائل، والمظاريف، وبرامج PowerPoint وMicrosoft Word. كما نوفر ملف الشعار بصيغ متعددة، منها Jpeg وTiff وEPS وPSD. أما بالنسبة لمشاريع تصميم الشعارات للشركات الكبيرة، فنقدم أيضًا دليل مستخدم مفصلًا للشعارات، وقوالب تصميم للزي الرسمي، ومركبات الشركة، واللوحات الإعلانية، وغيرها."
   },
   "email_marketing": {
-    "title": "Email Marketing",
-    "subtitle": "Have you exploited the full potential of email marketing?",
-    "p1": "With virtually every one of your target customer having an email address, email marketing is one of the most powerful and cost-effective medium of communication. Developing a strategic email campaign, however, takes considerable time and expertise. At Niyati we have clear-cut ideas on how to run a successful email marketing campaign.",
-    "title2": "Features of our email marketing service",
-    "subtitle2": "Great looking custom email designs",
-    "p2": "With over a decade of expertise providing top-class graphic and website design services, we know exactly how to communicate through aesthetically designed emails. Our email designs are vibrant, creative and are tuned to excite the viewer’s interest.",
-    "title3": "Powerful, action-inducing content",
-    "p3": "Our experienced content writers can develop a power communication strategy for your emailers. From the mailer subject to the body content, we will refine every single word in the mailer for maximum effectiveness.",
-    "title4": "Publishing emails online",
-    "p4": "Our job doesn’t end at just the emailer design. We can convert the mail to HTML and even help you publish the mail to your audience. We partner with leading mail service providers like MailChimp and Constant Contact in publishing emails.",
-    "title5": "Subscriber management",
-    "p5": "Managing mail subscribers can be a nightmare, if it is not handled properly. You can safely entrust us with your email database to manage your subscriber list and create user segments.",
-    "title6": "Email performance tracking",
-    "p6": "Wouldn’t you love to know how your email campaign performed? We have them covered. We can help you track your campaign’s performance based on various insightful parameters. The reports generated will help you improve conversions through email marketing."
+    "title": "التسويق عبر البريد الإلكتروني",
+    "subtitle": "هل استغلت الإمكانات الكاملة للتسويق عبر البريد الإلكتروني؟",
+    "p1": "بما أن كل عميل مستهدف تقريبًا لديه بريد إلكتروني، يُعد التسويق عبر البريد الإلكتروني من أقوى وسائل التواصل وأكثرها فعالية من حيث التكلفة. مع ذلك، يتطلب تطوير حملة بريد إلكتروني استراتيجية وقتًا وخبرة كبيرين. في نياتي، لدينا أفكار واضحة حول كيفية إدارة حملة تسويق ناجحة عبر البريد الإلكتروني.",
+    "title2": "مميزات خدمة التسويق عبر البريد الإلكتروني لدينا",
+    "subtitle2": "تصميمات بريد إلكتروني مخصصة رائعة المظهر",
+    "p2": "بخبرة تزيد عن عقد من الزمن في تقديم خدمات تصميم جرافيكي ومواقع إلكترونية عالية الجودة، نُتقن التواصل من خلال رسائل بريد إلكتروني مصممة بجمالية. تتميز تصاميم رسائلنا الإلكترونية بالحيوية والإبداع، وهي مصممة لجذب انتباه المشاهد.",
+    "title3": "محتوى قوي ومحفز للحركة",
+    "p3": "محتوى قوي ومحفز للعمل يمكن لكتاب المحتوى المتمرسين لدينا تطوير إستراتيجية اتصال قوية لمرسلي البريد الإلكتروني. بدءًا من موضوع الإرسال إلى محتوى الجسم",
+    "title4": "نشر رسائل البريد الإلكتروني عبر الإنترنت",
+    "p4": "لا يقتصر عملنا على تصميم رسائل البريد الإلكتروني فحسب، بل يمكننا تحويل البريد إلى HTML، بل ومساعدتك في نشره لجمهورك. نتعاون مع مزودي خدمات البريد الإلكتروني الرائدين مثل MailChimp وConstant Contact في نشر رسائل البريد الإلكتروني.",
+    "title5": "إدارة المشتركين",
+    "p5": "قد تكون إدارة مشتركي البريد الإلكتروني أمرًا مُرهقًا إذا لم تُدار بشكل صحيح. يمكنك تكليفنا بقاعدة بيانات بريدك الإلكتروني لإدارة قائمة مشتركيك وإنشاء شرائح المستخدمين.",
+    "title6": "تتبع أداء البريد الإلكتروني",
+    "p6": "هل ترغب بمعرفة أداء حملتك التسويقية عبر البريد الإلكتروني؟ نوفرها لك. نساعدك في تتبع أداء حملتك بناءً على معايير ثاقبة متنوعة. ستساعدك التقارير المُنشأة على تحسين معدلات التحويل من خلال التسويق عبر البريد الإلكتروني."
   },
   "e_commerce": {
-    "title": "E-Commerce",
-    "p1": "E-commerce solutions must be comprehensive enough to manage your online store with proficiency and ease of use. Providing ully functional tool that will empower your business and lessen the burdens associated with doing business online is our mission.Namaa Agency offers e-commerce services in custom-built solutions as well as packaged software customizations and implementation. This helps customers have their business from the view point of sale implementation and go global. Our competent management team, good post-sales services, well organized business structure, network infrastructure and secured, well designed website will ensure ripe results on your investment.",
-    "p2": "This is our curated group of talented web developers all based in your area. Dealing with local web developers is always a huge benefit when building an online store. So whether you are looking for DIY ecommerce solution or a highly customized store, you’ve come to the right place.",
-    "p3": "Shopify developers build on top of the most robust ecommerce solution available. All stores on Shopify are fully hosted, have an easy to navigate admin panel, are beautifully designed, and come with free unlimited customer service. Also, all our online shopping carts come with free unlimited bandwidth, so you’ll never get any surprises on your bill. Our easy to use API’s, powerful add-ons and design backend decrease design and development costs.",
-    "p4": "Make your store better with a Shopify Web Development Expert.",
-    "title2": "ECOMMERCE WEBSITE DEVELOPMENT: FROM CONTENT TO CHECKOUT",
-    "p5": "There’s more to eCommerce website development than just your design and choice of programming language. From content management systems to checkouts, you’ll face a variety of options when you build a website to sell products online.",
-    "p6": "In this guide, we’ll cover the basics of eCommerce website development, from the process of selecting a content and inventory management system that suits your needs to choosing a payment processor that works for your business model.",
-    "p7": "Is this your first eCommerce development project? Enroll in our course to learn how to develop your online store, from concept and design to code and finished product.",
-    "title3": "Planning your eCommerce website",
-    "p8": "Building an eCommerce website isn’t as simple as choosing a CMS and adding your products one by one. The scale of your online store – from the amount of customers you expect to have to the amount of products you sell – will influence your choices regarding software, payment processing, and other factors.",
-    "p9": "Before you start developing your eCommerce website, you need to have a full plan and development schedule prepared. As part of this process, you’ll need to answer several questions, each of which will have an effect on your decisions.",
-    "title4": "How large will your online store be?",
-    "p10": "How many products do you plan to sell on your website? Does your company only have two or three different products to sell, or do you have hundreds or thousands of different products for customers to choose from?",
-    "p11": "The scale of your store has a huge effect on your choice of software. Small online stores can often be built using content management systems like WordPress and Twitter Bootstrap, while large stores generally need to use dedicated software.",
-    "p12": "When you calculate the total number of products you plan to sell, you also need to take variants into account. If you sell shoes, for example, each size and color should count as a separate product for the purpose of calculating your website’s scale.",
-    "p13": "This can often mean that a clothing store with what seems like hundreds of shirts, shoes, or other products can really have thousands of unique items which are sold online. Each of these products needs its own unique stock keeping unit (SKU).",
-    "p14": "Finally, the scale of your eCommerce website extends to categories. Do you sell just one type of product – for example, a shoe store – or do you sell hundreds of types of products, like a department store? The more categories, the larger the scale.",
-    "title5": "Choosing a development framework",
-    "p15": "If your eCommerce website is relatively small, with less than 50 unique products, it can often be built using a content management system like WordPress and various plugins dedicated to product management, checkouts, and online payments.",
-    "p16": "Our coursegives you the exact information required to build your own eCommerce website from scratch using the simple WordPress CMS and some third-party plugins.",
-    "p17": "Large eCommerce websites with hundreds or thousands of unique products need to be designed using eCommerce software. Many web developers choose Magento – an open source eCommerce application framework – to build their online stores.",
-    "p18": "Magento offers numerous advantages that WordPress and third-party eCommerce plugins simply can’t match. It’s built from the ground up for large online stores, and is easy to customize and operate.",
-    "p19": "It’s also much more powerful than any content-focused CMS. While WordPress is an extremely flexible platform for online publishing, it’s far from ideal for developing a product-focused online store.",
-    "p20": "Are you developing a large online store with hundreds of products? Enroll in our course, MAGENTO Scratch: Open Your First Shop Online, to learn how you can use this powerful open source application to build your first eCommerce website.",
-    "title6": "Choosing your eCommerce website’s style",
-    "p21": "Just like your can customize blogging platforms like WordPress to suit any type of website, you can tweak and customize eCommerce platforms like Magento to have any type of look and feel.",
-    "p22": "Whether you sell stylish clothing or automotive toolkits, the fundamentals of your eCommerce website will mostly be the same. Navigation bars, product categories, and backend databases are similar in structure on most eCommerce websites.",
-    "p23": "However, you have a great deal of creative control over the way your product pages look. Many eCommerce websites include features like user reviews, product options, and even demonstration videos. As part of your eCommerce website development plan, you’ll need to think carefully about how your product page should look.",
-    "p24": "Many of the elements you choose to include on your product pages will influence your conversion rate. Learn more about conversion optimization with Conversion Crash Course – an in-depth conversion course with over 25 detailed lectures.",
-    "title7": "Starting development and deploying on schedule",
-    "p25": "Developing an eCommerce website is a difficult task, and without the right level of planning and expertise it can often become an expensive, time-consuming exercise in frustration.",
-    "p26": "To make sure your eCommerce website is developed and deployed on schedule, it helps to have a complete development plan prepared ahead of time. Make sure to include a detailed, itemized budget as part of your website development plan.",
-    "p27": "Learn more about planning and executing a web development project in our course,The Basics of Project Planning. Go over all of the factors listed above – from payment processing to on-site design – and build a detailed, actionable development plan.",
-    "p28": "For most eCommerce website development projects, you’ll need a team of skilled and capable people with experience developing using WordPress or Magento. It’s often more cost-effective to outsource aspects of your online store’s development.",
-    "p29": "Our course, Use Outsourcing to be More Productive & More Profitable, shows you the keys to successful development outsourcing. From design to code to the final product, it’s possible to outsource every aspect of your website’s development.",
-    "title8": "Are you ready to start selling your products online?",
-    "p30": "Building an eCommerce website from scratch is no small task, and starting without the right combination of planning and expertise can make the process tricky. Using the courses and resources listed above, however, you can successfully create your own eCommerce website and start a successful online business!"
+    "title": "التجارة الإلكترونية",
+    "p1": "يجب أن تكون حلول التجارة الإلكترونية شاملة بما يكفي لإدارة متجرك الإلكتروني بكفاءة وسهولة في الاستخدام. مهمتنا هي توفير أداة عملية تُمكّن أعمالك وتُخفف من أعباء ممارسة الأعمال التجارية عبر الإنترنت. تُقدم وكالة إنساين خدمات التجارة الإلكترونية من خلال حلول مُصممة خصيصًا، بالإضافة إلى تخصيصات برمجيات مُتكاملة وتطبيقها. هذا يُساعد العملاء على إدارة أعمالهم من منظور المبيعات وتنفيذها والانتشار عالميًا. فريقنا الإداري الكفؤ، وخدمات ما بعد البيع المتميزة، وهيكل أعمالنا المُنظم جيدًا، وبنيتنا التحتية الشبكية، وموقعنا الإلكتروني المُؤمّن والمصمم جيدًا، تضمن لك نتائج مُثمرة لاستثمارك.",
+    "p2": "هذه مجموعتنا المختارة من مطوري الويب الموهوبين، جميعهم في منطقتك. يُعدّ التعامل مع مطوري الويب المحليين ميزة كبيرة عند إنشاء متجر إلكتروني. لذا، سواء كنت تبحث عن حل تجارة إلكترونية ذاتي أو متجر مُخصّص بدقة، فأنت في المكان المناسب.",
+    "p3": "يعتمد مطورو Shopify على أقوى حلول التجارة الإلكترونية المتاحة. جميع متاجر Shopify مُستضافة بالكامل، وتتميز بلوحة تحكم سهلة الاستخدام، وتصميم جميل، وخدمة عملاء مجانية غير محدودة. كما أن جميع عربات التسوق الإلكترونية لدينا مزودة بنطاق ترددي مجاني غير محدود، ما يضمن لك عدم حدوث أي مفاجآت في فاتورتك. واجهات برمجة التطبيقات سهلة الاستخدام، والإضافات القوية، وواجهة التصميم الخلفية تُقلل من تكاليف التصميم والتطوير.",
+    "p4": "قم بتحسين متجرك مع خبير تطوير الويب Shopify.",
+    "title2": "تطوير مواقع التجارة الإلكترونية: من المحتوى إلى الدفع",
+    "p5": "تطوير مواقع التجارة الإلكترونية يتجاوز مجرد التصميم واختيار لغة البرمجة. من أنظمة إدارة المحتوى إلى عمليات الدفع، ستواجه خيارات متنوعة عند إنشاء موقع لبيع المنتجات عبر الإنترنت.",
+    "p6": "في هذا الدليل، سنغطي أساسيات تطوير مواقع التجارة الإلكترونية، بدءًا من عملية اختيار نظام إدارة المحتوى والمخزون الذي يناسب احتياجاتك وصولًا إلى اختيار معالج دفع يناسب نموذج عملك.",
+    "p7": "هل هذا أول مشروع تطوير تجارة إلكترونية لك؟ انضم إلى دورتنا التدريبية لتتعلم كيفية تطوير متجرك الإلكتروني، من الفكرة والتصميم إلى البرمجة والمنتج النهائي.",
+    "title3": "تخطيط موقع التجارة الإلكترونية الخاص بك.",
+    "p8": "إنشاء موقع للتجارة الإلكترونية ليس بهذه البساطة، فقط اختيار نظام إدارة محتوى وإضافة منتجاتك واحدًا تلو الآخر. حجم متجرك الإلكتروني - من عدد العملاء المتوقعين إلى كمية المنتجات التي تبيعها - سيؤثر على خياراتك المتعلقة بالبرمجيات ومعالجة الدفع وعوامل أخرى.",
+    "p9": "قبل البدء في تطوير موقع التجارة الإلكترونية الخاص بك، يجب أن يكون لديك خطة شاملة وجدول زمني للتطوير. كجزء من هذه العملية، ستحتاج إلى الإجابة على عدة أسئلة، ولكل منها تأثير على قراراتك.",
+    "title4": "ما هو حجم متجرك الإلكتروني؟",
+    "p10": "كم عدد المنتجات التي تخطط لبيعها على موقعك الإلكتروني؟ هل لدى شركتك منتجان أو ثلاثة منتجات مختلفة فقط للبيع، أم لديك مئات أو آلاف المنتجات المختلفة ليختار منها عملاؤك؟",
+    "p11": "لحجم متجرك تأثير كبير على اختيارك للبرنامج. غالبًا ما يمكن بناء المتاجر الإلكترونية الصغيرة باستخدام أنظمة إدارة المحتوى مثل WordPress وTwitter Bootstrap، بينما تحتاج المتاجر الكبيرة عادةً إلى استخدام برامج مخصصة.",
+    "p12": "عند حساب إجمالي عدد المنتجات التي تخطط لبيعها، عليك أيضًا مراعاة الأنواع المختلفة. على سبيل المثال، إذا كنت تبيع أحذية، فيجب احتساب كل مقاس ولون كمنتج منفصل لغرض حساب حجم موقعك الإلكتروني.",
+    "p13": "هذا يعني غالبًا أن متجر ملابس يبدو أنه يضم مئات القمصان أو الأحذية أو المنتجات الأخرى، قد يحتوي في الواقع على آلاف المنتجات الفريدة التي تُباع عبر الإنترنت. يحتاج كل منتج من هذه المنتجات إلى وحدة تخزين فريدة (SKU).",
+    "p14": " أخيرًا، يمتد نطاق موقع التجارة الإلكترونية الخاص بك ليشمل الفئات. هل تبيع نوعًا واحدًا فقط من المنتجات - مثل متجر أحذية - أم تبيع مئات الأنواع من المنتجات، مثل متجر متعدد الأقسام؟ كلما زادت الفئات، اتسع نطاق الموقع.",
+    "title5": "اختيار إطار عمل للتطوير",
+    "p15": "إذا كان موقع التجارة الإلكترونية الخاص بك صغيرًا نسبيًا، ويحتوي على أقل من 50 منتجًا فريدًا، فغالبًا ما يُمكن بناؤه باستخدام نظام إدارة محتوى مثل ووردبريس، بالإضافة إلى العديد من الإضافات المُخصصة لإدارة المنتجات، وعمليات الدفع، والدفع عبر الإنترنت.",
+    "p16": "تُقدم لك دورتنا المعلومات الدقيقة اللازمة لبناء موقع التجارة الإلكترونية الخاص بك من الصفر باستخدام نظام إدارة محتوى ووردبريس البسيط وبعض الإضافات الخارجية.",
+    "p17": "يجب تصميم مواقع التجارة الإلكترونية الكبيرة التي تحتوي على مئات أو آلاف المنتجات الفريدة باستخدام برامج التجارة الإلكترونية. يختار العديد من مطوري الويب ماجنتو - وهو إطار عمل مفتوح المصدر لتطبيقات التجارة الإلكترونية - لبناء متاجرهم الإلكترونية.",
+    "p18": "يُقدم ماجنتو العديد من المزايا التي لا يُمكن لووردبريس وإضافات التجارة الإلكترونية الخار",
+    "p19": "كما أنه أقوى بكثير من أي نظام إدارة محتوى مُركّز على المحتوى. مع أن ووردبريس منصة مرنة للغاية للنشر الإلكتروني، إلا أنه ليس مثاليًا لتطوير متجر إلكتروني يُركّز على المنتجات.",
+    "p20": "هل تُطوّر متجرًا إلكترونيًا ضخمًا يضم مئات المنتجات؟ سجّل في دورتنا التدريبية افتح متجرك الإلكتروني الأول باستخدام MAGENTO Scratch لتتعلم كيف يمكنك استخدام هذا التطبيق القوي مفتوح المصدر لبناء أول موقع تجارة إلكترونية لك.",
+    "title6": "اختيار نمط موقع التجارة الإلكترونية الخاص بك",
+    "p21": "تمامًا كما يمكنك تخصيص منصات التدوين مثل WordPress لتناسب أي نوع من مواقع الويب، يمكنك أيضًا تعديل وتخصيص منصات التجارة الإلكترونية مثل Magento للحصول على أي نوع من المظهر والشعور.",
+    "p22": "سواء كنت تبيع ملابس أنيقة أو أدوات سيارات، فإن أساسيات موقع التجارة الإلكترونية الخاص بك ستكون متشابهة في الغالب. أشرطة التنقل، وفئات المنتجات، وقواعد البيانات الخلفية متشابهة في هيكلها في معظم مواقع التجارة الإلكترونية.",
+    "p23": "مع ذلك، لديك تحكم إبداعي كبير في مظهر صفحات منتجاتك. تتضمن العديد من مواقع التجارة الإلكترونية ميزات مثل تقييمات المستخدمين، وخيارات المنتجات، وحتى مقاطع فيديو توضيحية. كجزء من خطة تطوير موقع التجارة الإلكترونية الخاص بك، ستحتاج إلى التفكير مليًا في مظهر صفحة منتجك.",
+    "p24": "ستؤثر العديد من العناصر التي تختار تضمينها في صفحات منتجاتك على معدل التحويل. تعرّف على المزيد حول تحسين التحويل مع دورة `التحويل المكثفة` - وهي دورة تحويل متعمقة تتضمن أكثر من 25 محاضرة مفصلة.",
+    "title7": "بدء التطوير والنشر في الموعد المحدد",
+    "p25": "يعد تطوير موقع للتجارة الإلكترونية مهمة صعبة، وبدون المستوى المناسب من التخطيط والخبرة، فقد يصبح في كثير من الأحيان تمرينًا مكلفًا ويستغرق وقتًا طويلاً ومحبطًا.",
+    "p26": "لضمان تطوير موقع التجارة الإلكترونية الخاص بك ونشره في الموعد المحدد، يُنصح بإعداد خطة تطوير شاملة مُسبقًا. تأكد من تضمين ميزانية مُفصلة ومُفصلة ضمن خطة تطوير موقعك.",
+    "p27": "تعرّف على المزيد حول تخطيط وتنفيذ مشروع تطوير ويب في دورتنا أساسيات تخطيط المشاريع. استعرض جميع العوامل المذكورة أعلاه - من معالجة الدفع إلى التصميم في الموقع - وضع خطة تطوير مفصلة وقابلة للتنفيذ.",
+    "p28": "بالنسبة لمعظم مشاريع تطوير مواقع التجارة الإلكترونية، ستحتاج إلى فريق من الأشخاص ذوي الكفاءة والمهارة والخبرة في التطوير باستخدام ووردبريس أو ماجنتو. غالبًا ما يكون الاستعانة بمصادر خارجية لتطوير متجرك الإلكتروني أكثر فعالية من حيث التكلفة.",
+    "p29": "دورتنا التدريبية `استخدم الاستعانة بمصادر خارجية لزيادة إنتاجيتك وربحيتك` تُريك مفاتيح نجاح الاستعانة بمصادر خارجية في التطوير. من التصميم إلى البرمجة وصولاً إلى المنتج النهائي، يُمكنك الاستعانة بمصادر خارجية في جميع جوانب تطوير موقعك الإلكتروني.",
+    "title8": "هل أنت مستعد لبدء بيع منتجاتك عبر الإنترنت؟",
+    "p30": "إنشاء موقع تجارة إلكترونية من الصفر ليس بالمهمة السهلة، والبدء دون التخطيط الجيد والخبرة قد يُصعّب العملية. مع ذلك، باستخدام الدورات والموارد المذكورة أعلاه، يمكنك إنشاء موقع تجارة إلكترونية خاص بك بنجاح وبدء مشروع تجاري ناجح عبر الإنترنت!"
   },
   "jobs": {
-    "hero_title": "We Hire",
-    "title": "Rockstars wanted!",
-    "descraption": "we hiring developers,designer,and marketing specialist periodically. life cycle moves rapidly in our firm. we hope to have a gaint production team to satisfy clients needs."
+    "hero_title": "الوظائف المتاحة",
+    "title": "فرص عمل تنتظركم! Namaa Agency",
+    "descraption": "اقترب موعدك للحصول على افضل وظيفة في اكبر الوكالات العالمية Namaa Agency في يناير 2024 وبدون اي رسوم"
   },
   "portfilio": {
-    "title": "Digital Marketing Namaa Agency The Best One In Saudi"
+    "title": "وكالة حامل الراية للتسويق هي الأفضل في السعودية"
   },
   "blog": {
-    "hero_title": "Our Blog",
-    "searching_for": "Searching for",
-    "clear_search": "Clear Search",
-    "popular_posts": "Popular Posts",
-    "share_post": "Share",
-    "search_blog": "Search"
+    "hero_title": "مقالات من Ensign",
+    "searching_for": "البحث عن",
+    "clear_search": "تصفية البحث",
+    "popular_posts": "المزيد للاستكشاف",
+    "share_post": "شارك علي منصات التواصل",
+    "search_blog": "بحث"
   },
   "package_pricing": {
-    "hero_title": "Packages Pricing",
-    "website_hosting": "Website Hosting",
-    "website_design": "Website Design",
-    "marketing_package": "Marketing package",
+    "website_hosting": "استضافة موقع",
+    "website_design": "تصميم موقع",
+    "marketing_package": "الباقة التسویقیة",
     "marketing_package_plans": {
-      "tagline": "Platforms (Facebook - Instagram - Snapchat - Tik Tok - Google)",
+      "tagline": "منصات (فيس بوك - انستجرام -سناب شات تيك توك -جوجل)",
       "listing": {
-        "item1": "16 Designs",
-        "item2": "4 Videos",
-        "item3": "Writing content for publications monthly"
+        "item1": "16 تصميمات",
+        "item2": "4 فيديو",
+        "item3": " كتابة محتوي للمنشورات شهرياً (عربي - إنجليزي)"
       }
     },
-    "email_accounts": "{number} Email countaccounts",
-    "storage": "{number} GB Storage (Host)",
-    "transfer": "Data transfer rate ({number} GB per month)",
+    "email_accounts": "{number} حسابات بريد إلكتروني",
+    "storage": "{number} جيجا مساحه تخزينية (Host)",
+    "transfer": " معدل نقل البيانات ({number} جيجا شهرياً)",
     "design_package_list": {
-      "item1": "Free Hosting For One Year",
-      "item2": "Unlimited Emails",
-      "item3": "Connecting with Social Media",
-      "item4": "Free Domain For one year (www)",
-      "item5": "Specialized Admin Control Panel To Edit , Add or Remove Anything On Your Website",
-      "item6": "Sending 1000 Marketing Emails For Your Company",
-      "item7": "Compatible with all smartphones and tablets",
-      "item8": "Free (SSL) Certificate",
-      "item9": "5 pages (home - about us - contact us - menu - our website)."
+      "item1": " الدومين مجاناً لمدة سنة ( www )",
+      "item2": " إيميلات غير محدودة",
+      "item3": " الربط مع السويال ميديا",
+      "item4": " الدومين مجاناً لمدة سنة ( www )",
+      "item5": " لوحة الإدارة مخصصة لادارة المحتوي",
+      "item6": "إرسال 1000 رسالة بريد إلكتروني تسويقية لشركتك",
+      "item7": "متوافق مع جميع الهواتف الذكية والأجهزة اللوحية",
+      "item8": "شهادة SSL مجانية",
+      "item9": " عدد 5 الصفحات ( الرئيسية - من نحن- اتصل بنا - المنيو- موقعنا )."
     },
     "request_dialog": {
-      "title": "Request Plan",
-      "discraption": "Our goal is to help people in the best way possible. this is a basic principle in every case and cause for success. contact us today for a free consultation."
+      "title": "طلب الخطة",
+      "discraption": "هدفنا هو مساعدة الناس بأفضل طريقة ممكنة. هذا مبدأ أساسي في كل حالة وسبب للنجاح. اتصل بنا اليوم للحصول على استشارة مجانية."
     }
   }
 }

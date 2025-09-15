@@ -138,7 +138,7 @@ export default function HomePage() {
               alt="frame shap"
               width={128}
               height={68}
-              className="slide-x-animation lg:absolute lg:-right-16 lg:bottom-12 lg:-translate-y-1/3"
+              className="slide-x-animation lg:absolute rtl:-left-16 ltr:lg:-right-16 lg:bottom-12 lg:-translate-y-1/3"
             />
           </div>
 

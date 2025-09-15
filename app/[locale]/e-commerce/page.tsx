@@ -82,7 +82,6 @@ export default function ECommercePage() {
             </p>
 
             <p>
-              Th
               <Translate id="e_commerce.p2" />
             </p>
 

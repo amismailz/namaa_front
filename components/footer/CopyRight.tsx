@@ -22,10 +22,6 @@ const CopyRight = () => {
           )
         }}
       />
-      {/* <Link href="/" className="border-b py-1 inline-block">
-        <span className="">Ensign Agency</span>
-      </Link>{" "}
-      {year} © All rights reserved. */}
     </div>
   )
 }
