@@ -342,7 +342,8 @@
     "clear_search": "Clear Search",
     "popular_posts": "Popular Posts",
     "share_post": "Share",
-    "search_blog": "Search"
+    "search_blog": "Search",
+    "last_modified": "Last modified"
   },
   "package_pricing": {
     "hero_title": "Packages Pricing",

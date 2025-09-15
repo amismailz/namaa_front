@@ -69,7 +69,11 @@ export interface BlogItemType {
   description: string
   image: string
   is_popular: number
+  faqs: FaqItem[]
   created_at: string
+  published_date: string
+  meta_title: string
+  meta_description: string
 }
 
 export interface BlogItemResponse {

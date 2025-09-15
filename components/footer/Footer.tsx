@@ -14,8 +14,12 @@ import { ROUTES } from "@/constants"
 import Translate from "@/components/Translate"
 import { useMemo } from "react"
 
+const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY!
+const placeId = process.env.NEXT_PUBLIC_GOOGLE_MAPS_PLACE_ID!
+
 const Footer = ({ data }: { data: ContactInfoData }) => {
   const locale = useLocale()
+  const zoom = 18
 
   const contactItems = useMemo(() => [
     {
@@ -166,7 +170,7 @@ const Footer = ({ data }: { data: ContactInfoData }) => {
 
         <div className="h-64 w-full">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.8945!2d39.9591255!3d21.3245354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c207e0cb085917%3A0xc67f3340249f45fc!2sWadi%20Makkah%20Company!5e0!3m2!1sen!2ssa!4v1697040000000!5m2!1sen!2ssa"
+            src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=place_id:${placeId}&zoom=${zoom}&language=${locale}`}
             width="100%"
             height="100%"
             style={{ border: 0 }}

@@ -10,9 +10,22 @@ import { ROUTES } from "@/constants"
 import { Metadata } from "next"
 import { getLocale } from "next-intl/server"
 import Translate from "@/components/Translate"
+import { format } from "date-fns"
+import { ar, enUS } from "date-fns/locale"
+import FaqList from "@/components/FaqList"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const blogBySlug = cache(getBlogBySlug)
+
+function getDateFnsLocale(locale: string) {
+  switch (locale) {
+    case "ar":
+      return ar
+    case "en":
+    default:
+      return enUS
+  }
+}
 
 export async function generateMetadata({
   params
@@ -58,7 +71,18 @@ export default async function BlogDetailPage({
   params: Promise<{ blogSlug: string }>
 }) {
   const { blogSlug } = await params
-  const { post, popular } = await blogBySlug(blogSlug)
+
+  const [locale, { post, popular }] = await Promise.all([
+    getLocale(),
+    blogBySlug(blogSlug)
+  ])
+
+  const dateFnsLocale = getDateFnsLocale(locale) 
+
+  const shareLink =
+    locale === "ar"
+      ? `${BASE_URL}/${post.slug}`
+      : `${BASE_URL}/${locale}/${post.slug}`
 
   return (
     <>
@@ -77,6 +101,17 @@ export default async function BlogDetailPage({
       <Section className="py-6 relative">
         <Container className="flex flex-col lg:flex-row gap-8">
           <article className="flex-1 space-y-6">
+            <div className="text-muted-foreground bg-[#F7F7F7] rounded-xl p-2 text-xl flex items-center gap-1">
+              <span>
+                <Translate id="blog.last_modified" />:
+              </span>
+              <span>
+                {format(new Date(post.published_date), "MMMM d, yyyy", {
+                  locale: dateFnsLocale
+                })}
+              </span>
+            </div>
+
             <figure>
               <Image
                 src={post.image}
@@ -88,9 +123,22 @@ export default async function BlogDetailPage({
             </figure>
 
             <div dangerouslySetInnerHTML={{ __html: post.description }} />
+
+            {post.faqs && post.faqs.length > 0 ? (
+              <div className="mt-5 space-y-6">
+                <h4 className="font-semibold text-2xl text-primary">
+                  <Translate id="navbar.faq" />
+                </h4>
+                <FaqList data={post.faqs} />
+              </div>
+            ) : null}
           </article>
 
-          <BlogAside popular={popular} />
+          <BlogAside
+            popular={popular}
+            shareLink={shareLink}
+            shareMessage={post.title}
+          />
         </Container>
       </Section>
     </>

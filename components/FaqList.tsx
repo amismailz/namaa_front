@@ -10,13 +10,14 @@ import {
   AccordionTrigger
 } from "@/components/ui/accordion"
 import { format } from "date-fns"
+import Translate from "@/components/Translate"
 
 const FaqList = ({ data }: { data: FaqItem[] }) => {
   return (
     <Accordion
       type="multiple"
       defaultValue={[`item-0`]}
-      className="w-full space-y-6"
+      className="w-full space-y-4"
     >
       {data?.map((item, index) => (
         <AccordionItem
@@ -30,7 +31,7 @@ const FaqList = ({ data }: { data: FaqItem[] }) => {
           <AccordionContent className="lg:text-lg px-4 py-5 border-t ltr:text-left rtl:text-right">
             <p>{item.answer}</p>
             <p className="mt-5 italic text-muted-foreground text-xs">
-              last modified: {format(new Date(item.created_at), "dd-MM-yyy")}
+              <Translate id="blog.last_modified" />: {format(new Date(item.created_at), "dd-MM-yyy")}
             </p>
           </AccordionContent>
         </AccordionItem>

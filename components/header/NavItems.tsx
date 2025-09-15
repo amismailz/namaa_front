@@ -4,7 +4,7 @@ import React from "react"
 import { cn } from "@/lib/utils"
 import { useLocale, useTranslations } from "next-intl"
 import AnimatedPageLink from "@/components/AnimatedPageLink"
-import { Link, usePathname } from "@/i18n/routing"
+import { usePathname } from "@/i18n/routing"
 import {
   MdKeyboardArrowDown,
   MdKeyboardArrowRight,

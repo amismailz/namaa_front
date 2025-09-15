@@ -7,6 +7,7 @@ export async function getBlogList(filters: Record<string,string>) {
   const response = await apiFetch<BlogResponse>("/blogs", {
     params: filters
   })
+
   return { list: response.msg_data, pagination: response.pagination}
 }
 
