@@ -13,6 +13,7 @@ import Translate from "@/components/Translate"
 import { format } from "date-fns"
 import { ar, enUS } from "date-fns/locale"
 import FaqList from "@/components/FaqList"
+import BlogPostHideLocale from "@/components/BlogPostHideLocale"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const blogBySlug = cache(getBlogBySlug)
@@ -86,6 +87,8 @@ export default async function BlogDetailPage({
 
   return (
     <>
+      <BlogPostHideLocale />
+
       <HeroPage
         heading={post.title}
         breadcrumb={[

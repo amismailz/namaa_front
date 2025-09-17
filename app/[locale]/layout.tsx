@@ -14,6 +14,7 @@ import { Toaster } from "@/components/ui/sonner"
 import NextTopLoader from "nextjs-toploader"
 import { ROUTES } from "@/constants"
 import WhatsAppChat from "@/components/WhatsAppChat"
+import { LocaleSwitcherProvider } from "@/providers/LocaleSwitcherProvider"
 // styles
 import "../globals.css"
 
@@ -175,17 +176,19 @@ export default async function RootLayout({ children, params }: Props) {
 
           <LocaleLayout locale={locale}>
             <ReactQueryProvider>
-              <Direction direction={dir}>
-                <PageWrapper>
-                  <Navbar data={data} />
-                  <main className="min-h-[400px]">
-                    <AnimateRoutes>{children}</AnimateRoutes>
-                  </main>
-                  <CallToAction />
-                  <Footer data={data} />
-                </PageWrapper>
-                <Toaster position="bottom-center" />
-              </Direction>
+              <LocaleSwitcherProvider>
+                <Direction direction={dir}>
+                  <PageWrapper>
+                    <Navbar data={data} />
+                    <main className="min-h-[400px]">
+                      <AnimateRoutes>{children}</AnimateRoutes>
+                    </main>
+                    <CallToAction />
+                    <Footer data={data} />
+                  </PageWrapper>
+                  <Toaster position="bottom-center" />
+                </Direction>
+              </LocaleSwitcherProvider>
             </ReactQueryProvider>
           </LocaleLayout>
 

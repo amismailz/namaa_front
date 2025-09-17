@@ -24,7 +24,7 @@ const pages = [
     en: `/${ROUTES.FAQ}`,
     ar: "/الاسئلة-الشائعة"
   },
-  { key: `/${ROUTES.JOB}`, en: `/${ROUTES.JOB}`, ar: "/توظيف-namaa-agency" },
+  { key: `/${ROUTES.JOB}`, en: `/${ROUTES.JOB}`, ar: "/توظيف-namaa" },
   { key: `/${ROUTES.SERVICES}`, en: `/${ROUTES.SERVICES}`, ar: "/خدمات" },
   {
     key: `/${ROUTES.ENSIGN_SERVICES}`,

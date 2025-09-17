@@ -2,21 +2,7 @@ import React from "react"
 import Container from "@/components/Container"
 import Section from "@/components/Section"
 import HeroPage from "@/components/HeroPage"
-
-import { MdMarkEmailRead } from "react-icons/md"
-import { IoServer } from "react-icons/io5"
-import { FaFileAlt } from "react-icons/fa"
-import Image from "next/image"
-import { AiOutlineGlobal } from "react-icons/ai"
-import { MdOutlineVideoLabel } from "react-icons/md"
-import { IoMdLock } from "react-icons/io"
-import { BsFileEarmarkBarGraphFill } from "react-icons/bs"
-
-import { Button } from "@/components/ui/button"
-import HostingPackageBox from "@/components/HostingPackageBox"
 import { getHostingPlans } from "@/data-layer/package"
-import { formatCurrency } from "@/lib/utils"
-import HostingRequestDialog from "@/components/HostingRequestDialog"
 import { ROUTES } from "@/constants"
 import { Metadata } from "next"
 import { getLocale } from "next-intl/server"
@@ -80,7 +66,7 @@ export default async function PackagesPage() {
   return (
     <>
       <HeroPage
-        heading={<Translate id="package_pricing.hero_title" />}
+        heading={<Translate id="navbar.packages" />}
         breadcrumb={[
           { text: <Translate id="navbar.home" />, link: `/${ROUTES.HOME}` }
         ]}
