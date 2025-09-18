@@ -84,7 +84,7 @@ function TabContent({
             {url ? <ServiceWhatsAppButton currentUrl={url} /> : null}
 
             <Button variant="link" size="icon" asChild>
-              <a href="tel:201148898881" target="_blank" rel="nofollow">
+              <a href="tel:966544175137" target="_blank" rel="nofollow">
                 <Image
                   src="/call-icon.svg"
                   width={36}

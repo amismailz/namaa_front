@@ -8,7 +8,7 @@ const WhatsAppChat = () => {
     <div className="" dir="ltr">
       <FloatingWhatsApp
         accountName="Namaa Agency"
-        phoneNumber="201016666056"
+        phoneNumber="966544175137"
         statusMessage="we are online."
         chatMessage={`Any questions? \nChat Us! We Are Here To Help \n🥰`}
         allowEsc

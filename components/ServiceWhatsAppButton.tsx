@@ -7,7 +7,7 @@ import Image from "next/image"
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!
 
 const ServiceWhatsAppButton = ({ currentUrl }: { currentUrl: string }) => {
-  const phone = "201016666056" // include country code
+  const phone = "966544175137" // include country code
 
   const handleClick = () => {
     // prefer window.location.href when available (client), otherwise fall back to baseUrl + currentUrl
@@ -16,7 +16,7 @@ const ServiceWhatsAppButton = ({ currentUrl }: { currentUrl: string }) => {
         ? window.location.href
         : `${baseUrl}${currentUrl ?? ""}`
 
-    const message = `Hi, Ensign Agency.\nI'm interested in your services.\n${pageUrl}`
+    const message = `Hi, Namaa.\nI'm interested in your services.\n${pageUrl}`
 
     const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(
       message
