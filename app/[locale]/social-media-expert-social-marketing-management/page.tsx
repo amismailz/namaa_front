@@ -64,7 +64,8 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+
   return (
     <>
       <Section className="py-12 lg:py-20 bg-[#F9F9F9]">
@@ -72,9 +73,10 @@ export default function HomePage() {
           <div className=" flex-1 lg:flex-[1.1] space-y-8 lg:space-y-12 relative">
             <h1 className="scroll-m-20 text-4xl lg:text-6xl font-semibold">
               <span className="inline-block text-primary p-1 border border-primary/50 rounded-lg relative">
-                <AnimatedLetters
-                  text={<Translate id="home.main_banner.digital_market" />}
-                />
+                
+                  <AnimatedLetters
+                    text={<Translate id="home.main_banner.digital_market" />}
+                  />
                 <span className="absolute -top-2 -left-2 w-3 h-3 border border-primary/50 rounded rotate-animation"></span>
                 <span className="absolute -top-2 -right-2 w-3 h-3 border border-primary/50 rounded rotate-animation [animation-delay:0.3s]"></span>
                 <span className="absolute -bottom-2 -left-2 w-3 h-3 border border-primary/50 rounded rotate-animation [animation-delay:0.6s]"></span>
@@ -218,7 +220,7 @@ async function PortofilioAsync() {
 
   return (
     <PortofilioSection
-      list={protfolio}
+      list={protfolio.slice(0,4)}
       className="py-12 lg:py-20 bg-background"
     />
   )
