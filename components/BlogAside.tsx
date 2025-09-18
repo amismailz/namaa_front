@@ -33,17 +33,11 @@ const BlogAside = ({
           <Translate id="blog.share_post" />
         </h5>
 
-        <div className="p-4 lg:p-6 bg-[#F7F7F7] rounded-xl">
-          <h5 className="font-medium text-xl">
-            <Translate id="blog.share_post" />
-          </h5>
-
-          <BlogShare
-            url={shareLink}
-            shareMessage={shareMessage}
-            className="mt-8"
-          />
-        </div>
+        <BlogShare
+          url={shareLink}
+          shareMessage={shareMessage}
+          className="mt-8"
+        />
       </div>
     </aside>
   )

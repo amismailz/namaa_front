@@ -14,6 +14,7 @@ import { format } from "date-fns"
 import { ar, enUS } from "date-fns/locale"
 import FaqList from "@/components/FaqList"
 import BlogPostHideLocale from "@/components/BlogPostHideLocale"
+import { cn } from "@/lib/utils"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const blogBySlug = cache(getBlogBySlug)
@@ -125,7 +126,12 @@ export default async function BlogDetailPage({
               />
             </figure>
 
-            <div dangerouslySetInnerHTML={{ __html: post.description }} />
+            <div
+              dangerouslySetInnerHTML={{ __html: post.description }}
+              className={cn(
+                `prose lg:prose-lg max-w-full prose-a:text-green-600 prose-a:hover:text-green-700 prose-a:underline prose-a:font-medium prose-headings:text-primary prose-img:rounded-xl prose-img:max-w-full prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-h5-text-lg prose-h5:font-bold prose-p:text-foreground prose-li:text-foreground `
+              )}
+            />
 
             {post.faqs && post.faqs.length > 0 ? (
               <div className="mt-5 space-y-6">
