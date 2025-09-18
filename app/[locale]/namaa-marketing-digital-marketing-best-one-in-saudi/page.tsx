@@ -166,10 +166,12 @@ export default function ServicesPage() {
       <Section className="py-12 bg-[#F9F9F9]">
         <Container>
           <div className="text-center">
-            <p className="text-muted-foreground">Meet Our Clients</p>
+            <p className="text-muted-foreground">
+              <Translate id="clients.tagline" />
+            </p>
             <TitleLine
-              heading="They Believe In Us"
-              titleClass="text-4xl"
+              heading={<Translate id="clients.title" />}
+              titleClass="text-3xl lg:text-4xl"
               className="inline-block mt-1 mb-0"
             />
           </div>
