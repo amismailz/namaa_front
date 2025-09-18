@@ -18,14 +18,19 @@ import AnimatedPageLink from "@/components/AnimatedPageLink"
 import { ROUTES } from "@/constants"
 import Counter from "@/components/Counter"
 import { localizationPathname } from "@/i18n/localizationPathname"
-import { getLocale } from "next-intl/server"
 import Translate from "@/components/Translate"
+import { BlogItemType, ProtfolioType } from "@/types.type"
+import BlogList from "@/components/BlogList"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
-export async function generateMetadata(): Promise<Metadata> {
-  const [locale, results] = await Promise.all([
-    getLocale(),
+type Props = {
+  params: Promise<{ locale: "ar" | "en" }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const [{locale}, results] = await Promise.all([
+    params,
     getSeoBySlug("home")
   ])
 
@@ -62,9 +67,10 @@ export async function generateMetadata(): Promise<Metadata> {
       site: url // optionally override twitter:site/url if needed
     }
   }
-}
+} 
 
 export default async function HomePage() {
+  const data = await getHome()
 
   return (
     <>
@@ -73,10 +79,9 @@ export default async function HomePage() {
           <div className=" flex-1 lg:flex-[1.1] space-y-8 lg:space-y-12 relative">
             <h1 className="scroll-m-20 text-4xl lg:text-6xl font-semibold">
               <span className="inline-block text-primary p-1 border border-primary/50 rounded-lg relative">
-                
-                  <AnimatedLetters
-                    text={<Translate id="home.main_banner.digital_market" />}
-                  />
+                <AnimatedLetters
+                  text={<Translate id="home.main_banner.digital_market" />}
+                />
                 <span className="absolute -top-2 -left-2 w-3 h-3 border border-primary/50 rounded rotate-animation"></span>
                 <span className="absolute -top-2 -right-2 w-3 h-3 border border-primary/50 rounded rotate-animation [animation-delay:0.3s]"></span>
                 <span className="absolute -bottom-2 -left-2 w-3 h-3 border border-primary/50 rounded rotate-animation [animation-delay:0.6s]"></span>
@@ -190,9 +195,7 @@ export default async function HomePage() {
 
       <DevelopmentSection className="bg-[#EFEFEF] relative" />
 
-      <Suspense fallback={null}>
-        <PortofilioAsync />
-      </Suspense>
+      <PortofilioAsync data={data.protfolio} />
 
       <Section className="py-12 bg-[#F9F9F9]">
         <Container>
@@ -210,18 +213,55 @@ export default async function HomePage() {
           <ClientSlider2 />
         </Container>
       </Section>
+
+      <BlogAsync data={data.blog} />
     </>
   )
 }
 
-async function PortofilioAsync() {
-  const data = await getHome()
-  const { protfolio } = data
 
+function PortofilioAsync({ data }: { data: ProtfolioType[] }) {
+  if (!data || data.length === 0) return null
   return (
     <PortofilioSection
-      list={protfolio.slice(0,4)}
+      list={data.slice(0, 4)}
       className="py-12 lg:py-20 bg-background"
     />
+  )
+}
+
+
+function BlogAsync({ data }: { data: BlogItemType[] }) {
+  if (!data || data.length === 0) return null
+
+  return (
+    <Section className="py-12 lg:py-16 bg-[#f4f4f4]">
+      <Container>
+        <div className="text-center">
+          <TitleLine
+            heading={<Translate id="blog.hero_title" />}
+            titleClass="text-3xl lg:text-4xl text-foreground"
+            className="inline-block mt-2 max-w-2xl"
+            showLines={false}
+          />
+        </div>
+      </Container>
+      
+      <BlogList data={data} />
+
+      <div className="mx-auto flex justify-center items-center p-6">
+        <AnimatedPageLink href={`/${ROUTES.BLOG}`}>
+          <ButtonWithIcon
+            asChild
+            icon={<GoArrowUpRight className="text-foreground" />}
+            iconClass="bg-background"
+          >
+            <span className="px-10">
+              <Translate id="actions.more" />
+            </span>
+          </ButtonWithIcon>
+        </AnimatedPageLink>
+      </div>
+    </Section>
   )
 }

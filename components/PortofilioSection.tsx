@@ -7,7 +7,6 @@ import Container from "@/components/Container"
 import { ButtonWithIcon } from "@/components/ui/button-with-icon"
 import { GoArrowUpRight } from "react-icons/go"
 import { ProtfolioType } from "@/types.type"
-import { useTranslations } from "next-intl"
 import AnimatedPageLink from "@/components/AnimatedPageLink"
 import { cn } from "@/lib/utils"
 import { motion, Variants } from "framer-motion"
@@ -41,7 +40,6 @@ const PortofilioSection = ({
   list: ProtfolioType[]
   className?: string
 }) => {
-  const t = useTranslations()
 
   // state
   const [openGallery, setOpenGallery] = useState<{
@@ -93,7 +91,9 @@ const PortofilioSection = ({
                 icon={<GoArrowUpRight className="text-foreground" />}
                 iconClass="bg-background"
               >
-                <span className="px-10">{t("actions.more")}</span>
+                <span className="px-10">
+                  <Translate id="actions.more" />
+                </span>
               </ButtonWithIcon>
             </AnimatedPageLink>
           </div>

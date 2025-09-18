@@ -22,6 +22,7 @@ export interface HomeResponseType {
   text: string
   msg_data: {
     protfolio: ProtfolioType[]
+    blog: BlogItemType[]
   }
 }
 
