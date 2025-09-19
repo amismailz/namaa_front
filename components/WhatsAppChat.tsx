@@ -15,6 +15,7 @@ const WhatsAppChat = () => {
         allowClickAway
         notification
         notificationSound
+        className="!left-4 !right-auto !bottom-4" // ✅ Tailwind override
       />
     </div>
   )

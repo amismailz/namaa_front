@@ -38,7 +38,8 @@
   "footer": {
     "contact": "Contact",
     "important_links": "Important Links",
-    "copyrights": "<linkTag>{siteName}</linkTag> {dateYear} © All rights reserved."
+    "copyrights": "<linkTag>{siteName}</linkTag> {dateYear} © All rights reserved.",
+    "follow_on_social": "Follow us on socials"
   },
   "actions": {
     "request_now": "Request Now",

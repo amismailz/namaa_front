@@ -16,7 +16,8 @@ import { navigation } from "@/lib/data"
 import AnimatedPageLink from "@/components/AnimatedPageLink"
 import { usePathname } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
-import { ScrollArea } from "../ui/scroll-area"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import Translate from "@/components/Translate"
 
 type Props = {
   className?: string
@@ -73,40 +74,22 @@ const NavToggler = ({ className, children }: Props) => {
       </SheetTrigger>
       <SheetContent
         side={isRTL ? "right" : "left"}
-        className="w-[80%] border-0 h-screen flex flex-col gap-0 divide-y divide-black/10"
+        showClose={false}
+        className="w-[80%] border-0 h-[100vh] flex flex-col gap-0 divide-y divide-black/10"
       >
         <SheetHeader className="w-full flex-none p-6">
           <SheetTitle>
-            <MainLogo className="shrink-0 py-1" />
+            <MainLogo className="shrink-0" />
           </SheetTitle>
           <SheetDescription>
-            Digital Marketing for your business
+            <Translate id="home.main_banner.digital_market" />{" "}
+            <Translate id="home.main_banner.digital_market_tagline" />
           </SheetDescription>
         </SheetHeader>
 
         <div className="content flex-auto overflow-hidden">
           <ScrollArea className="h-full">
-            <nav className="">
-              {/* {navigation.map(({ label, href }, index) => {
-                const isActive = href === pathname
-                return (
-                  <AnimatedPageLink
-                    key={index}
-                    label={t(`${label}`)}
-                    onClicked={() => setOpen(false)}
-                    href={href}
-                    className={cn(
-                      "py-3 px-6 whitespace-nowrap truncate flex font-semibold",
-                      isActive
-                        ? "text-background bg-primary "
-                        : "text-foreground"
-                    )}
-                  />
-                )
-              })} */}
-
-              {renderNav(navigation)}
-            </nav>
+            <nav className="">{renderNav(navigation)}</nav>
           </ScrollArea>
         </div>
 

@@ -44,7 +44,7 @@ function TabContent({
     <div className="py-2 w-full flex flex-col gap-6 lg:items-center lg:gap-0 lg:grid lg:grid-cols-[1fr_1.5fr]">
       <div className="flex  flex-col justify-center">
         <h3 className="block lg:hidden mb-6 text-3xl lg:text-4xl font-semibold">
-          {heading}
+          <Translate id={heading} />
         </h3>
         <Image
           src="/media_tab_content.svg"

@@ -17,7 +17,7 @@ const JobsList = ({ data }: { data: JobType[] }) => {
         <Container className="grid grid-cols-1 justify-center lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <figure
             className={cn(
-              "w-full h-full aspect-video relative p-6 mx-auto flex justify-center items-center",
+              "w-full lg:flex-1 h-full aspect-video relative p-6 mx-auto flex justify-center items-center",
               !isEven && "lg:order-2"
             )}
           >
@@ -26,7 +26,7 @@ const JobsList = ({ data }: { data: JobType[] }) => {
               alt="job image"
               fill
               className={cn(
-                "object-fill bounce-animation max-w-[80%] mx-auto w-auto rounded-t-full h-full",
+                "object-fill bounce-animation max-w-[80%] mx-auto w-auto rounded-t-full h-full max-h-[420px]",
                 !isEven ? "rounded-l-full" : "rounded-r-full"
               )}
             />

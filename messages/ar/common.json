@@ -38,7 +38,8 @@
   "footer": {
     "contact": "التواصل",
     "important_links": "روابط هامة",
-    "copyrights": "<linkTag>{siteName}</linkTag> {dateYear} جميع الحقوق محفوظة. © "
+    "copyrights": "<linkTag>{siteName}</linkTag> {dateYear} جميع الحقوق محفوظة. © ",
+    "follow_on_social": "تابع علي منصات التواصل الاجتماعي"
   },
   "actions": {
     "request_now": "اطلب الخدمة الآن",

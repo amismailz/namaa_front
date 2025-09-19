@@ -121,20 +121,20 @@ export default async function HomePage() {
               </AnimatedPageLink>
             </div>
 
-            <div className="flex w-full items-center gap-18">
-              <div className="flex flex-col gap-1">
-                <h2 className="scroll-m-20 text-6xl font-semibold">
+            <div className="flex w-auto items-center  gap-18">
+              <div className=" lg:w-auto flex flex-col justify-center items-center lg:items-start gap-1">
+                <h2 className="scroll-m-20 text-4xl lg:text-6xl font-semibold">
                   <Counter value={23} defaultValue={0} suffix="+" />
                 </h2>
-                <h3 className="text-lg text-muted-foreground">
+                <h3 className="text-base lg:text-lg text-muted-foreground">
                   <Translate id="home.main_banner.experience" />
                 </h3>
               </div>
-              <div className="flex flex-col gap-1">
-                <h2 className="scroll-m-20 text-6xl font-semibold">
+              <div className=" lg:w-auto flex flex-col justify-center items-center lg:items-start gap-1">
+                <h2 className="scroll-m-20 text-4xl lg:text-6xl font-semibold">
                   <Counter value={498} defaultValue={0} suffix="+" />
                 </h2>
-                <h3 className="text-lg text-muted-foreground">
+                <h3 className="text-base lg:text-lg text-muted-foreground">
                   <Translate id="home.main_banner.project_completed" />
                 </h3>
               </div>

@@ -300,3 +300,15 @@
 }
 
 
+
+/* whatsapp */
+[dir="rtl"] .floating-whatsapp-button {
+  left: 2rem !important;
+  right: auto !important;
+  bottom: 2rem !important;
+}
+[dir="rtl"] .floating-whatsapp-chatbox {
+  right:auto;
+  left: 2rem !important;
+  transform-origin: bottom left;
+}

@@ -20,7 +20,7 @@ const AnimatedLetters = ({ text }: { text: string | React.ReactNode }) => {
   }
 
   return (
-    <span className={isArabic ? "relative -top-2" : ""}>
+    <span className={isArabic ? "relative lg:-top-2" : ""}>
       <motion.span
         initial="hidden"
         whileInView="visible"

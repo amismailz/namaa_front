@@ -30,11 +30,11 @@ export default function LocaleSwitcher() {
       asChild
       variant="link"
       className={cn(
-        "flex items-center gap-2 text-foreground cursor-pointer",
+        "flex items-center gap-2 font-semibold text-muted-foreground cursor-pointer",
         hidden && "opacity-0"
       )}
     >
-      <Link href={pathname} locale={targetLocale}>
+      <Link href={pathname} locale={targetLocale} className="flex items-center gap-1 ltr:font-mono">
         <span>{label}</span>
         <Image src={flag} width={21} height={15} alt={targetLocale} />
       </Link>
