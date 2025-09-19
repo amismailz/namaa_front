@@ -8,13 +8,12 @@ import BlogAside from "@/components/BlogAside"
 import BlogSearch from "@/components/BlogSearch"
 import { ROUTES } from "@/constants"
 import { Metadata } from "next"
-import { getLocale } from "next-intl/server"
 import Translate from "@/components/Translate"
 import { format } from "date-fns"
 import { ar, enUS } from "date-fns/locale"
 import FaqList from "@/components/FaqList"
 import BlogPostHideLocale from "@/components/BlogPostHideLocale"
-import { cn } from "@/lib/utils"
+import BlogPostContent from "@/components/BlogPostContent"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const blogBySlug = cache(getBlogBySlug)
@@ -32,11 +31,11 @@ function getDateFnsLocale(locale: string) {
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ blogSlug: string }>
+  params: Promise<{ blogSlug: string; locale:"ar" | "en" }>
 }): Promise<Metadata> {
   const { blogSlug } = await params
-  const [locale, blogDetail] = await Promise.all([
-    getLocale(),
+  const [{locale}, blogDetail] = await Promise.all([
+    params,
     blogBySlug(blogSlug)
   ])
 
@@ -70,16 +69,16 @@ export async function generateMetadata({
 export default async function BlogDetailPage({
   params
 }: {
-  params: Promise<{ blogSlug: string }>
+  params: Promise<{ blogSlug: string; locale: "ar" | "en" }>
 }) {
   const { blogSlug } = await params
 
-  const [locale, { post, popular }] = await Promise.all([
-    getLocale(),
+  const [{ locale }, { post, popular }] = await Promise.all([
+    params,
     blogBySlug(blogSlug)
   ])
 
-  const dateFnsLocale = getDateFnsLocale(locale) 
+  const dateFnsLocale = getDateFnsLocale(locale)
 
   const shareLink =
     locale === "ar"
@@ -126,12 +125,14 @@ export default async function BlogDetailPage({
               />
             </figure>
 
-            <div
+            <BlogPostContent currentUrl={shareLink} html={post.description} />
+
+            {/* <div
               dangerouslySetInnerHTML={{ __html: post.description }}
               className={cn(
                 `prose lg:prose-lg max-w-full prose-a:text-green-600 prose-a:hover:text-green-700 prose-a:underline prose-a:font-medium prose-headings:text-primary prose-img:rounded-xl prose-img:max-w-full prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-h5-text-lg prose-h5:font-bold prose-p:text-foreground prose-li:text-foreground `
               )}
-            />
+            /> */}
 
             {post.faqs && post.faqs.length > 0 ? (
               <div className="mt-5 space-y-6">
