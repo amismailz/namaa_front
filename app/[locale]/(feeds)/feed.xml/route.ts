@@ -3,6 +3,8 @@ import { BlogItemType } from "@/types.type"
 import { getLocale } from "next-intl/server"
 import { NextResponse } from "next/server"
 
+export const revalidate = 172800 // revalidate at most  every 2 day
+
 const baseUrl = process.env.API_URL!
 const siteUrl = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -15,7 +17,7 @@ export async function GET() {
         "Accept-Language": locale
       },
       // Cache control: RSS doesn’t need to re-fetch every time
-      next: { revalidate: 60 } // refresh every 1 min
+      next: { revalidate: 172800 } // refresh every 1 min
     })
 
     if (!response.ok) {

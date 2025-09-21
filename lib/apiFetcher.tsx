@@ -44,7 +44,7 @@ export async function apiFetch<TResponse, TBody = unknown>(
     next,
     params,
     timeout = 30000, // 30s default timeout
-    cache
+    cache = "no-store"
   }: // cache
   FetchOptions<TBody> = {}
 ): Promise<TResponse> {

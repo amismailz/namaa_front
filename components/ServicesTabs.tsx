@@ -50,7 +50,7 @@ function TabContent({
           src="/media_tab_content.svg"
           width={500}
           height={500}
-          alt="media"
+          alt={`${heading} icon`}
           className="w-[70%] h-auto bounce-animation"
         />
       </div>
@@ -84,7 +84,7 @@ function TabContent({
             {url ? <ServiceWhatsAppButton currentUrl={url} /> : null}
 
             <Button variant="link" size="icon" asChild>
-              <a href="tel:966544175137" target="_blank" rel="nofollow">
+              <a href="tel:966544175137" target="_blank" rel="follow">
                 <Image
                   src="/call-icon.svg"
                   width={36}

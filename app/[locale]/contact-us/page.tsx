@@ -47,7 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: `${BASE_URL}/en${localizedPaths.en}`,
         ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": BASE_URL
+        "x-default": `${BASE_URL}${localizedPaths.ar}`
       }
     },
     openGraph: {
@@ -88,7 +88,7 @@ export default async function ContactUsPage() {
             <div className="p-6 bg-[F9F9F9] rounded-xl mt-16 border border-black/5 flex items-center gap-7">
               <span>
                 <Image
-                  alt="icon"
+                  alt="increase sells icon"
                   src="/increase-sells.svg"
                   height={67}
                   width={64}
@@ -156,14 +156,14 @@ async function ContactInfo() {
           </span>
           <br />
           {data?.landline_1 ? (
-            <a href="tel:22561003" target="_blank" rel="nofollow">
+            <a href="tel:22561003" target="_blank" rel="follow">
               {data?.landline_1}
             </a>
           ) : null}{" "}
           {data?.landline_2 ? (
             <>
               -{" "}
-              <a href="tel:22561004" target="_blank" rel="nofollow">
+              <a href="tel:22561004" target="_blank" rel="follow">
                 {data?.landline_2}
               </a>
             </>
@@ -180,14 +180,14 @@ async function ContactInfo() {
           </span>
           <br />{" "}
           {data?.phone1 ? (
-            <a href={`tel:${data.phone1}`} target="_blank" rel="nofollow">
+            <a href={`tel:${data.phone1}`} target="_blank" rel="follow">
               {data?.phone1}
             </a>
           ) : null}
           {data?.phone2 ? (
             <>
               -{" "}
-              <a href={`tel:${data.phone2}`} target="_blank" rel="nofollow">
+              <a href={`tel:${data.phone2}`} target="_blank" rel="follow">
                 {data?.phone2}
               </a>
             </>
@@ -204,7 +204,7 @@ async function ContactInfo() {
           </span>
           <br />
           {data?.email ? (
-            <a href={`mailto:${data.email}`} target="_blank" rel="nofollow">
+            <a href={`mailto:${data.email}`} target="_blank" rel="follow">
               {data?.email}
             </a>
           ) : null}

@@ -115,6 +115,7 @@ export type ContactInfoData = {
   linkedIn_link: string
   tiktok_link: string
   whatsapp_number: string
+  snapchat_link: string 
   postal_code: string
   tax_id: string
   map_link: string

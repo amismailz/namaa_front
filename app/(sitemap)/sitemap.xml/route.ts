@@ -1,5 +1,7 @@
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
+export const revalidate = 172800 // revalidate at most  every 2 day
+
 export async function GET() {
   const sitemaps = [
     `<sitemap><loc>${BASE_URL}/page-sitemap.xml</loc><lastmod>${new Date().toISOString()}</lastmod></sitemap>`,

@@ -52,7 +52,7 @@ const CientSlider2 = () => {
               <div className="flex items-center justify-center p-6 bg-background rounded-xl border border-black/5">
                 <Image
                   src={src}
-                  alt={`slide ${index}`}
+                  alt={`client logo image ${index}`}
                   width={160}
                   height={140}
                 />

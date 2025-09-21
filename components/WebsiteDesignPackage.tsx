@@ -72,7 +72,7 @@ const WebsiteDesignPackage = ({
                   >
                     <Image
                       src="/clarity_host-outline-badged.svg"
-                      alt="icon"
+                      alt={`${item.name} icon`}
                       width={48}
                       height={48}
                       className="max-w-[60%] h-auto"

@@ -5,7 +5,7 @@ import { getBlogBySlug } from "@/data-layer/blog"
 import Image from "next/image"
 import React, { cache } from "react"
 import BlogAside from "@/components/BlogAside"
-import BlogSearch from "@/components/BlogSearch"
+// import BlogSearch from "@/components/BlogSearch"
 import { ROUTES } from "@/constants"
 import { Metadata } from "next"
 import Translate from "@/components/Translate"
@@ -54,7 +54,7 @@ export async function generateMetadata({
       languages: {
         en: `${BASE_URL}/en/${post.slug}`,
         ar: `${BASE_URL}/${post.slug}`,
-        "x-default": `${BASE_URL}`
+        "x-default": `${BASE_URL}/${post.slug}`
       }
     },
     openGraph: {
@@ -97,9 +97,9 @@ export default async function BlogDetailPage({
         ]}
       />
 
-      <div className="block lg:hidden py-10">
+      {/* <div className="block lg:hidden py-10">
         <BlogSearch />
-      </div>
+      </div> */}
 
       <Section className="py-6 relative">
         <Container className="flex flex-col lg:flex-row gap-8">

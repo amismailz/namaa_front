@@ -55,7 +55,7 @@ const HostingPackageBox = ({
             >
               <Image
                 src={image.src}
-                alt="icon"
+                alt={`${title} icon`}
                 width={image.width}
                 height={image.height}
                 className="max-w-[80%] h-auto"

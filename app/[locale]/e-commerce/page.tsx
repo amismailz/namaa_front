@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: `${BASE_URL}/en${localizedPaths.en}`,
         ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": BASE_URL
+        "x-default": `${BASE_URL}${localizedPaths.ar}`
       }
     },
     openGraph: {
@@ -235,7 +235,7 @@ export default function ECommercePage() {
             <ServiceWhatsAppButton currentUrl={`/${ROUTES.E_COMMERCE}`} />
 
             <Button variant="link" size="icon" asChild>
-              <a href="tel:201148898881" target="_blank" rel="nofollow">
+              <a href="tel:201148898881" target="_blank" rel="follow">
                 <Image
                   src="/call-icon.svg"
                   width={36}

@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: {
         en: `${BASE_URL}/en${localizedPaths.en}`,
         ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": `${BASE_URL}`
+        "x-default": `${BASE_URL}${localizedPaths.ar}`
       }
     },
     openGraph: {
@@ -142,7 +142,7 @@ export default async function HomePage() {
 
             <Image
               src="/mask_1.png"
-              alt="frame shap"
+              alt="frame shap icon"
               width={128}
               height={68}
               className="slide-x-animation lg:absolute rtl:-left-16 ltr:lg:-right-16 lg:bottom-12 lg:-translate-y-1/3"

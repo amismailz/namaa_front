@@ -12,7 +12,7 @@ const CTAComponent = ({ currentUrl }: { currentUrl: string }) => {
     <span className="flex gap-2 items-center w-full mt-2 p-2 not-prose">
       <span className="w-full lg:max-w-[600px] mx-auto flex gap-3 items-center ">
         <Button className="flex-1 h-[48px] rounded-xl gap-3" asChild>
-          <a href="tel:+966536322194" target="_blank" rel="nofollow">
+          <a href="tel:+966536322194" target="_blank" rel="follow">
             <BsPhone />
             <span>
               <Translate id="actions.contact_us" />

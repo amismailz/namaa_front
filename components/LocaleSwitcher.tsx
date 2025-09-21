@@ -34,9 +34,13 @@ export default function LocaleSwitcher() {
         hidden && "opacity-0"
       )}
     >
-      <Link href={pathname} locale={targetLocale} className="flex items-center gap-1 ltr:font-mono">
+      <Link
+        href={pathname}
+        locale={targetLocale}
+        className="flex items-center gap-1 ltr:font-mono"
+      >
         <span>{label}</span>
-        <Image src={flag} width={21} height={15} alt={targetLocale} />
+        <Image src={flag} width={21} height={15} alt={`${targetLocale} language icon`} />
       </Link>
     </Button>
   )

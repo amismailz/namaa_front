@@ -23,6 +23,7 @@ const Navbar = ({ data }: { data: ContactInfoData }) => {
             twitter={data?.twitter_link}
             tiktok={data?.tiktok_link}
             linkedin={data?.linkedIn_link}
+            snapchat={data?.snapchat_link}
             youtube={data?.youtube_link}
           />
         </Container>

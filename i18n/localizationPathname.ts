@@ -1,7 +1,7 @@
 import { ROUTES } from "@/constants"
 
 const pages = [
-  { key: `/${ROUTES.HOME}`, en: `/${ROUTES.HOME}`, ar: "/الرئيسية" },
+  { key: `/${ROUTES.HOME}`, en: `/${ROUTES.HOME}`, ar: "/" },
   {
     key: `/${ROUTES.CONTACT_US}`,
     en: `/${ROUTES.CONTACT_US}`,

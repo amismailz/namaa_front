@@ -41,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: `${BASE_URL}/en${localizedPaths.en}`,
         ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": `${BASE_URL}`
+        "x-default": `${BASE_URL}${localizedPaths.ar}`
       }
     },
     openGraph: {

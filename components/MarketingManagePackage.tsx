@@ -68,7 +68,7 @@ const MarketingManagePackage = ({
                   >
                     <Image
                       src="/clarity_host-outline-badged.svg"
-                      alt="icon"
+                      alt="host outline badged icon"
                       width={48}
                       height={48}
                       className="max-w-[60%] h-auto"

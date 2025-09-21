@@ -83,7 +83,7 @@ const AboutSection = ({ children, className }: { children?: ReactNode; className
                 src="/logo-icon.svg"
                 width={107}
                 height={66}
-                alt="logo icon "
+                alt="logo icon Namaa"
               />
             </div>
           </motion.div>

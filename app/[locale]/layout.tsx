@@ -15,8 +15,11 @@ import NextTopLoader from "nextjs-toploader"
 import { ROUTES } from "@/constants"
 import WhatsAppChat from "@/components/WhatsAppChat"
 import { LocaleSwitcherProvider } from "@/providers/LocaleSwitcherProvider"
+import { ScrollToTop } from "@/components/ScrollToTop"
 // styles
 import "../globals.css"
+import { localizationPathname } from "@/i18n/localizationPathname"
+import { getTranslations } from "next-intl/server"
 
 const outfit = Outfit({
   subsets: ["latin"], // Or other desired subsets
@@ -46,17 +49,30 @@ export const viewport = {
   viewportFit: "cover"
 }
 
-export async function generateMetadata({params}: Props): Promise<Metadata> {
-  const {locale} = await params
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations()
+
+  const pageKey = `/${ROUTES.HOME}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+  
+    // Get localized paths safely
+    const localizedPaths = localizationPathname[pageKey] || {
+      en: pageKey,
+      ar: pageKey
+    }
+
+   const url =
+     locale === "en"
+       ? `${BASE_URL}/en${localizedPaths.en}`
+       : `${BASE_URL}${localizedPaths.ar}`
 
   return {
-    metadataBase: new URL(`${BASE_URL}/${locale}`),
+    metadataBase: new URL(`${BASE_URL}`),
     title: {
       template: `%s | Namaa Agency`,
-      default: `Namaa | Home Page Namaa Agency`
+      default: `${t("seo.home.title")}`
     },
-    description:
-      "social media agency to manage Social Media on Facebook, Social Media on Instagram, Social Media LinkedIn, Social Media Tiktok",
+    description: `${t("seo.home.description")}`,
     robots: {
       index: true,
       follow: true,
@@ -79,11 +95,11 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
     },
     manifest: "/manifest.json",
     alternates: {
-      canonical: `${BASE_URL}/${locale}/${ROUTES.HOME}`,
+      canonical: url,
       languages: {
-        en: `${BASE_URL}/en/${ROUTES.HOME}`,
-        ar: `${BASE_URL}/ar/${ROUTES.HOME}`,
-        "x-default": `${BASE_URL}`
+        en: `${BASE_URL}/en${localizedPaths.en}`,
+        ar: `${BASE_URL}${localizedPaths.ar}`,
+        "x-default": `${BASE_URL}${localizedPaths.ar}`
       },
       types: {
         "application/rss+xml": [
@@ -95,13 +111,12 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
       }
     },
     openGraph: {
-      title: `Namaa | Home Page Namaa Agency`,
+      title: `${t("seo.home.title")}`,
       type: "website",
-      url: `${BASE_URL}/${locale}/${ROUTES.HOME}`,
+      url: url,
       siteName: "Namaa",
       locale: locale == "ar" ? "ar_EG" : "en_US",
-      description:
-        "social media agency to manage Social Media on Facebook, Social Media on Instagram, Social Media LinkedIn, Social Media Tiktok",
+      description: `${t("seo.home.description")}`,
       // images: ["/Namaa-otg.png"],
       images: [
         {
@@ -116,9 +131,8 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Home Page Namaa Agency",
-      description:
-        "social media agency to manage Social Media on Facebook, Social Media on Instagram, Social Media LinkedIn, Social Media Tiktok",
+      title: `${t("seo.home.title")}`,
+      description: `${t("seo.home.description")}`,
       images: ["/ensign-otg.png"]
     },
     other: {
@@ -181,7 +195,10 @@ export default async function RootLayout({ children, params }: Props) {
                   <PageWrapper>
                     <Navbar data={data} />
                     <main className="min-h-[400px]">
-                      <AnimateRoutes>{children}</AnimateRoutes>
+                      <AnimateRoutes>
+                        <ScrollToTop />
+                        {children}
+                      </AnimateRoutes>
                     </main>
                     <CallToAction />
                     <Footer data={data} />

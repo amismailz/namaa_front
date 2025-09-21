@@ -13,7 +13,7 @@ const MainLogo = ({ className }: { className?: string }) => {
       >
         <Image
           src="/NAMAA_LOGO.svg"
-          alt="logo icon"
+          alt="Namaa logo"
           width={169}
           height={100}
           // fill

@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: `${BASE_URL}/en${localizedPaths.en}`,
         ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": BASE_URL
+        "x-default": `${BASE_URL}${localizedPaths.ar}`
       }
     },
     openGraph: {
@@ -82,7 +82,7 @@ export default function SocialMediaPage() {
                 src="/media_tab_content.svg"
                 width={500}
                 height={500}
-                alt="media"
+                alt="media tab icon"
                 className="w-[70%] lg:w-[85%] h-auto bounce-animation"
               />
             </div>
@@ -112,7 +112,6 @@ export default function SocialMediaPage() {
               <p className="text-md font-light leading-8">
                 <Translate id="graphic_design.box2.p2" />
               </p>
-
             </div>
 
             <div className="flex flex-col justify-end">
@@ -120,7 +119,7 @@ export default function SocialMediaPage() {
                 src="/media_tab_content.svg"
                 width={500}
                 height={500}
-                alt="media"
+                alt="media tab icon"
                 className="w-[70%] lg:w-[90%] h-auto bounce-animation ltr:lg:ml-auto rtl:lg:mr-auto"
               />
             </div>
@@ -139,7 +138,7 @@ export default function SocialMediaPage() {
                 src="/media_tab_content.svg"
                 width={500}
                 height={500}
-                alt="media"
+                alt="media tab icon"
                 className="w-[70%] lg:w-[85%] h-auto bounce-animation"
               />
             </div>
@@ -165,7 +164,7 @@ export default function SocialMediaPage() {
             <ServiceRequestDialog />
             <ServiceWhatsAppButton currentUrl={`/${ROUTES.GRAPHIC_DESIGN}`} />
             <Button variant="link" size="icon" asChild>
-              <a href="tel:201148898881" target="_blank" rel="nofollow">
+              <a href="tel:201148898881" target="_blank" rel="follow">
                 <Image
                   src="/call-icon.svg"
                   width={36}

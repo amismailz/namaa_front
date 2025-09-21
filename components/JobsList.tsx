@@ -23,7 +23,7 @@ const JobsList = ({ data }: { data: JobType[] }) => {
           >
             <Image
               src={item.image}
-              alt="job image"
+              alt={`${item.title} image`}
               fill
               className={cn(
                 "object-fill bounce-animation max-w-[80%] mx-auto w-auto rounded-t-full h-full max-h-[420px]",

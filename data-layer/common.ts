@@ -35,9 +35,7 @@ export async function getSeoBySlug(slug: string) {
 }
 
 export async function getContactInfo() {
-  const response = await apiFetch<ContactInfoResponse>(`/contact-info`, {
-    next: { revalidate: 3600 }
-  })
+  const response = await apiFetch<ContactInfoResponse>(`/contact-info`)
 
   return response.msg_data
 }

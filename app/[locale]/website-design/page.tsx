@@ -41,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: `${BASE_URL}/en${localizedPaths.en}`,
         ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": BASE_URL
+        "x-default": `${BASE_URL}${localizedPaths.ar}`
       }
     },
     openGraph: {
@@ -80,7 +80,7 @@ export default function WebDesignPage() {
                 src="/services/website-design/1.jpg"
                 width={1034}
                 height={596}
-                alt="image 1"
+                alt="image of web design 1"
                 className="w-auto h-full object-cover"
               />
             </figure>
@@ -107,7 +107,7 @@ export default function WebDesignPage() {
                 src="/services/website-design/2.jpg"
                 width={594}
                 height={596}
-                alt="image 1"
+                alt="image of web design 2"
                 className="w-auto h-full object-cover"
               />
             </figure>
@@ -142,7 +142,7 @@ export default function WebDesignPage() {
                 src="/services/website-design/3.svg"
                 width={732}
                 height={610}
-                alt="image 1"
+                alt="image of web design 3"
                 className="w-[86%] h-auto object-cover"
               />
             </figure>
@@ -205,7 +205,7 @@ export default function WebDesignPage() {
             <ServiceRequestDialog />
             <ServiceWhatsAppButton currentUrl={`/${ROUTES.WEBSITE_DESIGN}`} />
             <Button variant="link" size="icon" asChild>
-              <a href="tel:201148898881" target="_blank" rel="nofollow">
+              <a href="tel:201148898881" target="_blank" rel="follow">
                 <Image
                   src="/call-icon.svg"
                   width={36}

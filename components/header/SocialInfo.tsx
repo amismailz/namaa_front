@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 import React from "react"
 import { BsInstagram, BsTwitterX, BsTiktok } from "react-icons/bs"
-import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa"
+import { FaFacebookF, FaLinkedinIn, FaYoutube, FaSnapchat } from "react-icons/fa"
 
 type Props = {
   instegram?: string
@@ -9,6 +9,7 @@ type Props = {
   twitter?: string
   tiktok?: string
   linkedin?: string
+  snapchat?: string 
   youtube?: string
   className?: string
 }
@@ -22,6 +23,7 @@ const SocialInfo = ({
   twitter,
   tiktok,
   linkedin,
+  snapchat,
   youtube,
   className
 }: Props) => {
@@ -50,6 +52,11 @@ const SocialInfo = ({
       href: linkedin,
       icon: <FaLinkedinIn className="text-gray-2" />,
       label: "LinkedIn"
+    },
+    {
+      href: snapchat,
+      icon: <FaSnapchat className="text-gray-2" />,
+      label: "SnapChat"
     },
     {
       href: youtube,

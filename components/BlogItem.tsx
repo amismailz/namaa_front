@@ -9,7 +9,7 @@ const BlogItem = ({ item, locale }: { item: BlogItemType, locale: string }) => {
   const ArrowComponent = locale === "ar" ? <IoArrowBack /> : <IoArrowForward />
   return (
     <article className="group">
-      <Link href={`/${item?.slug}`} className="inline-block">
+      <Link href={`/${item?.slug}`} className="inline-block" scroll={true}>
         <figure>
           <Image
             src={item.image}

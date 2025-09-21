@@ -1,5 +1,7 @@
 import { ROUTES } from "@/constants"
 
+export const revalidate = 172800 // revalidate at most  every 2 day
+
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
 export async function GET() {

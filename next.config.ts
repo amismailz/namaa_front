@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/",
+        source: "/en",
         destination: `/${ROUTES.HOME}`,
         permanent: true
       }

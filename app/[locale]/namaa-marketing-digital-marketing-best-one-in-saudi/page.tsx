@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: `${BASE_URL}/en${localizedPaths.en}`,
         ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": BASE_URL
+        "x-default": `${BASE_URL}${localizedPaths.ar}`
       }
     },
     openGraph: {
@@ -105,7 +105,7 @@ export default function ServicesPage() {
           <div className="flex flex-col gap-6">
             <header className="flex flex-row gap-6 items-center">
               <Image
-                alt="icon"
+                alt="increase sells icon"
                 src="/increase-sells.svg"
                 height={70}
                 width={70}
@@ -124,7 +124,7 @@ export default function ServicesPage() {
           <div className="flex flex-col gap-3 lg:gap-6">
             <header className="flex flex-row gap-6 items-center">
               <Image
-                alt="icon"
+                alt="increase sells icon"
                 src="/increase-sells.svg"
                 height={70}
                 width={70}
@@ -143,7 +143,7 @@ export default function ServicesPage() {
           <div className="flex flex-col gap-6">
             <header className="flex flex-row gap-6 items-center">
               <Image
-                alt="icon"
+                alt="increase sells icon"
                 src="/increase-sells.svg"
                 height={70}
                 width={70}
