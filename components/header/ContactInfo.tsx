@@ -1,11 +1,13 @@
 import React from "react"
 import { BsFillPhoneFill, BsClockFill } from "react-icons/bs"
 import { MdEmail } from "react-icons/md"
+import { cn } from "@/lib/utils"
 
 type Props = {
   whatsApp?: string
   email?: string
   workingHours?: string
+  className?: string 
 }
 
 const normalizePhone = (phone?: string) => {
@@ -19,12 +21,13 @@ const isValidEmail = (email?: string) =>
 const ContactInfo = ({
   whatsApp,
   email,
-  workingHours = "Sat - Thurs 9am to 5pm"
+  workingHours = "Sat - Thurs 9am to 5pm",
+  className
 }: Props) => {
   const phone = normalizePhone(whatsApp)
 
   return (
-    <nav className="flex flex-wrap items-center gap-6 font-medium">
+    <nav className={cn("flex flex-wrap items-center gap-6 font-medium", className)}>
       {phone && (
         <a
           href={`tel:${phone}`}

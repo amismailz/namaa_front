@@ -14,10 +14,10 @@ const Navbar = ({ data }: { data: ContactInfoData }) => {
   return (
     <Sticky negativeOffset="-45px">
       <header className="w-full bg-background flex flex-col divide-y divide-black/10 shadow-md shadow-b-2.5 -shadow-spread-2 shadow-slate-500/15">
-        <Container className="hidden lg:flex justify-between items-center">
-          <ContactInfo whatsApp={data?.whatsapp_number} email={data?.email} />
+        <Container className="flex justify-between items-center">
+          <ContactInfo whatsApp={data?.whatsapp_number} email={data?.email} className="hidden lg:flex" />
           <SocialInfo
-            className="flex w-full lg:w-auto items-center justify-center lg:justify-end gap-2 lg:gap-4"
+            className="flex w-full lg:w-auto items-center justify-center lg:justify-end gap-3 lg:gap-4"
             instegram={data?.instagram_link}
             facebook={data?.facebook_link}
             twitter={data?.twitter_link}
@@ -39,20 +39,8 @@ const Navbar = ({ data }: { data: ContactInfoData }) => {
           {/* Language switcher */}
           <div className="shrink-0 lg:rtl:pr-4 lg:ltr:pl-4 flex items-center gap-2">
             <LocaleSwitcher />
-            <NavToggler>
-              <p className="font-light text-lg">
-                <Translate id="footer.follow_on_social" />
-              </p>
-              <SocialInfo
-                className="flex mt-3 w-full items-center gap-3"
-                instegram={data?.instagram_link}
-                facebook={data?.facebook_link}
-                twitter={data?.twitter_link}
-                tiktok={data?.tiktok_link}
-                linkedin={data?.linkedIn_link}
-                youtube={data?.youtube_link}
-              />
-            </NavToggler>
+            <NavToggler />
+             
           </div>
         </Container>
       </header>

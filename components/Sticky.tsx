@@ -2,7 +2,6 @@
 import React, { useState } from "react"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/useMediaQuery"
 
 const Sticky = ({
   children,
@@ -14,12 +13,11 @@ const Sticky = ({
   className?: string
 }) => {
   const { scrollY } = useScroll()
-  const isMobile = useMediaQuery("(max-width: 767px)")
   const [hidden, setHidden] = useState(false)
 
   useMotionValueEvent(scrollY, "change", (current) => {
     const previous = scrollY.getPrevious()
-    if (previous && current > previous && current > 70 && !isMobile) {
+    if (previous && current > previous && current > 70) {
       setHidden(true)
     } else {
       setHidden(false)

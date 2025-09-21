@@ -21,10 +21,9 @@ import Translate from "@/components/Translate"
 
 type Props = {
   className?: string
-  children?: React.ReactNode
 }
 
-const NavToggler = ({ className, children }: Props) => {
+const NavToggler = ({ className }: Props) => {
   const pathname = usePathname()
   const t = useTranslations()
   const locale = useLocale()
@@ -77,23 +76,22 @@ const NavToggler = ({ className, children }: Props) => {
         showClose={false}
         className="w-[80%] border-0 h-[100vh] flex flex-col gap-0 divide-y divide-black/10"
       >
-        <SheetHeader className="w-full flex-none p-6">
-          <SheetTitle>
-            <MainLogo className="shrink-0" />
-          </SheetTitle>
-          <SheetDescription>
-            <Translate id="home.main_banner.digital_market" />{" "}
-            <Translate id="home.main_banner.digital_market_tagline" />
-          </SheetDescription>
-        </SheetHeader>
+        <ScrollArea className="h-full">
+          <SheetHeader className="w-full flex-none p-6">
+            <SheetTitle>
+              <MainLogo className="shrink-0" />
+            </SheetTitle>
+            <SheetDescription>
+              <Translate id="home.main_banner.digital_market" />{" "}
+              <Translate id="home.main_banner.digital_market_tagline" />
+            </SheetDescription>
+          </SheetHeader>
 
-        <div className="content flex-auto overflow-hidden">
-          <ScrollArea className="h-full">
+          <div className="content flex-auto overflow-hidden">
             <nav className="">{renderNav(navigation)}</nav>
-          </ScrollArea>
-        </div>
-
-        <footer className="flex-none p-6">{children}</footer>
+            <div className="h-12" />
+          </div>
+        </ScrollArea>
       </SheetContent>
     </Sheet>
   )
