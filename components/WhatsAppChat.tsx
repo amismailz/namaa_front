@@ -12,7 +12,7 @@ const WhatsAppChat = () => {
         statusMessage="we are online."
         chatMessage={`Any questions? \nChat Us! We Are Here To Help \n🥰`}
         allowEsc
-        allowClickAway
+        allowClickAway={false}
         notification
         notificationSound
         className="!left-4 !right-auto !bottom-4" // ✅ Tailwind override

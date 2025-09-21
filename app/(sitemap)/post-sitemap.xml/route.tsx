@@ -1,9 +1,8 @@
-import { ROUTES } from "@/constants"
 import { BlogItemType } from "@/types.type"
 import { getLocale } from "next-intl/server"
 import { NextResponse } from "next/server"
 
-export const revalidate = 172800 // revalidate at most  every 2 day
+export const revalidate = 86400 // revalidate at most every 1 day
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const BASE_API = process.env.API_URL!
@@ -18,7 +17,7 @@ export async function GET() {
         "Accept-Language": locale
       },
       // Cache control: RSS doesn’t need to re-fetch every time
-      next: { revalidate: 172800 } // refresh every 1 min
+      next: { revalidate: 86400 } // refresh every 1 min
     })
 
     if (!response.ok) {
