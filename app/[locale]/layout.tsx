@@ -18,9 +18,13 @@ import { LocaleSwitcherProvider } from "@/providers/LocaleSwitcherProvider"
 import { ScrollToTop } from "@/components/ScrollToTop"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import { getTranslations } from "next-intl/server"
+import Script from "next/script"
 // styles
 import "../globals.css"
 
+const googleGtmId = process.env.NEXT_PUBLIC_GOOGLE_GTM_ID
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
 const outfit = Outfit({
   subsets: ["latin"], // Or other desired subsets
@@ -36,9 +40,6 @@ const IBMPlexSansArabic = IBM_Plex_Sans_Arabic({
   display: "swap" // Avoid layout shift
 })
 
-// const localeCache = cache(getLocale)
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
 export const viewport = {
   width: "device-width", // Keeps width responsive
@@ -55,17 +56,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations()
 
   const pageKey = `/${ROUTES.HOME}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
-  
-    // Get localized paths safely
-    const localizedPaths = localizationPathname[pageKey] || {
-      en: pageKey,
-      ar: pageKey
-    }
 
-   const url =
-     locale === "en"
-       ? `${BASE_URL}/en${localizedPaths.en}`
-       : `${BASE_URL}${localizedPaths.ar}`
+  // Get localized paths safely
+  const localizedPaths = localizationPathname[pageKey] || {
+    en: pageKey,
+    ar: pageKey
+  }
+
+  const url =
+    locale === "en"
+      ? `${BASE_URL}/en${localizedPaths.en}`
+      : `${BASE_URL}${localizedPaths.ar}`
 
   return {
     metadataBase: new URL(`${BASE_URL}`),
@@ -74,6 +75,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       default: `${t("seo.home.title")}`
     },
     description: `${t("seo.home.description")}`,
+    verification: {
+      google: googleVerification
+    },
     robots: {
       index: true,
       follow: true,
@@ -169,18 +173,33 @@ export default async function RootLayout({ children, params }: Props) {
         suppressHydrationWarning
       >
         <head>
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-          />
           <meta name="apple-mobile-web-app-title" content="Namaa" />
+
+          <Script id="gtm-script" strategy="afterInteractive">
+            {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id=${googleGtmId}'+dl;
+              f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${googleGtmId}');
+          `}
+          </Script>
         </head>
         <body
           className={`${
             isArabic ? IBMPlexSansArabic.variable : outfit.variable
           } antialiased`}
         >
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${googleGtmId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+
           <NextTopLoader
             color="#518E41"
             height={2}
