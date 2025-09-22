@@ -11,7 +11,6 @@ import AboutSection from "@/components/AboutSection"
 import PortofilioSection from "@/components/PortofilioSection"
 import TitleLine from "@/components/TitleLine"
 import DevelopmentSection from "@/components/DevelopmentSection"
-import { Suspense } from "react"
 import { getHome } from "@/data-layer/home"
 import { getSeoBySlug } from "@/data-layer/common"
 import AnimatedPageLink from "@/components/AnimatedPageLink"
@@ -21,6 +20,7 @@ import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
 import { BlogItemType, ProtfolioType } from "@/types.type"
 import BlogList from "@/components/BlogList"
+import { JsonLd } from "@/components/JsonLd"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -29,10 +29,8 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const [{locale}, results] = await Promise.all([
-    params,
-    getSeoBySlug("home")
-  ])
+  const {locale} = await params
+  const results = await getSeoBySlug("home")
 
   const pageKey = `/${ROUTES.HOME}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
 
@@ -67,13 +65,93 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       site: url // optionally override twitter:site/url if needed
     }
   }
-} 
+}
 
-export default async function HomePage() {
+export default async function HomePage({params}: {params: Promise<{locale:"ar"|"en"}>}) {
+  const {locale} = await params 
   const data = await getHome()
+
+  const isAr = locale === "ar"
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Place",
+        "@id": `${BASE_URL}/#place`,
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: "21.330184369173214",
+          longitude: "39.952206000000004"
+        },
+        hasMap: "https://maps.app.goo.gl/dVP9RXEWFtfcFPf66",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: isAr
+            ? " Umm Al-Qura University , 4299, 7310, wadi Makkah 24381"
+            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى , مكه المكرمه , المملكه العربيه السعودية 1111",
+          addressLocality: isAr ? "مكه" : "Macca",
+          addressRegion: isAr
+            ? "Umm Al-Qura University"
+            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
+          postalCode: "11331",
+          addressCountry: "SA"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": `${BASE_URL}/#organization`,
+        name: "Namaa Agency",
+        alternateName: "وكالة حامل الراية",
+        url: BASE_URL,
+        email: "info@namaasolutions.com",
+        logo: `${BASE_URL}/NAMAA_LOGO.svg`,
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+966536322194",
+          contactType: "customer support"
+        },
+        description: {
+          "@value":
+            "Namaa Agency is a full-service digital marketing agency offering professional services in web design, branding, social media management, and tailored online marketing strategies.",
+          "@language": "en"
+        },
+        legalName: "وكالة حامل الراية",
+        location: { "@id": `${BASE_URL}/#place` }
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${BASE_URL}/#website`,
+        url: BASE_URL,
+        name: "Namaa Agency",
+        alternateName: "وكالة حامل الراية",
+        publisher: { "@id": `${BASE_URL}/#organization` },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${BASE_URL}/?s={search_term_string}`,
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/#webpage`,
+        url: BASE_URL,
+        name: "Namaa Agency Home Page",
+        alternateName: "الصفحة الرئيسية لوكالة Namaa",
+        datePublished: "2020-09-03T15:57:47+02:00",
+        dateModified: "2025-08-27T12:04:40+03:00",
+        about: { "@id": `${BASE_URL}/#organization` },
+        isPartOf: { "@id": `${BASE_URL}/#website` },
+        primaryImageOfPage: `${BASE_URL}/ensign-otg.png`,
+        inLanguage: ["en", "ar"]
+      }
+    ]
+  }
 
   return (
     <>
+      <JsonLd id="main-jsonld" schema={schema} />
+
       <Section className="py-12 lg:py-20 bg-[#F9F9F9]">
         <Container className="flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className=" flex-1 lg:flex-[1.1] space-y-8 lg:space-y-12 relative">

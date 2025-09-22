@@ -1,4 +1,4 @@
-import React, { cache, Suspense } from "react"
+import React, { Suspense } from "react"
 import Container from "@/components/Container"
 import Section from "@/components/Section"
 import HeroPage from "@/components/HeroPage"
@@ -11,19 +11,21 @@ import ContactForm from "@/components/ContactForm"
 import { Metadata } from "next"
 import { getContactInfo, getSeoBySlug } from "@/data-layer/common"
 import { ROUTES } from "@/constants"
-import { getLocale } from "next-intl/server"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
+import { JsonLd } from "@/components/JsonLd"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY!
 const placeId = process.env.NEXT_PUBLIC_GOOGLE_MAPS_PLACE_ID!
 
-const cachedLocale = cache(getLocale)
-
-export async function generateMetadata(): Promise<Metadata> {
-  const [locale, results] = await Promise.all([
-    cachedLocale(),
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: "ar" | "en" }>
+}): Promise<Metadata> {
+  const [{ locale }, results] = await Promise.all([
+    params,
     getSeoBySlug("contact-us")
   ])
 
@@ -37,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const url =
     locale === "en"
-      ? `${BASE_URL}/en${localizedPaths.en}`
+      ? `${BASE_URL}/${locale}${localizedPaths.en}`
       : `${BASE_URL}${localizedPaths.ar}`
 
   return {
@@ -62,8 +64,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function ContactUsPage() {
-  const locale = await getLocale()
+export default async function ContactUsPage({
+  params
+}: {
+  params: Promise<{ locale: "ar" | "en" }>
+}) {
+  const { locale } = await params
   const zoom = 18
 
   return (
@@ -100,7 +106,7 @@ export default async function ContactUsPage() {
             </div>
 
             <Suspense fallback={null}>
-              <ContactInfo />
+              <ContactInfo locale={locale} />
             </Suspense>
           </div>
           <div className="col-span-1 ">
@@ -129,87 +135,188 @@ export default async function ContactUsPage() {
   )
 }
 
-async function ContactInfo() {
-  const [locale, data] = await Promise.all([cachedLocale(), getContactInfo()])
+async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
+  const data = await getContactInfo()
+
+  const isAr = locale === "ar"
+
+  const pageKey = `/${ROUTES.CONTACT_US}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+
+  // Get localized paths safely
+  const localizedPaths = localizationPathname[pageKey] || {
+    en: pageKey,
+    ar: pageKey
+  }
+
+  const url = isAr
+    ? `${BASE_URL}${localizedPaths.ar}`
+    : `${BASE_URL}/en${localizedPaths.en}`
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Place",
+        "@id": `${BASE_URL}/#place`,
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: "21.330184369173214",
+          longitude: "39.952206000000004"
+        },
+        hasMap: data.map_link,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: data.address[locale],
+          addressLocality: isAr ? "مكة" : "Macca",
+          addressRegion: isAr
+            ? "Umm Al-Qura University"
+            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
+          postalCode: data.postal_code,
+          addressCountry: "EG"
+        }
+      },
+      {
+        "@type": ["Corporation", "Organization"],
+        "@id": `${BASE_URL}/#organization`,
+        name: "Namaa Agency",
+        legalName: isAr ? "وكالة حامل الراية" : "Namaa Agency",
+        url: BASE_URL,
+        email: data.email,
+        logo: {
+          "@type": "ImageObject",
+          "@id": `${BASE_URL}/#logo`,
+          url: `${BASE_URL}/NAMAA_LOGO.svg`,
+          caption: "Namaa Agency",
+          inLanguage: isAr ? "ar-SA" : "en-US",
+          width: "1000",
+          height: "615"
+        },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: data.address[locale],
+          addressLocality: isAr ? "مكة" : "Macca",
+          addressRegion: isAr
+            ? "Umm Al-Qura University"
+            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
+          postalCode: data.postal_code,
+          addressCountry: "SA"
+        },
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            telephone: data.phone1,
+            contactType: isAr ? "دعم العملاء" : "customer support"
+          }
+        ],
+        description: isAr
+          ? "وكالة Namaa هي وكالة تسويق رقمي متكاملة تقدم خدمات احترافية ..."
+          : "Namaa Agency is a full-service digital marketing agency providing professional services ..."
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${BASE_URL}/#website`,
+        url: BASE_URL,
+        name: "Namaa Agency",
+        alternateName: isAr ? "وكالة حامل الراية" : "Namaa Agency",
+        publisher: { "@id": `${BASE_URL}/#organization` },
+        inLanguage: isAr ? "ar-SA" : "en-US"
+      },
+      {
+        "@type": "ContactPage",
+        "@id": `${url}#webpage`,
+        url: url,
+        name: isAr ? "اتصل بنا Namaa" : "Contact Us - Namaa",
+        datePublished: data.created_at,
+        dateModified: data.updated_at,
+        isPartOf: { "@id": `${BASE_URL}/#website` },
+        inLanguage: isAr ? "ar-SA" : "en-US"
+      }
+    ]
+  }
+
 
   return (
-    <ol className="mt-16 flex flex-col gap-7">
-      <li className="flex items-center gap-6 lg:gap-7">
-        <span className="w-16 lg:w-20 h-16 lg:h-20 flex-none shrink-0 text-background rounded-xl bg-primary flex justify-center items-center">
-          <IoLocationOutline size={28} />
-        </span>
-        <p className="font-medium text-lg">
-          <span className="text-muted-foreground font-light text-base">
-            <Translate id="navbar.address" />
+    <>
+      <JsonLd schema={schema} id="contact-shema" />
+
+      <ol className="mt-16 flex flex-col gap-7">
+        <li className="flex items-center gap-6 lg:gap-7">
+          <span className="w-16 lg:w-20 h-16 lg:h-20 flex-none shrink-0 text-background rounded-xl bg-primary flex justify-center items-center">
+            <IoLocationOutline size={28} />
           </span>
-          <br />
-          {data.address[locale as "en" | "ar"] || ""}
-        </p>
-      </li>
-      <li className="flex items-center gap-6 lg:gap-7">
-        <span className="w-16 lg:w-20 h-16 lg:h-20 flex-none shrink-0 text-background rounded-xl bg-primary flex justify-center items-center">
-          <BsFillTelephoneInboundFill size={28} />
-        </span>
-        <p className="font-medium text-lg">
-          <span className="text-muted-foreground font-light text-base">
-            <Translate id="navbar.phone" />
+          <p className="font-medium text-lg">
+            <span className="text-muted-foreground font-light text-base">
+              <Translate id="navbar.address" />
+            </span>
+            <br />
+            {data.address[locale as "en" | "ar"] || ""}
+          </p>
+        </li>
+        <li className="flex items-center gap-6 lg:gap-7">
+          <span className="w-16 lg:w-20 h-16 lg:h-20 flex-none shrink-0 text-background rounded-xl bg-primary flex justify-center items-center">
+            <BsFillTelephoneInboundFill size={28} />
           </span>
-          <br />
-          {data?.landline_1 ? (
-            <a href="tel:22561003" target="_blank" rel="follow">
-              {data?.landline_1}
-            </a>
-          ) : null}{" "}
-          {data?.landline_2 ? (
-            <>
-              -{" "}
-              <a href="tel:22561004" target="_blank" rel="follow">
-                {data?.landline_2}
+          <p className="font-medium text-lg">
+            <span className="text-muted-foreground font-light text-base">
+              <Translate id="navbar.phone" />
+            </span>
+            <br />
+            {data?.landline_1 ? (
+              <a href="tel:22561003" target="_blank" rel="follow">
+                {data?.landline_1}
               </a>
-            </>
-          ) : null}
-        </p>
-      </li>
-      <li className="flex items-center gap-6 lg:gap-7">
-        <span className="w-16 lg:w-20 h-16 lg:h-20 flex-none shrink-0 text-background rounded-xl bg-primary flex justify-center items-center">
-          <FaMobileAlt size={28} />
-        </span>
-        <p className="font-medium text-lg">
-          <span className="text-muted-foreground font-light text-base">
-            <Translate id="navbar.cell_phone" />
+            ) : null}{" "}
+            {data?.landline_2 ? (
+              <>
+                -{" "}
+                <a href="tel:22561004" target="_blank" rel="follow">
+                  {data?.landline_2}
+                </a>
+              </>
+            ) : null}
+          </p>
+        </li>
+        <li className="flex items-center gap-6 lg:gap-7">
+          <span className="w-16 lg:w-20 h-16 lg:h-20 flex-none shrink-0 text-background rounded-xl bg-primary flex justify-center items-center">
+            <FaMobileAlt size={28} />
           </span>
-          <br />{" "}
-          {data?.phone1 ? (
-            <a href={`tel:${data.phone1}`} target="_blank" rel="follow">
-              {data?.phone1}
-            </a>
-          ) : null}
-          {data?.phone2 ? (
-            <>
-              -{" "}
-              <a href={`tel:${data.phone2}`} target="_blank" rel="follow">
-                {data?.phone2}
+          <p className="font-medium text-lg">
+            <span className="text-muted-foreground font-light text-base">
+              <Translate id="navbar.cell_phone" />
+            </span>
+            <br />{" "}
+            {data?.phone1 ? (
+              <a href={`tel:${data.phone1}`} target="_blank" rel="follow">
+                {data?.phone1}
               </a>
-            </>
-          ) : null}
-        </p>
-      </li>
-      <li className="flex items-center gap-6 lg:gap-7">
-        <span className="w-16 lg:w-20 h-16 lg:h-20 flex-none shrink-0 text-background rounded-xl bg-primary flex justify-center items-center">
-          <MdMarkEmailRead size={28} />
-        </span>
-        <p className="font-medium text-lg">
-          <span className="text-muted-foreground font-light text-base">
-            <Translate id="navbar.email" />
+            ) : null}
+            {data?.phone2 ? (
+              <>
+                -{" "}
+                <a href={`tel:${data.phone2}`} target="_blank" rel="follow">
+                  {data?.phone2}
+                </a>
+              </>
+            ) : null}
+          </p>
+        </li>
+        <li className="flex items-center gap-6 lg:gap-7">
+          <span className="w-16 lg:w-20 h-16 lg:h-20 flex-none shrink-0 text-background rounded-xl bg-primary flex justify-center items-center">
+            <MdMarkEmailRead size={28} />
           </span>
-          <br />
-          {data?.email ? (
-            <a href={`mailto:${data.email}`} target="_blank" rel="follow">
-              {data?.email}
-            </a>
-          ) : null}
-        </p>
-      </li>
-    </ol>
+          <p className="font-medium text-lg">
+            <span className="text-muted-foreground font-light text-base">
+              <Translate id="navbar.email" />
+            </span>
+            <br />
+            {data?.email ? (
+              <a href={`mailto:${data.email}`} target="_blank" rel="follow">
+                {data?.email}
+              </a>
+            ) : null}
+          </p>
+        </li>
+      </ol>
+    </>
   )
 }

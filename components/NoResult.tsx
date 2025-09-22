@@ -5,10 +5,11 @@ import Image from "next/image"
 
 import React from "react"
 import Container from "./Container"
+import Translate from "./Translate"
 
 const NoResult = ({
   className,
-  message = "No Result Found!"
+  message
 }: {
   className?: string
   message?: string
@@ -28,7 +29,7 @@ const NoResult = ({
           alt="no result"
           className="object-cover"
         />
-        <p className="text-muted-foreground text-lg font-light">{message}</p>
+        <p className="text-muted-foreground text-lg font-light">{message || <Translate id="no_result.message" />}</p>
       </div>
     </Container>
   )

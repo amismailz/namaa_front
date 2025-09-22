@@ -16,10 +16,11 @@ import { ROUTES } from "@/constants"
 import WhatsAppChat from "@/components/WhatsAppChat"
 import { LocaleSwitcherProvider } from "@/providers/LocaleSwitcherProvider"
 import { ScrollToTop } from "@/components/ScrollToTop"
-// styles
-import "../globals.css"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import { getTranslations } from "next-intl/server"
+// styles
+import "../globals.css"
+
 
 const outfit = Outfit({
   subsets: ["latin"], // Or other desired subsets
@@ -173,7 +174,7 @@ export default async function RootLayout({ children, params }: Props) {
             href="https://fonts.gstatic.com"
             crossOrigin="anonymous"
           />
-          <meta name="apple-mobile-web-app-title" content="Ensign" />
+          <meta name="apple-mobile-web-app-title" content="Namaa" />
         </head>
         <body
           className={`${

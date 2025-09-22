@@ -336,7 +336,9 @@
     "descraption": "we hiring developers,designer,and marketing specialist periodically. life cycle moves rapidly in our firm. we hope to have a gaint production team to satisfy clients needs."
   },
   "portfilio": {
-    "title": "Digital Marketing Namaa The Best One In Saudi"
+    "title": "Digital Marketing Namaa The Best One In Saudi",
+    "filter_button_text": "Filter Portofilio",
+    "filter_button_subtext": "Filteration Menu"
   },
   "blog": {
     "hero_title": "Our Blog",
@@ -378,5 +380,8 @@
       "title": "Request Plan",
       "discraption": "Our goal is to help people in the best way possible. this is a basic principle in every case and cause for success. contact us today for a free consultation."
     }
+  },
+  "no_result": {
+    "message": "No results found!"
   }
 }

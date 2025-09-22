@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
+import Translate from "@/components/Translate"
 
 type Props = {
   filters: { label: string; value: string }[]
@@ -53,10 +54,14 @@ const PortofilioFilterationNav = ({ filters, service_slug }: Props) => {
     <>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild className="m-0 block lg:hidden">
-          <Button variant="outline">Filter Portofilio</Button>
+          <Button variant="outline">
+            <Translate id="portfilio.filter_button_text" />
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-full" align="start">
-          <DropdownMenuLabel>Filteration Menu</DropdownMenuLabel>
+          <DropdownMenuLabel>
+            <Translate id="portfilio.filter_button_subtext" />
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuRadioGroup
             value={service_slug}
@@ -92,7 +97,9 @@ const PortofilioFilterationNav = ({ filters, service_slug }: Props) => {
               key={value}
               className={cn(
                 "border overflow-hidden relative rounded-lg whitespace-nowrap ",
-                isActive ? "border-border ltr:pr-10" : "border-transparent"
+                isActive
+                  ? "border-border ltr:pr-10 rtl:pl-10"
+                  : "border-transparent"
               )}
             >
               <span
@@ -113,7 +120,7 @@ const PortofilioFilterationNav = ({ filters, service_slug }: Props) => {
                   onClick={resetFilter}
                   role="button"
                   aria-label="cancel filter"
-                  className="w-10 h-full absolute top-0 ltr:right-0 bg-secondary text-foreground cursor-pointer flex justify-center items-center"
+                  className="w-10 h-full absolute top-0 ltr:right-0 rtl:left-0 bg-secondary text-foreground cursor-pointer flex justify-center items-center"
                 >
                   <X className="size-4" />
                 </span>

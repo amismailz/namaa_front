@@ -5,7 +5,7 @@ import { getBlogBySlug } from "@/data-layer/blog"
 import Image from "next/image"
 import React, { cache } from "react"
 import BlogAside from "@/components/BlogAside"
-// import BlogSearch from "@/components/BlogSearch"
+// import BlogSearch from "@/components/BlogSearch" 
 import { ROUTES } from "@/constants"
 import { Metadata } from "next"
 import Translate from "@/components/Translate"
@@ -14,6 +14,7 @@ import { ar, enUS } from "date-fns/locale"
 import FaqList from "@/components/FaqList"
 import BlogPostHideLocale from "@/components/BlogPostHideLocale"
 import BlogPostContent from "@/components/BlogPostContent"
+import { JsonLd } from "@/components/JsonLd"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const blogBySlug = cache(getBlogBySlug)
@@ -85,9 +86,39 @@ export default async function BlogDetailPage({
       ? `${BASE_URL}/${post.slug}`
       : `${BASE_URL}/${locale}/${post.slug}`
 
+  // ✅ Build JSON-LD Schema dynamically
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.short_description,
+    image: [post.image],
+    author: {
+      "@type": "Person",
+      name: "Namaa Agency",
+      url: BASE_URL
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Namaa Agency",
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/NAMAA_LOGO.svg`
+      }
+    },
+    datePublished: post.published_date,
+    dateModified: post.published_date,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": shareLink
+    }
+  }
+
   return (
     <>
       <BlogPostHideLocale />
+
+      <JsonLd schema={schemaData} id="blog-post-schema" />
 
       <HeroPage
         heading={post.title}

@@ -62,7 +62,7 @@ const Footer = ({ data }: { data: ContactInfoData }) => {
       icon: <BsSignpost className="text-primary size-4" />,
       label: (
         <>
-          <Translate id="navbar.post_code" />: ${data?.postal_code ?? "-"}
+          <Translate id="navbar.post_code" />: {data?.postal_code ?? "-"}
         </>
       )
     },
