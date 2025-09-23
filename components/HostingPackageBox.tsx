@@ -4,11 +4,8 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import React from "react"
-import { FaFileAlt } from "react-icons/fa"
-import { IoServer } from "react-icons/io5"
-import { MdMarkEmailRead } from "react-icons/md"
 import HostingRequestDialog from "@/components/HostingRequestDialog"
-import Translate from "./Translate"
+import RenderHtml from "@/components/RenderHtml"
 
 type Props = {
   image: {
@@ -18,10 +15,8 @@ type Props = {
   }
   title: string
   price: string
-  billingCycle: string 
-  emailCount: number
-  storageCount: number
-  transferCount: number
+  billingCycle: string
+  content: string
   isFeatured?: boolean
   packageName: string
   currency: string
@@ -31,10 +26,8 @@ const HostingPackageBox = ({
   image,
   price,
   title,
-  emailCount,
+  content,
   billingCycle,
-  transferCount,
-  storageCount,
   isFeatured = false,
   packageName,
   currency
@@ -83,33 +76,12 @@ const HostingPackageBox = ({
               : "bg-[#E8E8E8] text-foreground"
           )}
         >
-          <div className="flex items-center gap-6">
-            <MdMarkEmailRead />
-            <p>
-              <Translate
-                id="package_pricing.email_accounts"
-                values={{ number: emailCount }}
-              />
-            </p>
-          </div>
-          <div className="flex items-center gap-6">
-            <IoServer />
-            <p>
-              <Translate
-                id="package_pricing.storage"
-                values={{ number: storageCount }}
-              />
-            </p>
-          </div>
-          <div className="flex items-center gap-6">
-            <FaFileAlt />
-            <p>
-              <Translate
-                id="package_pricing.transfer"
-                values={{ number: transferCount }}
-              />
-            </p>
-          </div>
+          <RenderHtml
+            html={content}
+            className={`prose-base prose-p:mt-1 prose-p:mb-1 ${
+              isFeatured ? "prose-p:text-background" : ""
+            }`}
+          />
         </div>
 
         <div className="mt-10">
@@ -119,7 +91,5 @@ const HostingPackageBox = ({
     </div>
   )
 }
-
-
 
 export default HostingPackageBox

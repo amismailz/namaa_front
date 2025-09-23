@@ -6,22 +6,14 @@ import Image from "next/image"
 import "swiper/css"
 import "swiper/css/pagination"
 import { useLocale } from "next-intl"
+import { ClientItemType } from "@/types.type"
 
-const slides = [
-  { src: "/clients/1.png" },
-  { src: "/clients/2.png" },
-  { src: "/clients/3.png" },
-  { src: "/clients/4.png" },
-  { src: "/clients/5.png" },
-  { src: "/clients/6.png" }
-]
 
-const CientSlider2 = () => {
+const CientSlider2 = ({ data }: { data: ClientItemType[] }) => {
   const locale = useLocale()
   const dir = locale === "ar" ? "rtl" : "ltr"
-  
+
   return (
-    
     <div className="relative mt-3">
       <Swiper
         dir={dir} // ✅ RTL mode
@@ -46,13 +38,13 @@ const CientSlider2 = () => {
         }}
         className="w-full client-slider"
       >
-        {slides.map(({ src }, index) => (
+        {data.map(({ image, title }, index) => (
           <SwiperSlide key={index}>
             <div className="flex aspect-square items-center justify-center">
               <div className="flex items-center justify-center p-6 bg-background rounded-xl border border-black/5">
                 <Image
-                  src={src}
-                  alt={`client logo image ${index}`}
+                  src={image}
+                  alt={title}
                   width={160}
                   height={140}
                 />

@@ -23,13 +23,15 @@ const NoResult = ({
         )}
       >
         <Image
-          src="/—Pngtree—no result search icon_6511543.png"
+          src="/no-result.png"
           width={300}
           height={300}
           alt="no result"
           className="object-cover"
         />
-        <p className="text-muted-foreground text-lg font-light">{message || <Translate id="no_result.message" />}</p>
+        <p className="text-muted-foreground text-lg font-light">
+          {message || <Translate id="no_result.message" />}
+        </p>
       </div>
     </Container>
   )

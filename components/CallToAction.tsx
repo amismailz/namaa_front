@@ -20,7 +20,7 @@ const CallToAction = () => {
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.3 }} // 👈 same here
+          viewport={{ once: false, amount: 0.1 }} // 👈 same here
         >
           <div
             className="w-[900px] h-[400px] absolute top-0 left-0 block rotate-animation opacity-60"

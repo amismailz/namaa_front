@@ -12,14 +12,15 @@ import { Button } from "./ui/button"
 import { ROUTES } from "@/constants"
 import AnimatedPageLink from "@/components/AnimatedPageLink"
 import Translate from "@/components/Translate"
+import { ServiceItemType } from "@/types.type"
+import RenderHtml from "./RenderHtml"
 
 type TabConfig = {
   value: string
   label: string
   icon: string
   bg: string
-  alt: string
-  labelClass: string
+  labelClass?: string
   description: string
   seeMoreLink?: string
   url?: string
@@ -44,7 +45,8 @@ function TabContent({
     <div className="py-2 w-full flex flex-col gap-6 lg:items-center lg:gap-0 lg:grid lg:grid-cols-[1fr_1.5fr]">
       <div className="flex  flex-col justify-center">
         <h3 className="block lg:hidden mb-6 text-3xl lg:text-4xl font-semibold">
-          <Translate id={heading} />
+          {/* <Translate id={heading} /> */}
+          {heading}
         </h3>
         <Image
           src="/media_tab_content.svg"
@@ -56,11 +58,13 @@ function TabContent({
       </div>
       <div className="space-y-7">
         <h3 className="hidden lg:block mt-3 text-4xl font-semibold">
-          <Translate id={heading} />
+          {/* <Translate id={heading} /> */}
+          {heading}
         </h3>
-        <p className="text-md font-light leading-8">
-          <Translate id={description} />
-        </p>
+        {/* <p className="text-md font-light leading-8"> */}
+          {/* <Translate id={description} /> */}
+          <RenderHtml html={description} />
+        {/* </p> */}
 
         <div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-2 lg:gap-4 mt-2">
           <ServiceRequestDialog />
@@ -106,7 +110,6 @@ const TabTrigger = memo(function TabTrigger({
   label,
   icon,
   bg,
-  alt,
   labelClass
 }: Omit<TabConfig, "content">) {
   return (
@@ -125,7 +128,7 @@ const TabTrigger = memo(function TabTrigger({
       <figure className="py-2 lg:py-4 ">
         <Image
           src={icon}
-          alt={alt}
+          alt={`${label} icon`}
           width={93}
           height={93}
           className="group-hover:scale-105 duration-300"
@@ -145,7 +148,8 @@ const TabTrigger = memo(function TabTrigger({
           labelClass
         )}
       >
-        <Translate id={label} />
+        {/* <Translate id={label} /> */}
+        {label}
       </span>
     </TabsTrigger>
   )
@@ -153,72 +157,88 @@ const TabTrigger = memo(function TabTrigger({
 
 const ServicesTabs = memo(function ServicesTabs({
   showMore = false,
+  data
 }: {
+  data: ServiceItemType[]
   showMore?: boolean
 }) {
-  const tabs = useMemo<TabConfig[]>(
-    () => [
-      {
-        value: "social",
-        url: `/${ROUTES.SOCIAL_MEDIA}`,
-        label: "navbar.social_media",
-        icon: "/tabs-icons/XMLID_1749_.svg",
-        bg: "bg-[#F0FFFC]",
-        alt: "social media icon",
-        labelClass: "capitalize",
-        description: "services.social_short_content",
-        seeMoreLink: `/${ROUTES.SOCIAL_MEDIA}`
-      },
-      {
-        value: "seo",
-        url: `/${ROUTES.SERVICES}`,
-        label: "navbar.seo",
-        icon: "/tabs-icons/seo_856378 1.svg",
-        bg: "bg-[#F5F5F5]",
-        alt: "seo icon",
-        labelClass: "uppercase",
-        description: "services.seo_short_content"
-        // seeMoreLink: "/request"
-      },
-      {
-        value: "design",
-        url: `/${ROUTES.GRAPHIC_DESIGN}`,
-        label: "navbar.professional_design",
-        icon: "/tabs-icons/design_10326057 1.svg",
-        bg: "bg-[#F0FFFC]",
-        alt: "design icon",
-        labelClass: "capitalize",
-        description: "services.professional_short_content",
-        seeMoreLink: `/${ROUTES.GRAPHIC_DESIGN}`
-      },
-      {
-        value: "html_css",
-        url: `/${ROUTES.WEBSITE_DEVELOPMENT}`,
-        label: "navbar.html_css",
-        icon: "/tabs-icons/programming-languages_17638400 1.svg",
-        bg: "bg-[#FEEFF4]",
-        alt: "html icon",
-        labelClass: "uppercase",
-        description: "services.html_css_short_content",
-        seeMoreLink: `/${ROUTES.WEBSITE_DEVELOPMENT}`
-      },
-      {
-        value: "website-design",
-        url: `/${ROUTES.WEBSITE_DESIGN}`,
-        label: "navbar.web_design",
-        icon: "/tabs-icons/web_14138721 1.svg",
-        bg: "bg-[#EDFDFF]",
-        alt: "web icon",
-        labelClass: "capitalize",
-        description: "services.web_design_short_content",
-        seeMoreLink: `/${ROUTES.WEBSITE_DESIGN}`
-      }
-    ],
-    []
-  )
+  const colors = ["bg-[#F0FFFC]", "bg-[#F5F5F5]", "bg-[#FEEFF4]", "bg-[#EDFDFF]"]
+
+  const tabsNew = useMemo(() => {
+    return data.map((item) => ({
+      value: item.id.toString(),
+      bg: colors[Math.floor(Math.random() * colors.length)],
+      url: `/${item.slug}`,
+      label: item.title,
+      description: item.description,
+      mainImage: item.image,
+      icon: item.icon
+    }))
+  }, [])
+
+  // const tabs = useMemo<TabConfig[]>(
+  //   () => [
+  //     {
+  //       value: "social",
+  //       url: `/${ROUTES.SOCIAL_MEDIA}`,
+  //       label: "navbar.social_media",
+  //       icon: "/tabs-icons/XMLID_1749_.svg",
+  //       bg: "bg-[#F0FFFC]",
+  //       alt: "social media icon",
+  //       labelClass: "capitalize",
+  //       description: "services.social_short_content",
+  //       seeMoreLink: `/${ROUTES.SOCIAL_MEDIA}`
+  //     },
+  //     {
+  //       value: "seo",
+  //       url: `/${ROUTES.SERVICES}`,
+  //       label: "navbar.seo",
+  //       icon: "/tabs-icons/seo_856378 1.svg",
+  //       bg: "bg-[#F5F5F5]",
+  //       alt: "seo icon",
+  //       labelClass: "uppercase",
+  //       description: "services.seo_short_content"
+  //       // seeMoreLink: "/request"
+  //     },
+  //     {
+  //       value: "design",
+  //       url: `/${ROUTES.GRAPHIC_DESIGN}`,
+  //       label: "navbar.professional_design",
+  //       icon: "/tabs-icons/design_10326057 1.svg",
+  //       bg: "bg-[#F0FFFC]",
+  //       alt: "design icon",
+  //       labelClass: "capitalize",
+  //       description: "services.professional_short_content",
+  //       seeMoreLink: `/${ROUTES.GRAPHIC_DESIGN}`
+  //     },
+  //     {
+  //       value: "html_css",
+  //       url: `/${ROUTES.WEBSITE_DEVELOPMENT}`,
+  //       label: "navbar.html_css",
+  //       icon: "/tabs-icons/programming-languages_17638400 1.svg",
+  //       bg: "bg-[#FEEFF4]",
+  //       alt: "html icon",
+  //       labelClass: "uppercase",
+  //       description: "services.html_css_short_content",
+  //       seeMoreLink: `/${ROUTES.WEBSITE_DEVELOPMENT}`
+  //     },
+  //     {
+  //       value: "website-design",
+  //       url: `/${ROUTES.WEBSITE_DESIGN}`,
+  //       label: "navbar.web_design",
+  //       icon: "/tabs-icons/web_14138721 1.svg",
+  //       bg: "bg-[#EDFDFF]",
+  //       alt: "web icon",
+  //       labelClass: "capitalize",
+  //       description: "services.web_design_short_content",
+  //       seeMoreLink: `/${ROUTES.WEBSITE_DESIGN}`
+  //     }
+  //   ],
+  //   []
+  // )
 
   return (
-    <Tabs defaultValue="social" className="w-full flex flex-col gap-6">
+    <Tabs defaultValue={tabsNew[0].value} className="w-full flex flex-col gap-6">
       {/* Tab Triggers */}
       <TabsList
         className={cn(
@@ -226,20 +246,20 @@ const ServicesTabs = memo(function ServicesTabs({
           " lg:grid lg:grid-cols-5 lg:gap-4" // desktop: grid
         )}
       >
-        {tabs.map(({ ...tab }) => (
+        {tabsNew.map(({ ...tab }) => (
           <TabTrigger key={tab.value} {...tab} />
         ))}
       </TabsList>
 
       {/* Tab Content */}
-      {tabs.map(({ description, value, url, label, seeMoreLink }) => (
+      {tabsNew.map(({ description, value, url, label }) => (
         <TabsContent key={value} value={value} className="py-2">
           <TabContent
             heading={label}
             url={url}
             description={description}
             showMore={showMore}
-            seeMoreLink={seeMoreLink}
+            seeMoreLink={url}
           />
         </TabsContent>
       ))}

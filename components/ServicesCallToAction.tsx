@@ -13,7 +13,7 @@ import Translate from "@/components/Translate"
 
 const ServicesCallToAction = () => {
   return (
-    <Section className="pb-12 pt-0 lg:pt-[200px]">
+    <Section className="py-10">
       <Container className="px-0 md:px-10 lg:px-16 xl:px-20">
         <motion.div
           className="bg-[#777777] relative md:rounded-xl p-8 gap-7 text-background flex flex-col items-center justify-center"
@@ -43,18 +43,18 @@ const ServicesCallToAction = () => {
             />
           </div>
           <motion.figure
-            className="mx-auto hidden lg:block w-auto p-0 -mt-[150px]"
+            className="mx-auto relative z-10"
             initial={{ opacity: 0, y: 80 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
           >
             <Image
-              src="/CTA-Our-Services-300x300.png"
-              alt="portofilio graph image"
-              width={300}
-              height={300}
-              className="w-[70%] h-auto mx-auto rounded-t-full rounded-r-full"
+              src="/logo_on_white.svg"
+              alt="Namaa logo"
+              width={214}
+              height={127}
+              className="w-[70%] h-auto mx-auto"
             />
           </motion.figure>
 

@@ -21,6 +21,7 @@ import Translate from "@/components/Translate"
 import { BlogItemType, ProtfolioType } from "@/types.type"
 import BlogList from "@/components/BlogList"
 import { JsonLd } from "@/components/JsonLd"
+import HomeBanner from "@/components/HomeBanner"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -29,7 +30,7 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const {locale} = await params
+  const { locale } = await params
   const results = await getSeoBySlug("home")
 
   const pageKey = `/${ROUTES.HOME}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
@@ -67,9 +68,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function HomePage({params}: {params: Promise<{locale:"ar"|"en"}>}) {
-  const {locale} = await params 
-  const data = await getHome()
+export default async function HomePage({
+  params
+}: {
+  params: Promise<{ locale: "ar" | "en" }>
+}) {
+  const { locale } = await params
+  const {
+    banners,
+    protfolio,
+    blog,
+    Website_design_agency_and_web_development,
+    services,
+    clients
+  } = await getHome()
 
   const isAr = locale === "ar"
 
@@ -142,7 +154,7 @@ export default async function HomePage({params}: {params: Promise<{locale:"ar"|"
         dateModified: "2025-08-27T12:04:40+03:00",
         about: { "@id": `${BASE_URL}/#organization` },
         isPartOf: { "@id": `${BASE_URL}/#website` },
-        primaryImageOfPage: `${BASE_URL}/ensign-otg.png`,
+        primaryImageOfPage: `${BASE_URL}/namaa-otg.jpg`,
         inLanguage: ["en", "ar"]
       }
     ]
@@ -152,93 +164,7 @@ export default async function HomePage({params}: {params: Promise<{locale:"ar"|"
     <>
       <JsonLd id="main-jsonld" schema={schema} />
 
-      <Section className="py-12 lg:py-20 bg-[#F9F9F9]">
-        <Container className="flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className=" flex-1 lg:flex-[1.1] space-y-8 lg:space-y-12 relative">
-            <h1 className="scroll-m-20 text-4xl lg:text-6xl font-semibold">
-              <span className="inline-block text-primary p-1 border border-primary/50 rounded-lg relative">
-                <AnimatedLetters
-                  text={<Translate id="home.main_banner.digital_market" />}
-                />
-                <span className="absolute -top-2 -left-2 w-3 h-3 border border-primary/50 rounded rotate-animation"></span>
-                <span className="absolute -top-2 -right-2 w-3 h-3 border border-primary/50 rounded rotate-animation [animation-delay:0.3s]"></span>
-                <span className="absolute -bottom-2 -left-2 w-3 h-3 border border-primary/50 rounded rotate-animation [animation-delay:0.6s]"></span>
-                <span className="absolute -bottom-2 -right-2 w-3 h-3 border border-primary/50 rounded rotate-animation [animation-delay:0.9s]"></span>
-              </span>{" "}
-              <Translate id="home.main_banner.digital_market_tagline" />
-            </h1>
-
-            <p>
-              <Translate id="home.main_banner.p1" />
-            </p>
-
-            <div className="flex items-center gap-6">
-              <AnimatedPageLink href={`/${ROUTES.ABOUT_US}`}>
-                <ButtonWithIcon
-                  icon={<GoArrowUpRight className="text-foreground" />}
-                  iconClass="bg-background"
-                  variant="green"
-                >
-                  <span>
-                    <Translate id="actions.read_more" />
-                  </span>
-                </ButtonWithIcon>
-              </AnimatedPageLink>
-
-              <AnimatedPageLink href={`/${ROUTES.CONTACT_US}`}>
-                <ButtonWithIcon
-                  variant="outline"
-                  icon={<GoArrowUpRight className="text-background" />}
-                  iconClass="bg-primary-green"
-                  className="bg-transparent border-primary-green hover:bg-background"
-                >
-                  <span>
-                    <Translate id="navbar.contact_us" />
-                  </span>
-                </ButtonWithIcon>
-              </AnimatedPageLink>
-            </div>
-
-            <div className="flex w-auto items-center  gap-18">
-              <div className=" lg:w-auto flex flex-col justify-center items-center lg:items-start gap-1">
-                <h2 className="scroll-m-20 text-4xl lg:text-6xl font-semibold">
-                  <Counter value={23} defaultValue={0} suffix="+" />
-                </h2>
-                <h3 className="text-base lg:text-lg text-muted-foreground">
-                  <Translate id="home.main_banner.experience" />
-                </h3>
-              </div>
-              <div className=" lg:w-auto flex flex-col justify-center items-center lg:items-start gap-1">
-                <h2 className="scroll-m-20 text-4xl lg:text-6xl font-semibold">
-                  <Counter value={498} defaultValue={0} suffix="+" />
-                </h2>
-                <h3 className="text-base lg:text-lg text-muted-foreground">
-                  <Translate id="home.main_banner.project_completed" />
-                </h3>
-              </div>
-            </div>
-
-            <Image
-              src="/mask_1.png"
-              alt="frame shap icon"
-              width={128}
-              height={68}
-              className="slide-x-animation lg:absolute rtl:-left-16 ltr:lg:-right-16 lg:bottom-12 lg:-translate-y-1/3"
-            />
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="flex items-center justify-center  lg:justify-end flex-1 lg:flex-[.9]  max-h-[500px]">
-            <Image
-              src="/home_slide_1.svg"
-              alt="slide_1"
-              width={839}
-              height={636}
-              className="bounce-animation object-contain max-w-[80%] lg:max-w-full"
-            />
-          </div>
-        </Container>
-      </Section>
+      <HomeBanner data={banners} className="py-12 lg:py-20 bg-[#F9F9F9]" />
 
       <AboutSection className="py-12 lg:py-20 bg-background">
         <AnimatedPageLink href={`/${ROUTES.ABOUT_US}`} className="mb-5 lg:mb-0">
@@ -267,13 +193,16 @@ export default async function HomePage({params}: {params: Promise<{locale:"ar"|"
               showLines={false}
             />
           </div>
-          <ServicesTabs showMore={true} />
+          <ServicesTabs showMore={true} data={services} />
         </Container>
       </Section>
 
-      <DevelopmentSection className="bg-[#EFEFEF] relative" />
+      <DevelopmentSection
+        data={Website_design_agency_and_web_development}
+        className="bg-[#EFEFEF] relative"
+      />
 
-      <PortofilioAsync data={data.protfolio} />
+      <PortofilioAsync data={protfolio} />
 
       <Section className="py-12 bg-[#F9F9F9]">
         <Container>
@@ -288,15 +217,14 @@ export default async function HomePage({params}: {params: Promise<{locale:"ar"|"
             />
           </div>
 
-          <ClientSlider2 />
+          <ClientSlider2 data={clients} />
         </Container>
       </Section>
 
-      <BlogAsync data={data.blog} />
+      <BlogAsync data={blog} />
     </>
   )
 }
-
 
 function PortofilioAsync({ data }: { data: ProtfolioType[] }) {
   if (!data || data.length === 0) return null
@@ -307,7 +235,6 @@ function PortofilioAsync({ data }: { data: ProtfolioType[] }) {
     />
   )
 }
-
 
 function BlogAsync({ data }: { data: BlogItemType[] }) {
   if (!data || data.length === 0) return null
@@ -324,7 +251,7 @@ function BlogAsync({ data }: { data: BlogItemType[] }) {
           />
         </div>
       </Container>
-      
+
       <BlogList data={data} />
 
       <div className="mx-auto flex justify-center items-center p-6">

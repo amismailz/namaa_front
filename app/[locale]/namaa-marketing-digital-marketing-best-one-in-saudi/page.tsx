@@ -13,6 +13,7 @@ import { Metadata } from "next"
 import { getLocale, getTranslations } from "next-intl/server"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
+import { getServices } from "@/data-layer/services"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -55,7 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
       site: url // optionally override twitter:site/url if needed
     }
   }
-}
+} 
 
 export default function ServicesPage() {
   return (
@@ -73,7 +74,7 @@ export default function ServicesPage() {
 
       <Section className="py-10 lg:py-20">
         <Container>
-          <div className="mb-10 space-y-3">
+          <div className="mb-14 space-y-3">
             <span className="text-primary font-light text-lg">
               <Translate id="services.tagline" />
             </span>
@@ -82,7 +83,7 @@ export default function ServicesPage() {
             </h2>
 
             <div className="">
-              <p className="text-muted-foreground text-lg font-light leading-7 mt-6">
+              <p className=" text-lg font-light leading-7 mt-6">
                 <Translate id="services.descraption" />
               </p>
             </div>
@@ -95,7 +96,7 @@ export default function ServicesPage() {
               </div>
             }
           >
-            <ServicesTabs showMore={true} />
+            <ServicesAsync />
           </Suspense>
         </Container>
       </Section>
@@ -162,24 +163,15 @@ export default function ServicesPage() {
       </Section>
 
       <ServicesCallToAction />
-
-      <Section className="py-12 bg-[#F9F9F9]">
-        <Container>
-          <div className="text-center">
-            <p className="text-muted-foreground">
-              <Translate id="clients.tagline" />
-            </p>
-            <TitleLine
-              heading={<Translate id="clients.title" />}
-              titleClass="text-3xl lg:text-4xl"
-              className="inline-block mt-1 mb-0"
-            />
-          </div>
-
-          <ClientSlider2 />
-        </Container>
-      </Section>
     </>
   )
+}
+
+async function ServicesAsync() {
+  const data = await getServices()
+
+  if (!data) return null 
+
+  return <ServicesTabs showMore={true} data={data} />
 }
 

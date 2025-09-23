@@ -17,13 +17,60 @@ export interface ProtfolioType {
   created_at: string
 }
 
+export interface BannerItemType {
+  id: number
+  title: string
+  description: string
+  years_of_experience: number
+  completed_projects: number
+  image: string
+  created_at: string
+}
+
+export interface ServiceItemType {
+  id: number
+  slug: string
+  title: string
+  description: string
+  icon: string
+  image: string
+  created_at: string
+}
+
+export interface WebsiteDesignHome {
+  id: number
+  slug: string
+  title: string
+  image: string 
+  description: string
+  created_at: string
+}
+
+export interface ClientItemType {
+  id: number
+  slug: string
+  title: string
+  image: string
+  created_at: string
+}
+
 export interface HomeResponseType {
   status: "success" | "error"
   text: string
   msg_data: {
     protfolio: ProtfolioType[]
     blog: BlogItemType[]
+    banners: BannerItemType
+    services: ServiceItemType[]
+    Website_design_agency_and_web_development: WebsiteDesignHome
+    clients: ClientItemType[]
   }
+}
+
+export interface ServicesReponseType {
+  status: "success" | "error"
+  text: string
+  msg_data: ServiceItemType[]
 }
 
 export interface SeoType {
@@ -115,7 +162,7 @@ export type ContactInfoData = {
   linkedIn_link: string
   tiktok_link: string
   whatsapp_number: string
-  snapchat_link: string 
+  snapchat_link: string
   postal_code: string
   tax_id: string
   map_link: string
@@ -140,13 +187,14 @@ export interface HostingPlansType {
   id: number
   name: string
   slug: string
-  price: null | string
+  price: string
+  description: string 
   currency: string
   billing_cycle: string
   free_domain: boolean
   is_most_popular: boolean
-  created_at: Date
-  updated_at: Date
+  created_at: string
+  updated_at: string
 }
 
 export interface ServicesFormKeys {
@@ -193,4 +241,19 @@ export interface FaqReponse {
   status: "success" | "error"
   text: string
   msg_data: FaqItem[][]
+}
+
+export interface AboutUsType {
+  images: string[]
+  title: string 
+  slug: string 
+  id: number 
+  created_at: string
+  description: string 
+}
+
+export interface AboutUsReponse {
+  status: "success" | 'error'
+  text: string 
+  msg_data: AboutUsType[]
 }

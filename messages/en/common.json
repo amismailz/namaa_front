@@ -84,16 +84,11 @@
   },
   "home": {
     "main_banner": {
-      "digital_market": "Digital Marketing",
-      "digital_market_tagline": "for your business",
-      "p1": "Namaa is famous for being #1 in digital marketing and advertising in Saudi.",
       "experience": "Years Experience",
       "project_completed": "Projects Completed"
     },
     "development_section": {
-      "tagline": "well known for their professionalism",
-      "title": "Website Design Agency And Web Development In Saudi​",
-      "p1": "To help brands penetrate new markets, empower existing markets, and compete at the highest level, we offer a fully integrated creative solution set. we oversee all aspects that help customers to understand the brand better."
+      "tagline": "well known for their professionalism"
     }
   },
   "about_us": {
@@ -355,26 +350,7 @@
     "website_design": "Website Design",
     "marketing_package": "Marketing package",
     "marketing_package_plans": {
-      "tagline": "Platforms (Facebook - Instagram - Snapchat - Tik Tok - Google)",
-      "listing": {
-        "item1": "16 Designs",
-        "item2": "4 Videos",
-        "item3": "Writing content for publications monthly"
-      }
-    },
-    "email_accounts": "{number} Email countaccounts",
-    "storage": "{number} GB Storage (Host)",
-    "transfer": "Data transfer rate ({number} GB per month)",
-    "design_package_list": {
-      "item1": "Free Hosting For One Year",
-      "item2": "Unlimited Emails",
-      "item3": "Connecting with Social Media",
-      "item4": "Free Domain For one year (www)",
-      "item5": "Specialized Admin Control Panel To Edit , Add or Remove Anything On Your Website",
-      "item6": "Sending 1000 Marketing Emails For Your Company",
-      "item7": "Compatible with all smartphones and tablets",
-      "item8": "Free (SSL) Certificate",
-      "item9": "5 pages (home - about us - contact us - menu - our website)."
+      "tagline": "Platforms (Facebook - Instagram - Snapchat - Tik Tok - Google)"
     },
     "request_dialog": {
       "title": "Request Plan",

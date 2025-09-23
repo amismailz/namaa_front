@@ -7,8 +7,10 @@ import Container from "@/components/Container"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import Translate from "@/components/Translate"
+import RenderHtml from "@/components/RenderHtml"
+import { AboutUsType } from "@/types.type"
 
-const AboutSection = ({ children, className }: { children?: ReactNode; className?: string }) => {
+const AboutSection = ({ children, className, data }: { data?: AboutUsType ;children?: ReactNode; className?: string }) => {
   const imageVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9, y: 50 },
     visible: {
@@ -19,37 +21,38 @@ const AboutSection = ({ children, className }: { children?: ReactNode; className
     }
   }
 
-  const boxes = useMemo(
-    () => [
-      {
-        text: "about_us.pragraph1",
-        icon: (
-          <Image
-            src="/digital-campaign.svg"
-            width={67}
-            height={64}
-            alt="digital campaign icon"
-          />
-        )
-      },
-      {
-        text: "about_us.pragraph2",
-        icon: (
-          <Image
-            src="/microphone.svg"
-            width={57}
-            height={56}
-            alt="microphone icon"
-          />
-        )
-      }
-    ],
-    []
-  )
+  // const boxes = useMemo(
+  //   () => [
+  //     {
+  //       text: "about_us.pragraph1",
+  //       icon: (
+  //         <Image
+  //           src="/digital-campaign.svg"
+  //           width={67}
+  //           height={64}
+  //           alt="digital campaign icon"
+  //         />
+  //       )
+  //     },
+  //     {
+  //       text: "about_us.pragraph2",
+  //       icon: (
+  //         <Image
+  //           src="/microphone.svg"
+  //           width={57}
+  //           height={56}
+  //           alt="microphone icon"
+  //         />
+  //       )
+  //     }
+  //   ],
+  //   []
+  // )
 
   return (
     <Section className={cn("", className)}>
       <Container className="flex flex-col lg:grid lg:grid-cols-[1fr_1.1fr] gap-6">
+
         <div className="gap-2 grid grid-cols-[2fr_1fr] order-2 lg:order-1">
           <motion.div
             className="h-[600px] rounded-xl transition-transform duration-500 hover:scale-105"
@@ -62,7 +65,7 @@ const AboutSection = ({ children, className }: { children?: ReactNode; className
             variants={imageVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.1 }}
           />
 
           <motion.div
@@ -76,7 +79,7 @@ const AboutSection = ({ children, className }: { children?: ReactNode; className
             variants={imageVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.1 }}
           >
             <div className="absolute top-1/2 z-10 -translate-y-[50%] w-28 h-28 flex justify-center items-center rounded-full bg-background ltr:-left-16 rtl:-right-16 p-6">
               <Image
@@ -95,9 +98,9 @@ const AboutSection = ({ children, className }: { children?: ReactNode; className
           variants={imageVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.1 }}
         >
-          <div>
+          {/* <div>
             <p className="text-primary">
               <Translate id="about_us.tagline" />
             </p>
@@ -108,9 +111,11 @@ const AboutSection = ({ children, className }: { children?: ReactNode; className
 
           <p className="text-lg font-light leading-8">
             <Translate id="about_us.short_descraption" />
-          </p>
+          </p> */}
 
-          <div className="flex flex-col gap-4">
+          {data ? <RenderHtml html={data?.description} className="lg:prose-lg" /> : null}
+
+          {/* <div className="flex flex-col gap-4">
             {boxes.map((item, i) => (
               <motion.div
                 key={i}
@@ -126,7 +131,7 @@ const AboutSection = ({ children, className }: { children?: ReactNode; className
                 </p>
               </motion.div>
             ))}
-          </div>
+          </div> */}
 
           {children ? (
             <div className="flex items-center gap-6">{children}</div>

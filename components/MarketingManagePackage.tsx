@@ -4,12 +4,10 @@ import React from "react"
 import { motion, Variants } from "framer-motion"
 import Image from "next/image"
 import { formatCurrency } from "@/lib/utils"
-import HostingRequestDialog from "./HostingRequestDialog"
-import { MdMarkEmailRead } from "react-icons/md"
-import { IoServer } from "react-icons/io5"
-import { FaFileAlt } from "react-icons/fa"
+import HostingRequestDialog from "@/components/HostingRequestDialog"
 import { HostingPlansType } from "@/types.type"
-import Translate from "./Translate"
+import Translate from "@/components/Translate"
+import RenderHtml from "@/components/RenderHtml"
 
 const containerVariants = {
   hidden: {},
@@ -45,7 +43,7 @@ const MarketingManagePackage = ({
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }} // trigger when 20% visible
+        viewport={{ once: true, amount: 0.1 }} // trigger when 10% visible
         className="shadow-lg rounded-xl bg-background p-3"
       >
         <motion.div
@@ -101,26 +99,7 @@ const MarketingManagePackage = ({
             </div>
             <div className="col-span-1 lg:col-span-2 rounded-xl bg-[#E8E8E8]">
               <div className=" items-center lg:h-full p-5 flex gap-10">
-                <ul className="space-y-7">
-                  <li className="flex gap-4 items-center">
-                    <MdMarkEmailRead />
-                    <span>
-                      <Translate id="package_pricing.marketing_package_plans.listing.item1" />
-                    </span>
-                  </li>
-                  <li className="flex gap-4 items-center">
-                    <IoServer />
-                    <span>
-                      <Translate id="package_pricing.marketing_package_plans.listing.item2" />
-                    </span>
-                  </li>
-                  <li className="flex gap-4 items-center">
-                    <FaFileAlt />
-                    <span>
-                      <Translate id="package_pricing.marketing_package_plans.listing.item3" />
-                    </span>
-                  </li>
-                </ul>
+                <RenderHtml html={item.description} />
               </div>
               <div className="block lg:hidden mt-5  p-5">
                 <HostingRequestDialog

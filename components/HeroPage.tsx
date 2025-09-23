@@ -5,22 +5,22 @@ import Section from "@/components/Section"
 import { cn } from "@/lib/utils"
 import AnimatedLetters from "@/components/AnimatedLetters"
 import Container from "@/components/Container"
-import {Link} from "@/i18n/routing"
+import { Link } from "@/i18n/routing"
 import { motion, Variants } from "framer-motion"
 
 // ✨ Corner animation
 const cornerVariants: Variants = {
   hidden: { opacity: 0, scale: 0.5, y: -5 },
-  show: (i: number) => ({
+  show: {
     opacity: 1,
     scale: 1,
     y: 0,
     transition: {
-      delay: i * 0.15,
+      // delay: i * 0.15,
       duration: 0.4,
       ease: "easeOut"
     }
-  })
+  }
 }
 
 type BreadCrumbItem = {

@@ -1,9 +1,5 @@
 import React from "react"
 import AboutSection from "@/components/AboutSection"
-import Container from "@/components/Container"
-import Section from "@/components/Section"
-import TitleLine from "@/components/TitleLine"
-import ClientSlider2 from "@/components/CientSlider2"
 import HeroPage from "@/components/HeroPage"
 import AboutMarketServices from "@/components/AboutMarketServices"
 import { ROUTES } from "@/constants"
@@ -12,6 +8,7 @@ import { Metadata } from "next"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
 import { JsonLd } from "@/components/JsonLd"
+import { getAboutUs } from "@/data-layer/about"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -63,6 +60,7 @@ export default async function AboutUsPage({
   params: Promise<{ locale: "ar" | "en" }>
 }) {
   const { locale } = await params
+  const data = await getAboutUs()
   const isAr = locale === "ar"
 
   const pageKey = `/${ROUTES.ABOUT_US}`
@@ -173,26 +171,9 @@ export default async function AboutUsPage({
         ]}
       />
 
-      <AboutSection className="py-16" />
+      <AboutSection className="py-16" data={data} />
 
       <AboutMarketServices />
-
-      <Section className="py-12">
-        <Container>
-          <div className="text-center">
-            <p className="text-muted-foreground">
-              <Translate id="clients.tagline" />
-            </p>
-            <TitleLine
-              heading={<Translate id="clients.title" />}
-              titleClass="text-4xl"
-              className="inline-block mt-1 mb-0"
-            />
-          </div>
-
-          <ClientSlider2 />
-        </Container>
-      </Section>
     </>
   )
 }

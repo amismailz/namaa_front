@@ -125,8 +125,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       // images: ["/Namaa-otg.png"],
       images: [
         {
-          url: "/ensign-otg.png",
-          secureUrl: `${BASE_URL}/ensign-otg.png`, // og:image:secure_url
+          url: "/namaa-otg.jpg",
+          secureUrl: `${BASE_URL}/namaa-otg.jpg`, // og:image:secure_url
           width: 1200,
           height: 630,
           alt: "social media agency egypt",
@@ -138,7 +138,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${t("seo.home.title")}`,
       description: `${t("seo.home.description")}`,
-      images: ["/ensign-otg.png"]
+      images: ["/namaa-otg.jpg"]
     },
     other: {
       "twitter:label1": "Written by",
