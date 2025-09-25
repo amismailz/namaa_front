@@ -16,8 +16,6 @@ import { navigation } from "@/lib/data"
 import AnimatedPageLink from "@/components/AnimatedPageLink"
 import { usePathname } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import Translate from "@/components/Translate"
 
 type Props = {
   className?: string
@@ -74,24 +72,23 @@ const NavToggler = ({ className }: Props) => {
       <SheetContent
         side={isRTL ? "right" : "left"}
         showClose={false}
-        className="w-[80%] border-0 h-[100vh] flex flex-col gap-0 divide-y divide-black/10"
+        className={cn(
+          "w-[80%] border-0 h-dvh flex flex-col gap-0 divide-y divide-black/10",
+          className
+        )}
       >
-        <ScrollArea className="h-full">
-          <SheetHeader className="w-full flex-none p-6">
-            <SheetTitle>
-              <MainLogo className="shrink-0" />
-            </SheetTitle>
-            <SheetDescription>
-              <Translate id="home.main_banner.digital_market" />{" "}
-              <Translate id="home.main_banner.digital_market_tagline" />
-            </SheetDescription>
-          </SheetHeader>
-
-          <div className="content flex-auto overflow-hidden">
-            <nav className="">{renderNav(navigation)}</nav>
-            <div className="h-12" />
-          </div>
-        </ScrollArea>
+        <SheetHeader className="w-full shrink-0 p-6">
+          <SheetTitle>
+            <MainLogo className="shrink-0" />
+          </SheetTitle>
+          <SheetDescription className="hidden">
+            dialog descraption
+          </SheetDescription>
+        </SheetHeader>
+        <div className="content flex-1 overflow-y-auto">
+          <nav className="">{renderNav(navigation)}</nav>
+          <div className="h-12" />
+        </div>
       </SheetContent>
     </Sheet>
   )
