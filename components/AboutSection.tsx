@@ -6,7 +6,7 @@ import Section from "@/components/Section"
 import Container from "@/components/Container"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
-import Translate from "@/components/Translate"
+// import Translate from "@/components/Translate"
 import RenderHtml from "@/components/RenderHtml"
 import { AboutUsType } from "@/types.type"
 

@@ -1,5 +1,5 @@
 export enum ROUTES {
-  HOME = "social-media-expert-social-marketing-management",
+  HOME = "social-media-agency-expert-social-marketing-agency-management-agency",
   PORTOFILIO = "namaa-best-digital-marketing",
   ABOUT_US = "about-us",
   CONTACT_US = "contact-us",

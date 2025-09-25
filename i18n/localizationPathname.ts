@@ -4,7 +4,7 @@ const pages = [
   { key: `/${ROUTES.HOME}`, en: `/${ROUTES.HOME}`, ar: "/" },
   {
     key: `/${ROUTES.CONTACT_US}`,
-    en: `/${ROUTES.CONTACT_US}`,
+    en: `/${ROUTES.CONTACT_US}`, 
     ar: "/اتصل-بنا"
   },
   { key: `/${ROUTES.ABOUT_US}`, en: `/${ROUTES.ABOUT_US}`, ar: "/معلومات-عنا" },

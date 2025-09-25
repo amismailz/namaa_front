@@ -9,7 +9,7 @@ export const routing = defineRouting({
   defaultLocale: DEFAULT_LOCALE,
   // localePrefix: "always" // 🔑 ensures /en or /ar stays in URL
   localePrefix: "as-needed",
-  // localeDetection: false,
+  localeDetection: false,
   pathnames: localizationPathname
 })
 
