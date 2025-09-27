@@ -143,19 +143,6 @@ const Footer = ({
     []
   )
 
-  // const importantLinks = useMemo(() => [
-  //   { label: "navbar.website_design", href: `/${ROUTES.WEBSITE_DESIGN}` },
-  //   { label: "navbar.graphic_design", href: `/${ROUTES.GRAPHIC_DESIGN}` },
-  //   { label: "navbar.email_marketing", href: `/${ROUTES.EMAIL_MARTKETING}` },
-  //   { label: "navbar.logo_design", href: `/${ROUTES.LOGO_DESIGN}` },
-  //   { label: "navbar.e_commerce", href: `/${ROUTES.E_COMMERCE}` },
-  //   { label: "navbar.web_host", href: `/${ROUTES.WEB_HOSTING}` },
-  //   {
-  //     label: "navbar.website_development",
-  //     href: `/${ROUTES.WEBSITE_DEVELOPMENT}`
-  //   },
-  //   { label: "navbar.web_multimedia", href: `/${ROUTES.WEB_MULTIMEDIA}` }
-  // ], [])
 
   const legalLinks = useMemo(
     () => [
@@ -198,7 +185,7 @@ const Footer = ({
           <TitleLine heading={<Translate id="footer.important_links" />} />
 
           <ul className="grid grid-cols-2 gap-2 lg:gap-4 font-light">
-            {services.map((item, idx) => (
+            {services?.slice(0,6)?.map((item, idx) => (
               <li key={idx} className="hover:text-primary transition-colors">
                 <Link href={item.href}>
                   <Translate id={item.label} />
