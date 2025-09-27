@@ -26,7 +26,7 @@ const BlogPostWhatsAppButton = ({
   return (
     <Button
       asChild
-      className="flex-1 h-[48px] rounded-xl gap-3"
+      className="flex-1 h-[48px] rounded-xl gap-3" 
       onClick={handleClick}
     >
       <a href={whatsappUrl}>

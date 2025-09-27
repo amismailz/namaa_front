@@ -1,7 +1,6 @@
 import React from "react"
 import AboutSection from "@/components/AboutSection"
 import HeroPage from "@/components/HeroPage"
-import AboutMarketServices from "@/components/AboutMarketServices"
 import { ROUTES } from "@/constants"
 import { getSeoBySlug } from "@/data-layer/common"
 import { Metadata } from "next"
@@ -173,7 +172,6 @@ export default async function AboutUsPage({
 
       <AboutSection className="py-16" data={data} />
 
-      <AboutMarketServices />
     </>
   )
 }

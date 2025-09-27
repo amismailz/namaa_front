@@ -188,7 +188,7 @@ const Footer = ({
             {services?.slice(0,6)?.map((item, idx) => (
               <li key={idx} className="hover:text-primary transition-colors">
                 <Link href={item.href}>
-                  <Translate id={item.label} />
+                  {item.label}
                 </Link>
               </li>
             ))}
