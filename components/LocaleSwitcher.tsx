@@ -1,6 +1,6 @@
 "use client"
 
-import { usePathname, Link, getPathname } from "@/i18n/routing"
+import { usePathname, Link } from "@/i18n/routing"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { LOCALES } from "@/constants"
@@ -40,7 +40,12 @@ export default function LocaleSwitcher() {
         className="flex items-center gap-1 ltr:font-mono"
       >
         <span>{label}</span>
-        <Image src={flag} width={21} height={15} alt={`${targetLocale} language icon`} />
+        <Image
+          src={flag}
+          width={21}
+          height={15}
+          alt={`${targetLocale} language icon`}
+        />
       </Link>
     </Button>
   )

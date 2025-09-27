@@ -2,7 +2,6 @@ import React from "react"
 import Section from "@/components/Section"
 import Container from "@/components/Container"
 import AnimatedLetters from "@/components/AnimatedLetters"
-import AnimatedPageLink from "@/components/AnimatedPageLink"
 import { GoArrowUpRight } from "react-icons/go"
 import { ButtonWithIcon } from "@/components/ui/button-with-icon"
 import { ROUTES } from "@/constants"
@@ -12,6 +11,7 @@ import { BannerItemType } from "@/types.type"
 import Translate from "@/components/Translate"
 import { cn } from "@/lib/utils"
 import RenderHtml from "@/components/RenderHtml"
+import { Link } from "@/i18n/routing"
 
 const HomeBanner = ({
   data,
@@ -46,7 +46,7 @@ const HomeBanner = ({
           <RenderHtml html={data.description} />
 
           <div className="flex items-center gap-6">
-            <AnimatedPageLink href={`/${ROUTES.ABOUT_US}`}>
+            <Link href={`/${ROUTES.ABOUT_US}`}>
               <ButtonWithIcon
                 icon={<GoArrowUpRight className="text-foreground" />}
                 iconClass="bg-background"
@@ -56,9 +56,9 @@ const HomeBanner = ({
                   <Translate id="actions.read_more" />
                 </span>
               </ButtonWithIcon>
-            </AnimatedPageLink>
+            </Link>
 
-            <AnimatedPageLink href={`/${ROUTES.CONTACT_US}`}>
+            <Link href={`/${ROUTES.CONTACT_US}`}>
               <ButtonWithIcon
                 variant="outline"
                 icon={<GoArrowUpRight className="text-background" />}
@@ -69,7 +69,7 @@ const HomeBanner = ({
                   <Translate id="navbar.contact_us" />
                 </span>
               </ButtonWithIcon>
-            </AnimatedPageLink>
+            </Link>
           </div>
 
           <div className="flex w-auto items-center  gap-18">

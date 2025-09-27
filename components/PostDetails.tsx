@@ -1,92 +1,37 @@
 import Container from "@/components/Container"
 import HeroPage from "@/components/HeroPage"
 import Section from "@/components/Section"
-import { getBlogBySlug } from "@/data-layer/blog"
 import Image from "next/image"
-import React, { cache } from "react"
+import React from "react"
 import BlogAside from "@/components/BlogAside"
-// import BlogSearch from "@/components/BlogSearch" 
+// import BlogSearch from "@/components/BlogSearch"
 import { ROUTES } from "@/constants"
-import { Metadata } from "next"
 import Translate from "@/components/Translate"
 import { format } from "date-fns"
-import { ar, enUS } from "date-fns/locale"
 import FaqList from "@/components/FaqList"
-import BlogPostHideLocale from "@/components/BlogPostHideLocale"
 import BlogPostContent from "@/components/BlogPostContent"
 import { JsonLd } from "@/components/JsonLd"
+import { getDateFnsLocale } from "@/lib/date-utils"
+import { BlogItemType } from "@/types.type"
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
-const blogBySlug = cache(getBlogBySlug)
-
-function getDateFnsLocale(locale: string) {
-  switch (locale) {
-    case "ar":
-      return ar
-    case "en":
-    default:
-      return enUS
-  }
-}
-
-export async function generateMetadata({
-  params
+const PostDetails = ({
+  post,
+  popular,
+  currentLocale,
+  baseUrl
 }: {
-  params: Promise<{ blogSlug: string; locale:"ar" | "en" }>
-}): Promise<Metadata> {
-  const { blogSlug } = await params
-  const [{locale}, blogDetail] = await Promise.all([
-    params,
-    blogBySlug(blogSlug)
-  ])
-
-  const { post } = blogDetail
-
-  const url =
-    locale === "en"
-      ? `${BASE_URL}/${locale}/${post.slug}`
-      : `${BASE_URL}/${post.slug}`
-
-  return {
-    title: post.title ?? "Blog title",
-    description: post.short_description ?? "blog description",
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `${BASE_URL}/en/${post.slug}`,
-        ar: `${BASE_URL}/${post.slug}`,
-        "x-default": `${BASE_URL}/${post.slug}`
-      }
-    },
-    openGraph: {
-      url: url // <-- override og:url here
-    },
-    twitter: {
-      site: url // <-- override og:url here
-    }
-  }
-}
-
-export default async function BlogDetailPage({
-  params
-}: {
-  params: Promise<{ blogSlug: string; locale: "ar" | "en" }>
-}) {
-  const { blogSlug } = await params
-
-  const [{ locale }, { post, popular }] = await Promise.all([
-    params,
-    blogBySlug(blogSlug)
-  ])
-
-  const dateFnsLocale = getDateFnsLocale(locale)
+  post: BlogItemType
+  popular: BlogItemType[]
+  currentLocale: "ar" | "en"
+  baseUrl: string
+}) => {
+  const dateFnsLocale = getDateFnsLocale(currentLocale)
 
   const shareLink =
-    locale === "ar"
-      ? `${BASE_URL}/${post.slug}`
-      : `${BASE_URL}/${locale}/${post.slug}`
+    currentLocale === "ar"
+      ? `${baseUrl}/${post.slug}`
+      : `${baseUrl}/${currentLocale}/${post.slug}`
 
-  // ✅ Build JSON-LD Schema dynamically
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -96,14 +41,14 @@ export default async function BlogDetailPage({
     author: {
       "@type": "Person",
       name: "Namaa Agency",
-      url: BASE_URL
+      url: `${baseUrl}`
     },
     publisher: {
       "@type": "Organization",
       name: "Namaa Agency",
       logo: {
         "@type": "ImageObject",
-        url: `${BASE_URL}/NAMAA_LOGO.svg`
+        url: `${baseUrl}/NAMAA_LOGO.svg`
       }
     },
     datePublished: post.published_date,
@@ -116,7 +61,7 @@ export default async function BlogDetailPage({
 
   return (
     <>
-      <BlogPostHideLocale />
+      
 
       <JsonLd schema={schemaData} id="blog-post-schema" />
 
@@ -124,13 +69,12 @@ export default async function BlogDetailPage({
         heading={post.title}
         breadcrumb={[
           { text: <Translate id="navbar.home" />, link: `/${ROUTES.HOME}` },
-          { text: <Translate id="blog.hero_title" />, link: `/${ROUTES.BLOG}` }
+          {
+            text: <Translate id="blog.hero_title" />,
+            link: `/${ROUTES.BLOG}`
+          }
         ]}
       />
-
-      {/* <div className="block lg:hidden py-10">
-        <BlogSearch />
-      </div> */}
 
       <Section className="py-6 relative">
         <Container className="flex flex-col lg:flex-row gap-8">
@@ -178,3 +122,5 @@ export default async function BlogDetailPage({
     </>
   )
 }
+
+export default PostDetails

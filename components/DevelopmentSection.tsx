@@ -6,11 +6,11 @@ import { ButtonWithIcon } from "@/components/ui/button-with-icon"
 import { GoArrowUpRight } from "react-icons/go"
 import Container from "@/components/Container"
 import Section from "@/components/Section"
-import AnimatedPageLink from "@/components/AnimatedPageLink"
 import { cn } from "@/lib/utils"
 import Translate from "@/components/Translate"
 import { WebsiteDesignHome } from "@/types.type"
 import RenderHtml from "@/components/RenderHtml"
+import { Link } from "@/i18n/routing"
 
 const DevelopmentSection = ({
   className,
@@ -41,7 +41,7 @@ const DevelopmentSection = ({
           <RenderHtml html={data.description} />
 
           <div className="flex items-center gap-6">
-            <AnimatedPageLink href="/contact-us">
+            <Link href="/contact-us">
               <ButtonWithIcon
                 asChild
                 icon={<GoArrowUpRight className="text-foreground" />}
@@ -51,7 +51,7 @@ const DevelopmentSection = ({
                   <Translate id="actions.send_message" />
                 </span>
               </ButtonWithIcon>
-            </AnimatedPageLink>
+            </Link>
           </div>
         </motion.div>
       </Container>

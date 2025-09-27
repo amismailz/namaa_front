@@ -4,12 +4,11 @@ import { NextRequest, NextResponse } from "next/server"
 import { DEFAULT_LOCALE } from "@/constants"
 import { getDeviceType } from "@/lib/deviceDetection"
 
-
 // Create next-intl middleware
 const intlMiddleware = createMiddleware({
   ...routing,
-  defaultLocale: DEFAULT_LOCALE,
-}) 
+  defaultLocale: DEFAULT_LOCALE
+})
 
 export async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname

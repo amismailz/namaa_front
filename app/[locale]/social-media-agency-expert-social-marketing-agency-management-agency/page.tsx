@@ -1,27 +1,24 @@
 import type { Metadata } from "next"
 import Container from "@/components/Container"
 import Section from "@/components/Section"
-import Image from "next/image"
 import { GoArrowUpRight } from "react-icons/go"
 import ServicesTabs from "@/components/ServicesTabs"
 import ClientSlider2 from "@/components/CientSlider2"
 import { ButtonWithIcon } from "@/components/ui/button-with-icon"
-import AnimatedLetters from "@/components/AnimatedLetters"
 import AboutSection from "@/components/AboutSection"
 import PortofilioSection from "@/components/PortofilioSection"
 import TitleLine from "@/components/TitleLine"
 import DevelopmentSection from "@/components/DevelopmentSection"
 import { getHome } from "@/data-layer/home"
 import { getSeoBySlug } from "@/data-layer/common"
-import AnimatedPageLink from "@/components/AnimatedPageLink"
 import { ROUTES } from "@/constants"
-import Counter from "@/components/Counter"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
 import { BlogItemType, ProtfolioType } from "@/types.type"
 import BlogList from "@/components/BlogList"
 import { JsonLd } from "@/components/JsonLd"
 import HomeBanner from "@/components/HomeBanner"
+import { Link } from "@/i18n/routing"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -78,6 +75,7 @@ export default async function HomePage({
     banners,
     protfolio,
     blog,
+    aboutUs,
     Website_design_agency_and_web_development,
     services,
     clients
@@ -166,8 +164,8 @@ export default async function HomePage({
 
       <HomeBanner data={banners} className="py-12 lg:py-20 bg-[#F9F9F9]" />
 
-      <AboutSection className="py-12 lg:py-20 bg-background">
-        <AnimatedPageLink href={`/${ROUTES.ABOUT_US}`} className="mb-5 lg:mb-0">
+      <AboutSection data={aboutUs} className="py-12 lg:py-20 bg-background">
+        <Link href={`/${ROUTES.ABOUT_US}`} className="mb-5 lg:mb-0">
           <ButtonWithIcon
             icon={<GoArrowUpRight className="text-foreground" />}
             iconClass="bg-background"
@@ -177,7 +175,7 @@ export default async function HomePage({
               <Translate id="actions.read_more" />
             </span>
           </ButtonWithIcon>
-        </AnimatedPageLink>
+        </Link>
       </AboutSection>
 
       <Section className="py-12 lg:py-16 bg-[#F9F9F9]">
@@ -255,7 +253,7 @@ function BlogAsync({ data }: { data: BlogItemType[] }) {
       <BlogList data={data} />
 
       <div className="mx-auto flex justify-center items-center p-6">
-        <AnimatedPageLink href={`/${ROUTES.BLOG}`}>
+        <Link href={`/${ROUTES.BLOG}`}>
           <ButtonWithIcon
             asChild
             icon={<GoArrowUpRight className="text-foreground" />}
@@ -265,7 +263,7 @@ function BlogAsync({ data }: { data: BlogItemType[] }) {
               <Translate id="actions.more" />
             </span>
           </ButtonWithIcon>
-        </AnimatedPageLink>
+        </Link>
       </div>
     </Section>
   )

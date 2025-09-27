@@ -69,6 +69,11 @@
     "required_goals": "Goal cannot be empty",
     "min_goals": "At least one goal is required"
   },
+  "errors": {
+    "not_found_message": "Service you request is not available",
+    "back_home_action": "back to home",
+    "back_step_action": "go backward"
+  },
   "clients": {
     "tagline": "Meet Our Clients",
     "title": "They Believe In Us"
@@ -92,9 +97,6 @@
     }
   },
   "about_us": {
-    "tagline": "well known for their professionalism",
-    "title": "About Namaa",
-    "short_descraption": "We can begin with establishing or solidifying your brand, continue on through graphic and web design, apply technical proficiency in programming your site and any custom applications, and onward to a long-term partnership.",
     "pragraph1": "We can begin with establishing or solidifying your brand, continue on through graphic and web design, apply technical proficiency in programming your site and any custom applications, and onward to a long-term partnership.",
     "pragraph2": "We work with you to effectively promote your products and services to your target audience and facilitate the user’s experience. We are committed to our customers in the development and improvement of their brand.",
     "about_marketing": {

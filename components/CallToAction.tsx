@@ -7,9 +7,9 @@ import Section from "@/components/Section"
 import { GoArrowUpRight } from "react-icons/go"
 import { ButtonWithIcon } from "@/components/ui/button-with-icon"
 import { motion } from "framer-motion"
-import AnimatedPageLink from "@/components/AnimatedPageLink"
 import { ROUTES } from "@/constants"
 import Translate from "@/components/Translate"
+import { Link } from "@/i18n/routing"
 
 const CallToAction = () => {
   return (
@@ -64,7 +64,7 @@ const CallToAction = () => {
             </p>
           </div>
 
-          <AnimatedPageLink href={`/${ROUTES.CONTACT_US}`}>
+          <Link href={`/${ROUTES.CONTACT_US}`}>
             <ButtonWithIcon
               asChild
               variant="outline"
@@ -76,7 +76,7 @@ const CallToAction = () => {
                 <Translate id="actions.contact_us" />
               </span>
             </ButtonWithIcon>
-          </AnimatedPageLink>
+          </Link>
         </motion.div>
       </Container>
     </Section>

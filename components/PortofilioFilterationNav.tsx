@@ -2,7 +2,8 @@
 
 import { cn } from "@/lib/utils"
 import { Loader, X } from "lucide-react"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation"
+import { useRouter } from "@/i18n/routing"
 import React, { useCallback, useTransition } from "react"
 import { Button } from "@/components/ui/button"
 import {

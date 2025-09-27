@@ -5,6 +5,7 @@ export const revalidate = 86400 // revalidate at most every 1 day
 export async function GET() {
   const sitemaps = [
     `<sitemap><loc>${BASE_URL}/page-sitemap.xml</loc><lastmod>${new Date().toISOString()}</lastmod></sitemap>`,
+    `<sitemap><loc>${BASE_URL}/services-sitemap.xml</loc><lastmod>${new Date().toISOString()}</lastmod></sitemap>`,
     `<sitemap><loc>${BASE_URL}/post-sitemap.xml</loc><lastmod>${new Date().toISOString()}</lastmod></sitemap>`
   ].join("")
 

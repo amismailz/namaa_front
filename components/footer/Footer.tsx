@@ -13,145 +13,158 @@ import { Link } from "@/i18n/routing"
 import { ROUTES } from "@/constants"
 import Translate from "@/components/Translate"
 import { useMemo } from "react"
+import { NavItem } from "@/lib/data"
 
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY!
 const placeId = process.env.NEXT_PUBLIC_GOOGLE_MAPS_PLACE_ID!
 
-const Footer = ({ data }: { data: ContactInfoData }) => {
+const Footer = ({
+  data,
+  services
+}: {
+  data: ContactInfoData
+  services: NavItem[]
+}) => {
   const locale = useLocale()
   const zoom = 18
 
-  const contactItems = useMemo(() => [
-    {
-      icon: <SlLocationPin className="text-primary size-4" />,
-      label: (
-        <a
-          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-            data?.address?.[locale as keyof typeof data.address] || ""
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
-          {data?.address?.[locale as keyof typeof data.address]}
-        </a>
-      )
-    },
-    {
-      icon: <BsTelephone className="text-primary size-4" />,
-      label: (
-        <>
-          <Translate id="navbar.phone" />
-          :&nbsp;
-          {data?.landline_1 ? (
-            <span dir="ltr" className="hover:underline">
-              {data.landline_1}
-            </span>
-          ) : null}
-          &nbsp;/&nbsp;
-          {data?.landline_2 ? (
-            <span dir="ltr" className="hover:underline">
-              {data.landline_2}
-            </span>
-          ) : null}
-          &nbsp;
-        </>
-      )
-    },
-    {
-      icon: <BsSignpost className="text-primary size-4" />,
-      label: (
-        <>
-          <Translate id="navbar.post_code" />: {data?.postal_code ?? "-"}
-        </>
-      )
-    },
-    {
-      icon: <IoMdPhonePortrait className="text-primary size-4" />,
-      label: (
-        <>
-          <Translate id="navbar.tax_id" />: ${data?.tax_id ?? "-"}
-        </>
-      )
-    },
-    {
-      icon: <IoMdPhonePortrait className="text-primary size-4" />,
-      label: (
-        <>
-          <Translate id="navbar.cell_phone" />
-          :&nbsp;
-          {data?.phone1 ? (
-            <a
-              href={`tel:${data.phone1}`}
-              target="_blank"
-              dir="ltr"
-              rel="noopener noreferrer nofollow"
-              className="hover:underline"
-            >
-              {data.phone1}
-            </a>
-          ) : (
-            "-"
-          )}
-          &nbsp;/&nbsp;
-          {data?.phone2 ? (
-            <a
-              href={`tel:${data.phone2}`}
-              target="_blank"
-              dir="ltr"
-              rel="noopener noreferrer nofollow"
-              className="hover:underline"
-            >
-              {data.phone2}
-            </a>
-          ) : (
-            "-"
-          )}
-          &nbsp;
-        </>
-      )
-    },
-    {
-      icon: <GoMail className="text-primary size-4" />,
-      label: (
-        <>
-          <Translate id="navbar.email" />:{" "}
-          {data?.email ? (
-            <a
-              href={`mailto:${data.email}`}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="hover:underline"
-            >
-              {data.email}
-            </a>
-          ) : (
-            "-"
-          )}
-        </>
-      )
-    }
-  ], [])
+  const contactItems = useMemo(
+    () => [
+      {
+        icon: <SlLocationPin className="text-primary size-4" />,
+        label: (
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+              data?.address?.[locale as keyof typeof data.address] || ""
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            {data?.address?.[locale as keyof typeof data.address]}
+          </a>
+        )
+      },
+      {
+        icon: <BsTelephone className="text-primary size-4" />,
+        label: (
+          <>
+            <Translate id="navbar.phone" />
+            :&nbsp;
+            {data?.landline_1 ? (
+              <span dir="ltr" className="hover:underline">
+                {data.landline_1}
+              </span>
+            ) : null}
+            &nbsp;/&nbsp;
+            {data?.landline_2 ? (
+              <span dir="ltr" className="hover:underline">
+                {data.landline_2}
+              </span>
+            ) : null}
+            &nbsp;
+          </>
+        )
+      },
+      {
+        icon: <BsSignpost className="text-primary size-4" />,
+        label: (
+          <>
+            <Translate id="navbar.post_code" />: {data?.postal_code ?? "-"}
+          </>
+        )
+      },
+      {
+        icon: <IoMdPhonePortrait className="text-primary size-4" />,
+        label: (
+          <>
+            <Translate id="navbar.tax_id" />: ${data?.tax_id ?? "-"}
+          </>
+        )
+      },
+      {
+        icon: <IoMdPhonePortrait className="text-primary size-4" />,
+        label: (
+          <>
+            <Translate id="navbar.cell_phone" />
+            :&nbsp;
+            {data?.phone1 ? (
+              <a
+                href={`tel:${data.phone1}`}
+                target="_blank"
+                dir="ltr"
+                rel="noopener noreferrer nofollow"
+                className="hover:underline"
+              >
+                {data.phone1}
+              </a>
+            ) : (
+              "-"
+            )}
+            &nbsp;/&nbsp;
+            {data?.phone2 ? (
+              <a
+                href={`tel:${data.phone2}`}
+                target="_blank"
+                dir="ltr"
+                rel="noopener noreferrer nofollow"
+                className="hover:underline"
+              >
+                {data.phone2}
+              </a>
+            ) : (
+              "-"
+            )}
+            &nbsp;
+          </>
+        )
+      },
+      {
+        icon: <GoMail className="text-primary size-4" />,
+        label: (
+          <>
+            <Translate id="navbar.email" />:{" "}
+            {data?.email ? (
+              <a
+                href={`mailto:${data.email}`}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="hover:underline"
+              >
+                {data.email}
+              </a>
+            ) : (
+              "-"
+            )}
+          </>
+        )
+      }
+    ],
+    []
+  )
 
-  const importantLinks = useMemo(() => [
-    { label: "navbar.website_design", href: `/${ROUTES.WEBSITE_DESIGN}` },
-    { label: "navbar.graphic_design", href: `/${ROUTES.GRAPHIC_DESIGN}` },
-    { label: "navbar.email_marketing", href: `/${ROUTES.EMAIL_MARTKETING}` },
-    { label: "navbar.logo_design", href: `/${ROUTES.LOGO_DESIGN}` },
-    { label: "navbar.e_commerce", href: `/${ROUTES.E_COMMERCE}` },
-    { label: "navbar.web_host", href: `/${ROUTES.WEB_HOSTING}` },
-    {
-      label: "navbar.website_development",
-      href: `/${ROUTES.WEBSITE_DEVELOPMENT}`
-    },
-    { label: "navbar.web_multimedia", href: `/${ROUTES.WEB_MULTIMEDIA}` }
-  ], [])
+  // const importantLinks = useMemo(() => [
+  //   { label: "navbar.website_design", href: `/${ROUTES.WEBSITE_DESIGN}` },
+  //   { label: "navbar.graphic_design", href: `/${ROUTES.GRAPHIC_DESIGN}` },
+  //   { label: "navbar.email_marketing", href: `/${ROUTES.EMAIL_MARTKETING}` },
+  //   { label: "navbar.logo_design", href: `/${ROUTES.LOGO_DESIGN}` },
+  //   { label: "navbar.e_commerce", href: `/${ROUTES.E_COMMERCE}` },
+  //   { label: "navbar.web_host", href: `/${ROUTES.WEB_HOSTING}` },
+  //   {
+  //     label: "navbar.website_development",
+  //     href: `/${ROUTES.WEBSITE_DEVELOPMENT}`
+  //   },
+  //   { label: "navbar.web_multimedia", href: `/${ROUTES.WEB_MULTIMEDIA}` }
+  // ], [])
 
-  const legalLinks = useMemo(() => [
-    { href: `/${ROUTES.LEGAL}`, label: "navbar.legal_disclaimers" },
-    { href: `/${ROUTES.PRIVACY}`, label: "navbar.privacy_policy" },
-    { href: `/${ROUTES.TERMS}`, label: "navbar.terms" }
-  ], [])
+  const legalLinks = useMemo(
+    () => [
+      { href: `/${ROUTES.LEGAL}`, label: "navbar.legal_disclaimers" },
+      { href: `/${ROUTES.PRIVACY}`, label: "navbar.privacy_policy" },
+      { href: `/${ROUTES.TERMS}`, label: "navbar.terms" }
+    ],
+    []
+  )
 
   return (
     <Container className="">
@@ -185,7 +198,7 @@ const Footer = ({ data }: { data: ContactInfoData }) => {
           <TitleLine heading={<Translate id="footer.important_links" />} />
 
           <ul className="grid grid-cols-2 gap-2 lg:gap-4 font-light">
-            {importantLinks.map((item, idx) => (
+            {services.map((item, idx) => (
               <li key={idx} className="hover:text-primary transition-colors">
                 <Link href={item.href}>
                   <Translate id={item.label} />

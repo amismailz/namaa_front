@@ -26,10 +26,8 @@ const LoadingBlogSlug = () => {
       </Section>
 
       <Section className="py-6">
-        <Container className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <article className="col-span-1 lg:col-span-2 space-y-6">
-            <Skeleton className="w-full aspect-video rounded-xl" />
-
+        <Container className="max-w-6xl mx-auto">
+          <article className="w-full space-y-6">
             <div className="space-y-6">
               {Array.from({ length: 12 }).map((_, idx) => {
                 const randomW =
@@ -45,12 +43,6 @@ const LoadingBlogSlug = () => {
               })}
             </div>
           </article>
-
-          <aside className="col-span-1 space-y-6">
-            <Skeleton className="w-full h-52 rounded-xl" />
-            <Skeleton className="w-full h-40 rounded-xl" />
-            <Skeleton className="w-full h-52 rounded-xl" />
-          </aside>
         </Container>
       </Section>
     </>

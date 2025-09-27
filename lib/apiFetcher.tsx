@@ -16,13 +16,6 @@ export class ApiError extends Error {
   }
 }
 
-export class RedirectToHomeError extends Error {
-  constructor() {
-    super("Redirect to home")
-    this.name = "RedirectToHomeError"
-  }
-}
-
 type FetchOptions<TBody = unknown> = {
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
   body?: TBody
@@ -99,11 +92,7 @@ export async function apiFetch<TResponse, TBody = unknown>(
 
     if (error instanceof ApiError) {
       if (error.status === 404) {
-        if (endpoint.startsWith("/offices")) {
-          throw new RedirectToHomeError()
-        } else {
-          notFound()
-        }
+        notFound()
       } else if (error.status === 401) {
         throw new Error("Unauthorized access.")
       } else {

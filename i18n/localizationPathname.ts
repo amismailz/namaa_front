@@ -4,7 +4,7 @@ const pages = [
   { key: `/${ROUTES.HOME}`, en: `/${ROUTES.HOME}`, ar: "/" },
   {
     key: `/${ROUTES.CONTACT_US}`,
-    en: `/${ROUTES.CONTACT_US}`, 
+    en: `/${ROUTES.CONTACT_US}`,
     ar: "/اتصل-بنا"
   },
   { key: `/${ROUTES.ABOUT_US}`, en: `/${ROUTES.ABOUT_US}`, ar: "/معلومات-عنا" },
@@ -26,56 +26,7 @@ const pages = [
   },
   { key: `/${ROUTES.JOB}`, en: `/${ROUTES.JOB}`, ar: "/توظيف-namaa" },
   { key: `/${ROUTES.SERVICES}`, en: `/${ROUTES.SERVICES}`, ar: "/خدمات" },
-  {
-    key: `/${ROUTES.ENSIGN_SERVICES}`,
-    en: `/${ROUTES.ENSIGN_SERVICES}`,
-    ar: "/خدمات-namaa"
-  },
-  {
-    key: `/${ROUTES.SOCIAL_MEDIA}`,
-    en: `/${ROUTES.SOCIAL_MEDIA}`,
-    ar: "/وسائل-التواصل-الاجتماعي"
-  },
-  {
-    key: `/${ROUTES.WEBSITE_DESIGN}`,
-    en: `/${ROUTES.WEBSITE_DESIGN}`,
-    ar: "/تصميم-الموقع"
-  },
-  {
-    key: `/${ROUTES.GRAPHIC_DESIGN}`,
-    en: `/${ROUTES.GRAPHIC_DESIGN}`,
-    ar: "/التصميم-الجرافيك"
-  },
-  {
-    key: `/${ROUTES.LOGO_DESIGN}`,
-    en: `/${ROUTES.LOGO_DESIGN}`,
-    ar: "/تصميم-شعار"
-  },
-  {
-    key: `/${ROUTES.WEBSITE_DEVELOPMENT}`,
-    en: `/${ROUTES.WEBSITE_DEVELOPMENT}`,
-    ar: "/تطوير-الموقع"
-  },
-  {
-    key: `/${ROUTES.WEB_HOSTING}`,
-    en: `/${ROUTES.WEB_HOSTING}`,
-    ar: "/استضافة-الموقع"
-  },
-  {
-    key: `/${ROUTES.WEB_MULTIMEDIA}`,
-    en: `/${ROUTES.WEB_MULTIMEDIA}`,
-    ar: "/ويب-الوسائط-المتعددة"
-  },
-  {
-    key: `/${ROUTES.E_COMMERCE}`,
-    en: `/${ROUTES.E_COMMERCE}`,
-    ar: "/التجارة-الإلكترونية"
-  },
-  {
-    key: `/${ROUTES.EMAIL_MARTKETING}`,
-    en: `/${ROUTES.EMAIL_MARTKETING}`,
-    ar: "/التسويق-عبر-البريد-الإلكتروني"
-  },
+
   // terms
   {
     key: `/${ROUTES.LEGAL}`,

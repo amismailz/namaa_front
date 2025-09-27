@@ -9,11 +9,10 @@ import { ButtonWithIcon } from "@/components/ui/button-with-icon"
 import ServiceRequestDialog from "@/components/ServiceRequestDialog"
 import ServiceWhatsAppButton from "@/components/ServiceWhatsAppButton"
 import { Button } from "./ui/button"
-import { ROUTES } from "@/constants"
-import AnimatedPageLink from "@/components/AnimatedPageLink"
 import Translate from "@/components/Translate"
 import { ServiceItemType } from "@/types.type"
 import RenderHtml from "./RenderHtml"
+import { Link } from "@/i18n/routing"
 
 type TabConfig = {
   value: string
@@ -33,44 +32,46 @@ function TabContent({
   description,
   showMore,
   seeMoreLink,
-  url
+  url,
+  image
 }: {
   heading: string
   description: string
   showMore?: boolean
   seeMoreLink?: string
   url?: string
+  image?: string
 }) {
   return (
     <div className="py-2 w-full flex flex-col gap-6 lg:items-center lg:gap-0 lg:grid lg:grid-cols-[1fr_1.5fr]">
-      <div className="flex  flex-col justify-center">
-        <h3 className="block lg:hidden mb-6 text-3xl lg:text-4xl font-semibold">
-          {/* <Translate id={heading} /> */}
-          {heading}
-        </h3>
-        <Image
-          src="/media_tab_content.svg"
-          width={500}
-          height={500}
-          alt={`${heading} icon`}
-          className="w-[70%] h-auto bounce-animation"
-        />
-      </div>
+      {image ? (
+        <div className="flex  flex-col justify-center">
+          <h3 className="block lg:hidden mb-6 text-3xl lg:text-4xl font-semibold">
+            {heading}
+          </h3>
+          <Image
+            src={image}
+            width={500}
+            height={500}
+            alt={`${heading} icon`}
+            className="w-[70%] h-auto bounce-animation"
+          />
+        </div>
+      ) : (
+        <div />
+      )}
       <div className="space-y-7">
         <h3 className="hidden lg:block mt-3 text-4xl font-semibold">
-          {/* <Translate id={heading} /> */}
           {heading}
         </h3>
-        {/* <p className="text-md font-light leading-8"> */}
-          {/* <Translate id={description} /> */}
-          <RenderHtml html={description} />
-        {/* </p> */}
+
+        <RenderHtml html={description} />
 
         <div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-2 lg:gap-4 mt-2">
           <ServiceRequestDialog />
 
           {showMore && seeMoreLink && (
-            <AnimatedPageLink href={seeMoreLink}>
+            <Link href={seeMoreLink}>
               <ButtonWithIcon
                 asChild
                 className="bg-black hover:bg-black"
@@ -81,7 +82,7 @@ function TabContent({
                   <Translate id="actions.read_more" />
                 </span>
               </ButtonWithIcon>
-            </AnimatedPageLink>
+            </Link>
           )}
 
           <div className="flex items-center col-span-2 lg:col-span-1 justify-center lg:justify-start mt-5 lg:mt-0 w-full lg:w-auto gap-4">
@@ -148,7 +149,6 @@ const TabTrigger = memo(function TabTrigger({
           labelClass
         )}
       >
-        {/* <Translate id={label} /> */}
         {label}
       </span>
     </TabsTrigger>
@@ -162,7 +162,12 @@ const ServicesTabs = memo(function ServicesTabs({
   data: ServiceItemType[]
   showMore?: boolean
 }) {
-  const colors = ["bg-[#F0FFFC]", "bg-[#F5F5F5]", "bg-[#FEEFF4]", "bg-[#EDFDFF]"]
+  const colors = [
+    "bg-[#F0FFFC]",
+    "bg-[#F5F5F5]",
+    "bg-[#FEEFF4]",
+    "bg-[#EDFDFF]"
+  ]
 
   const tabsNew = useMemo(() => {
     return data.map((item) => ({
@@ -171,74 +176,17 @@ const ServicesTabs = memo(function ServicesTabs({
       url: `/${item.slug}`,
       label: item.title,
       description: item.description,
+      image: item.image,
       mainImage: item.image,
       icon: item.icon
     }))
   }, [])
 
-  // const tabs = useMemo<TabConfig[]>(
-  //   () => [
-  //     {
-  //       value: "social",
-  //       url: `/${ROUTES.SOCIAL_MEDIA}`,
-  //       label: "navbar.social_media",
-  //       icon: "/tabs-icons/XMLID_1749_.svg",
-  //       bg: "bg-[#F0FFFC]",
-  //       alt: "social media icon",
-  //       labelClass: "capitalize",
-  //       description: "services.social_short_content",
-  //       seeMoreLink: `/${ROUTES.SOCIAL_MEDIA}`
-  //     },
-  //     {
-  //       value: "seo",
-  //       url: `/${ROUTES.SERVICES}`,
-  //       label: "navbar.seo",
-  //       icon: "/tabs-icons/seo_856378 1.svg",
-  //       bg: "bg-[#F5F5F5]",
-  //       alt: "seo icon",
-  //       labelClass: "uppercase",
-  //       description: "services.seo_short_content"
-  //       // seeMoreLink: "/request"
-  //     },
-  //     {
-  //       value: "design",
-  //       url: `/${ROUTES.GRAPHIC_DESIGN}`,
-  //       label: "navbar.professional_design",
-  //       icon: "/tabs-icons/design_10326057 1.svg",
-  //       bg: "bg-[#F0FFFC]",
-  //       alt: "design icon",
-  //       labelClass: "capitalize",
-  //       description: "services.professional_short_content",
-  //       seeMoreLink: `/${ROUTES.GRAPHIC_DESIGN}`
-  //     },
-  //     {
-  //       value: "html_css",
-  //       url: `/${ROUTES.WEBSITE_DEVELOPMENT}`,
-  //       label: "navbar.html_css",
-  //       icon: "/tabs-icons/programming-languages_17638400 1.svg",
-  //       bg: "bg-[#FEEFF4]",
-  //       alt: "html icon",
-  //       labelClass: "uppercase",
-  //       description: "services.html_css_short_content",
-  //       seeMoreLink: `/${ROUTES.WEBSITE_DEVELOPMENT}`
-  //     },
-  //     {
-  //       value: "website-design",
-  //       url: `/${ROUTES.WEBSITE_DESIGN}`,
-  //       label: "navbar.web_design",
-  //       icon: "/tabs-icons/web_14138721 1.svg",
-  //       bg: "bg-[#EDFDFF]",
-  //       alt: "web icon",
-  //       labelClass: "capitalize",
-  //       description: "services.web_design_short_content",
-  //       seeMoreLink: `/${ROUTES.WEBSITE_DESIGN}`
-  //     }
-  //   ],
-  //   []
-  // )
-
   return (
-    <Tabs defaultValue={tabsNew[0].value} className="w-full flex flex-col gap-6">
+    <Tabs
+      defaultValue={tabsNew[0].value}
+      className="w-full flex flex-col gap-6"
+    >
       {/* Tab Triggers */}
       <TabsList
         className={cn(
@@ -252,11 +200,12 @@ const ServicesTabs = memo(function ServicesTabs({
       </TabsList>
 
       {/* Tab Content */}
-      {tabsNew.map(({ description, value, url, label }) => (
+      {tabsNew.map(({ description, image, value, url, label }) => (
         <TabsContent key={value} value={value} className="py-2">
           <TabContent
             heading={label}
             url={url}
+            image={image}
             description={description}
             showMore={showMore}
             seeMoreLink={url}

@@ -4,12 +4,12 @@ import React from "react"
 import { motion } from "framer-motion"
 import { ButtonWithIcon } from "@/components/ui/button-with-icon"
 import { GoArrowUpRight } from "react-icons/go"
-import AnimatedPageLink from "@/components/AnimatedPageLink"
 import Image from "next/image"
 import Section from "@/components/Section"
 import Container from "@/components/Container"
 import { ROUTES } from "@/constants"
 import Translate from "@/components/Translate"
+import { Link } from "@/i18n/routing"
 
 const ServicesCallToAction = () => {
   return (
@@ -67,7 +67,7 @@ const ServicesCallToAction = () => {
             </p>
           </div>
 
-          <AnimatedPageLink href={`/${ROUTES.PORTOFILIO}`}>
+          <Link href={`/${ROUTES.PORTOFILIO}`}>
             <ButtonWithIcon
               asChild
               variant="outline"
@@ -79,7 +79,7 @@ const ServicesCallToAction = () => {
                 <Translate id="call_to_action2.action_button" />
               </span>
             </ButtonWithIcon>
-          </AnimatedPageLink>
+          </Link>
         </motion.div>
       </Container>
     </Section>

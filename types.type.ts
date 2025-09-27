@@ -32,6 +32,8 @@ export interface ServiceItemType {
   slug: string
   title: string
   description: string
+  meta_title: string
+  meta_description: string 
   icon: string
   image: string
   created_at: string
@@ -54,11 +56,15 @@ export interface ClientItemType {
   created_at: string
 }
 
+
 export interface HomeResponseType {
   status: "success" | "error"
   text: string
   msg_data: {
     protfolio: ProtfolioType[]
+
+    aboutUs: AboutUsType
+
     blog: BlogItemType[]
     banners: BannerItemType
     services: ServiceItemType[]
@@ -256,4 +262,23 @@ export interface AboutUsReponse {
   status: "success" | 'error'
   text: string 
   msg_data: AboutUsType[]
+}
+
+
+export interface DynamicSlugResponse {
+  status: "success" | "error"
+  text: string
+  msg_data: {
+    type: "service" | "blog"
+    blog: BlogItemType
+    popular_blogs: BlogItemType[]
+    service: ServiceItemType
+  }
+}
+
+
+export type NavigationResp = {
+  status: "error" | "success"
+  text: string
+  msg_data: { title: string; slug: string }[]
 }

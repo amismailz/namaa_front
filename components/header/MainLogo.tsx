@@ -7,10 +7,7 @@ import { Link } from "@/i18n/routing"
 const MainLogo = ({ className }: { className?: string }) => {
   return (
     <div className={cn("", className)}>
-      <Link
-        href={`/${ROUTES.HOME}`}
-        className="block py-2 relative "
-      >
+      <Link href={`/${ROUTES.HOME}`} className="block py-2 relative ">
         <Image
           src="/NAMAA_LOGO.svg"
           alt="Namaa logo"

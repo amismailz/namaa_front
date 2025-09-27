@@ -5,9 +5,9 @@ import { DEFAULT_LOCALE, LOCALES } from "@/constants"
 import {localizationPathname} from "@/i18n/localizationPathname"
 
 export const routing = defineRouting({
-  locales: [LOCALES.EN, LOCALES.AR],
+  locales: [LOCALES.AR, LOCALES.EN],
   defaultLocale: DEFAULT_LOCALE,
-  // localePrefix: "always" // 🔑 ensures /en or /ar stays in URL
+  // localePrefix: "always", // 🔑 ensures /en or /ar stays in URL
   localePrefix: "as-needed",
   localeDetection: false,
   pathnames: localizationPathname

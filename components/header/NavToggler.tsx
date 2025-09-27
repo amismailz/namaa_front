@@ -12,16 +12,16 @@ import {
 import BurgerButton from "@/components/header/BurgerButton"
 import MainLogo from "@/components/header/MainLogo"
 import { useLocale, useTranslations } from "next-intl"
-import { navigation } from "@/lib/data"
-import AnimatedPageLink from "@/components/AnimatedPageLink"
-import { usePathname } from "@/i18n/routing"
+import { NavItem } from "@/lib/data"
+import { Link, usePathname } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
 
 type Props = {
   className?: string
+  navigation: NavItem[]
 }
 
-const NavToggler = ({ className }: Props) => {
+const NavToggler = ({ className, navigation }: Props) => {
   const pathname = usePathname()
   const t = useTranslations()
   const locale = useLocale()
@@ -30,14 +30,13 @@ const NavToggler = ({ className }: Props) => {
 
   // recursive renderer
   const renderNav = (items: typeof navigation, level = 0) => {
-    return items.map(({ label, href, children }, index) => {
+    return items.map(({ label, href, localed, children }, index) => {
       const isActive = href === pathname
 
       return (
         <div key={index} className="w-full">
-          <AnimatedPageLink
-            label={`. ${t(label)}`}
-            onClicked={() => setOpen(false)}
+          <Link
+            onClick={() => setOpen(false)}
             href={href}
             className={cn(
               "block py-2 px-6 truncate transition-colors",
@@ -48,7 +47,9 @@ const NavToggler = ({ className }: Props) => {
                 : "text-foreground font-light",
               level > 0 && `pl-${level * 6}` // indent children
             )}
-          />
+          >
+            {localed ? `. ${t(label)}` : `. ${label}`}
+          </Link>
 
           {children && children.length > 0 && (
             <div className="flex flex-col ltr:ml-3">

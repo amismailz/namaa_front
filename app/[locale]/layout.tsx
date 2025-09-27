@@ -9,7 +9,7 @@ import { Direction } from "@/providers/DirectionProvider"
 import AnimateRoutes from "@/components/AnimateRoutes"
 import { ViewTransitions } from "next-view-transitions"
 import PageWrapper from "@/components/PageWrapper"
-import { getContactInfo } from "@/data-layer/common"
+import { getContactInfo, getServersNavigation } from "@/data-layer/common"
 import { Toaster } from "@/components/ui/sonner"
 import NextTopLoader from "nextjs-toploader"
 import { ROUTES } from "@/constants"
@@ -39,7 +39,6 @@ const IBMPlexSansArabic = IBM_Plex_Sans_Arabic({
   weight: ["400", "500", "600"],
   display: "swap" // Avoid layout shift
 })
-
 
 export const viewport = {
   width: "device-width", // Keeps width responsive
@@ -160,7 +159,7 @@ type Props = {
 
 export default async function RootLayout({ children, params }: Props) {
   const { locale } = await params
-  const data = await getContactInfo()
+  const [data, servicesChildren] = await Promise.all([getContactInfo(), getServersNavigation()])
   const isArabic = locale === "ar"
   const dir = locale === "ar" ? "rtl" : "ltr"
 
@@ -213,7 +212,7 @@ export default async function RootLayout({ children, params }: Props) {
               <LocaleSwitcherProvider>
                 <Direction direction={dir}>
                   <PageWrapper>
-                    <Navbar data={data} />
+                    <Navbar data={data} services={servicesChildren} />
                     <main className="min-h-[400px]">
                       <AnimateRoutes>
                         <ScrollToTop />
@@ -221,7 +220,7 @@ export default async function RootLayout({ children, params }: Props) {
                       </AnimateRoutes>
                     </main>
                     <CallToAction />
-                    <Footer data={data} />
+                    <Footer data={data} services={servicesChildren} />
                   </PageWrapper>
                   <Toaster position="bottom-center" />
                 </Direction>

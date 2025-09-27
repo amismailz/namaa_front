@@ -7,12 +7,12 @@ import Container from "@/components/Container"
 import { ButtonWithIcon } from "@/components/ui/button-with-icon"
 import { GoArrowUpRight } from "react-icons/go"
 import { ProtfolioType } from "@/types.type"
-import AnimatedPageLink from "@/components/AnimatedPageLink"
 import { cn } from "@/lib/utils"
 import { motion, Variants } from "framer-motion"
 import PortofilioLightBox from "@/components/PortofilioLightBox"
 import { ROUTES } from "@/constants"
 import Translate from "@/components/Translate"
+import { Link } from "@/i18n/routing"
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -85,7 +85,7 @@ const PortofilioSection = ({
           </motion.div>
 
           <div className="mx-auto flex justify-center items-center p-6">
-            <AnimatedPageLink href={`/${ROUTES.PORTOFILIO}`}>
+            <Link href={`/${ROUTES.PORTOFILIO}`}>
               <ButtonWithIcon
                 asChild
                 icon={<GoArrowUpRight className="text-foreground" />}
@@ -95,7 +95,7 @@ const PortofilioSection = ({
                   <Translate id="actions.more" />
                 </span>
               </ButtonWithIcon>
-            </AnimatedPageLink>
+            </Link>
           </div>
         </Container>
       </Section>
