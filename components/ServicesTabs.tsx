@@ -13,6 +13,7 @@ import Translate from "@/components/Translate"
 import { ServiceItemType } from "@/types.type"
 import RenderHtml from "./RenderHtml"
 import { Link } from "@/i18n/routing"
+import { useLocale } from "next-intl"
 
 type TabConfig = {
   value: string
@@ -21,7 +22,6 @@ type TabConfig = {
   bg: string
   labelClass?: string
   description: string
-  seeMoreLink?: string
   url?: string
   // content: React.ReactNode
 }
@@ -31,17 +31,16 @@ function TabContent({
   heading,
   description,
   showMore,
-  seeMoreLink,
   url,
   image
 }: {
   heading: string
   description: string
   showMore?: boolean
-  seeMoreLink?: string
   url?: string
   image?: string
 }) {
+  const locale = useLocale()
   return (
     <div className="py-2 w-full flex flex-col gap-6 lg:items-center lg:gap-0 lg:grid lg:grid-cols-[1fr_1.5fr]">
       {image ? (
@@ -68,10 +67,12 @@ function TabContent({
         <RenderHtml html={description} />
 
         <div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-2 lg:gap-4 mt-2">
-          <ServiceRequestDialog />
+          {url ? <ServiceRequestDialog
+            slug={locale === "ar" ? url : `/en${url}`}
+          /> : null}
 
-          {showMore && seeMoreLink && (
-            <Link href={seeMoreLink}>
+          {showMore && url && (
+            <Link href={url}>
               <ButtonWithIcon
                 asChild
                 className="bg-black hover:bg-black"
@@ -208,7 +209,6 @@ const ServicesTabs = memo(function ServicesTabs({
             image={image}
             description={description}
             showMore={showMore}
-            seeMoreLink={url}
           />
         </TabsContent>
       ))}

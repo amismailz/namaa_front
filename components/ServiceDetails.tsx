@@ -10,6 +10,7 @@ import Image from "next/image"
 import ServiceRequestDialog from "@/components/ServiceRequestDialog"
 import ServiceWhatsAppButton from "@/components/ServiceWhatsAppButton"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/JsonLd"
 
 const ServiceDetails = ({
   data,
@@ -20,8 +21,40 @@ const ServiceDetails = ({
   currentLocale: "ar" | "en"
   baseUrl: string
 }) => {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    headline: data?.meta_title,
+    description: data?.meta_description,
+    image: [data.image],
+    author: {
+      "@type": "Person",
+      name: currentLocale === "en" ? "Namaa Agency" : "نماء",
+      url: `${baseUrl}`
+    },
+    publisher: {
+      "@type": "Organization",
+      name: currentLocale === "en" ? "Namaa Agency" : "نماء",
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/NAMAA_LOGO.svg`
+      }
+    },
+    datePublished: data?.created_at,
+    dateModified: data?.created_at,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id":
+        currentLocale === "en"
+          ? `${baseUrl}/en/${data.slug}`
+          : `${baseUrl}/${data.slug}`
+    }
+  }
+
   return (
     <>
+      <JsonLd schema={schemaData} id="service-schema" />
+
       <HeroPage
         heading={data.title}
         breadcrumb={[
@@ -56,7 +89,7 @@ const ServiceDetails = ({
       <Section className="pb-10">
         <Container>
           <div className="flex items-center justify-center gap-3">
-            <ServiceRequestDialog />
+            <ServiceRequestDialog slug={currentLocale === "ar" ?  `/${data.slug}` : `/${currentLocale}/${data.slug}`} />
             <ServiceWhatsAppButton currentUrl={`/${data.slug}`} />
             <Button variant="link" size="icon" asChild>
               <a href="tel:966544175137" target="_blank" rel="follow">

@@ -1,7 +1,6 @@
 "use client"
 
-
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import {
   Dialog,
   DialogContent,
@@ -12,23 +11,33 @@ import {
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import ServiceRequestForm from "@/components/ServiceRequestForm"
-import { ButtonWithIcon } from '@/components/ui/button-with-icon'
-import { GoArrowUpRight } from 'react-icons/go'
-import { cn } from '@/lib/utils'
-import Translate from '@/components/Translate'
+import { ButtonWithIcon } from "@/components/ui/button-with-icon"
+import { GoArrowUpRight } from "react-icons/go"
+import { cn } from "@/lib/utils"
+import Translate from "@/components/Translate"
 
-const ServiceRequestDialog = () => {
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+
+const ServiceRequestDialog = ({ slug }: { slug: string; }) => {
   const [open, setOpen] = useState(false)
+
+  const handleOpen = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault()
+    setOpen(true)
+  }
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <ButtonWithIcon
-          icon={<GoArrowUpRight className="text-foreground" />}
-          iconClass="bg-background"
-          className="bg-primary-green hover:bg-primary-green/90"
-        >
-          <Translate id="actions.request_now" />
-        </ButtonWithIcon>
+        <a onClick={handleOpen} href={`${baseUrl}${slug}`}>
+          <ButtonWithIcon
+            icon={<GoArrowUpRight className="text-foreground" />}
+            iconClass="bg-background"
+            className="bg-primary-green hover:bg-primary-green/90"
+          >
+            <Translate id="actions.request_now" />
+          </ButtonWithIcon>
+        </a>
       </DialogTrigger>
 
       <DialogContent

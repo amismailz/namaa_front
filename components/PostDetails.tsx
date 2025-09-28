@@ -12,7 +12,7 @@ import FaqList from "@/components/FaqList"
 import BlogPostContent from "@/components/BlogPostContent"
 import { JsonLd } from "@/components/JsonLd"
 import { getDateFnsLocale } from "@/lib/date-utils"
-import { BlogItemType } from "@/types.type"
+import { BlogItemType, FaqItem } from "@/types.type"
 
 const PostDetails = ({
   post,
@@ -34,35 +34,49 @@ const PostDetails = ({
 
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.short_description,
-    image: [post.image],
-    author: {
-      "@type": "Person",
-      name: "Namaa Agency",
-      url: `${baseUrl}`
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Namaa Agency",
-      logo: {
-        "@type": "ImageObject",
-        url: `${baseUrl}/NAMAA_LOGO.svg`
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.short_description,
+        image: [post.image],
+        author: {
+          "@type": "Person",
+          name: currentLocale === "en" ? "Namaa Agency" : "نماء",
+          url: `${baseUrl}`
+        },
+        publisher: {
+          "@type": "Organization",
+          name: currentLocale === "en" ? "Namaa Agency" : "نماء",
+          logo: {
+            "@type": "ImageObject",
+            url: `${baseUrl}/NAMAA_LOGO.svg`
+          }
+        },
+        datePublished: post.published_date,
+        dateModified: post.published_date,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": shareLink
+        }
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity:
+          post.faqs?.map((faq: FaqItem) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer
+            }
+          })) || []
       }
-    },
-    datePublished: post.published_date,
-    dateModified: post.published_date,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": shareLink
-    }
+    ]
   }
 
   return (
     <>
-      
-
       <JsonLd schema={schemaData} id="blog-post-schema" />
 
       <HeroPage

@@ -176,9 +176,9 @@ async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
         }
       },
       {
-        "@type": ["Corporation", "Organization"],
-        "@id": `${BASE_URL}/#organization`,
-        name: "Namaa Agency",
+        "@type": "LocalBusiness",
+        "@id": `${BASE_URL}/#LocalBusiness`,
+        name: isAr ? "نماء" : "Namaa Agency",
         legalName: isAr ? "وكالة حامل الراية" : "Namaa Agency",
         url: BASE_URL,
         email: data.email,

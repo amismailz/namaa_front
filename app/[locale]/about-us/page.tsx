@@ -89,28 +89,32 @@ export default async function AboutUsPage({
           "https://www.google.com/maps/search/?api=1&amp;query=30.09643,31.31116",
         address: {
           "@type": "PostalAddress",
-          streetAddress:
-            "78 \u0634\u0627\u0631\u0639 \u062c\u0633\u0631 \u0627\u0644\u0633\u0648\u064a\u0633\u060c \u0631\u0648\u0643\u0633\u064a\u060c \u0627\u0644\u062f\u0648\u0631 2\u060c \u0645\u0643\u062a\u0628 4\u060c \u0628\u0631\u062c \u0642\u0635\u0631 \u0627\u0644\u0637\u0627\u0647\u0631\u0629",
-          addressLocality: "\u0627\u0644\u0642\u0627\u0647\u0631\u0629",
-          addressRegion:
-            "\u062c\u0633\u0631 \u0627\u0644\u0633\u0648\u064a\u0633",
+          streetAddress: isAr
+            ? " Umm Al-Qura University , 4299, 7310, wadi Makkah 24381"
+            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى , مكه المكرمه , المملكه العربيه السعودية 1111",
+          addressLocality: isAr ? "مكه" : "Macca",
+          addressRegion: isAr
+            ? "Umm Al-Qura University"
+            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
           postalCode: "11331",
           addressCountry: "SA"
         }
       },
       {
-        "@type": ["Corporation", "Organization"],
-        "@id": `${BASE_URL}/#organization`,
+        "@type": "LocalBusiness",
+        "@id": `${BASE_URL}/#LocalBusiness`,
         name: "Namaa Agency",
         url: `${BASE_URL}`,
         email: "info@namaasolutions.com",
         address: {
           "@type": "PostalAddress",
-          streetAddress:
-            "78 \u0634\u0627\u0631\u0639 \u062c\u0633\u0631 \u0627\u0644\u0633\u0648\u064a\u0633\u060c \u0631\u0648\u0643\u0633\u064a\u060c \u0627\u0644\u062f\u0648\u0631 2\u060c \u0645\u0643\u062a\u0628 4\u060c \u0628\u0631\u062c \u0642\u0635\u0631 \u0627\u0644\u0637\u0627\u0647\u0631\u0629",
-          addressLocality: "\u0627\u0644\u0642\u0627\u0647\u0631\u0629",
-          addressRegion:
-            "\u062c\u0633\u0631 \u0627\u0644\u0633\u0648\u064a\u0633",
+          streetAddress: isAr
+            ? " Umm Al-Qura University , 4299, 7310, wadi Makkah 24381"
+            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى , مكه المكرمه , المملكه العربيه السعودية 1111",
+          addressLocality: isAr ? "مكه" : "Macca",
+          addressRegion: isAr
+            ? "Umm Al-Qura University"
+            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
           postalCode: "11331",
           addressCountry: "SA"
         },
@@ -130,10 +134,10 @@ export default async function AboutUsPage({
             contactType: "customer support"
           }
         ],
-        description:
-          "\u0648\u0643\u0627\u0644\u0629 Namaa \u0647\u064a \u0648\u0643\u0627\u0644\u0629 \u062a\u0633\u0648\u064a\u0642 \u0631\u0642\u0645\u064a \u0645\u062a\u0643\u0627\u0645\u0644\u0629 \u062a\u064f\u0642\u062f\u0651\u0645 \u062e\u062f\u0645\u0627\u062a \u0627\u062d\u062a\u0631\u0627\u0641\u064a\u0629 \u0641\u064a \u062a\u0635\u0645\u064a\u0645 \u0627\u0644\u0645\u0648\u0627\u0642\u0639\u060c \u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0628\u0631\u0627\u0646\u062f\u060c \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0633\u0648\u0634\u064a\u0627\u0644 \u0645\u064a\u062f\u064a\u0627\u060c \u0648\u062e\u0637\u0637 \u0627\u0644\u062a\u0633\u0648\u064a\u0642 \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a \u0627\u0644\u0645\u062e\u0635\u0635\u0629. \u0646\u0633\u0627\u0639\u062f \u0627\u0644\u0634\u0631\u0643\u0627\u062a \u0639\u0644\u0649 \u0628\u0646\u0627\u0621 \u062d\u0636\u0648\u0631 \u0631\u0642\u0645\u064a \u0642\u0648\u064a \u0648\u062c\u0630\u0628 \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0645\u0646 \u062e\u0644\u0627\u0644 \u0627\u0633\u062a\u0631\u0627\u062a\u064a\u062c\u064a\u0627\u062a \u0641\u0639\u0651\u0627\u0644\u0629 \u0648\u0645\u062d\u062a\u0648\u0649 \u0645\u0645\u064a\u0632. \u062e\u0628\u0631\u062a\u0646\u0627 \u062a\u0634\u0645\u0644 \u0627\u0644\u062a\u0639\u0627\u0648\u0646 \u0645\u0639 \u0634\u0631\u0643\u0627\u062a \u0645\u062d\u0644\u064a\u0629 \u0648\u0639\u0627\u0644\u0645\u064a\u0629 \u0639\u0628\u0631 \u0645\u062e\u062a\u0644\u0641 \u0627\u0644\u0642\u0637\u0627\u0639\u0627\u062a.\r\n\r\n\u0646\u062d\u0646 \u0646\u0639\u0645\u0644 \u0639\u0644\u0649 \u062a\u062d\u0648\u064a\u0644 \u0627\u0644\u0623\u0641\u0643\u0627\u0631 \u0625\u0644\u0649 \u0646\u062a\u0627\u0626\u062c\u060c \u0648\u0646\u0633\u0639\u0649 \u062f\u0627\u0626\u0645\u064b\u0627 \u0644\u062a\u062d\u0642\u064a\u0642 \u0646\u0645\u0648 \u0641\u0639\u0644\u064a \u0644\u0639\u0644\u0627\u0645\u062a\u0643 \u0627\u0644\u062a\u062c\u0627\u0631\u064a\u0629.",
-        legalName:
-          "\u0648\u0643\u0627\u0644\u0629 \u062d\u0627\u0645\u0644 \u0627\u0644\u0631\u0627\u064a\u0629",
+        description: isAr
+          ? "وكالة نماء هي وكالة تسويق رقمي متكاملة الخدمات تقدم خدمات احترافية في تصميم المواقع الإلكترونية، وبناء العلامات التجارية، وإدارة وسائل التواصل الاجتماعي، واستراتيجيات التسويق الإلكتروني المصممة خصيصًا"
+          : "Namaa Agency is a full-service digital marketing agency offering professional services in web design, branding, social media management, and tailored online marketing strategies.",
+        legalName: isAr ? "وكالة حامل الراية" : "Namaa Agency",
         location: { "@id": `${BASE_URL}/#place` }
       },
       {
@@ -141,8 +145,7 @@ export default async function AboutUsPage({
         "@id": `${BASE_URL}/#website`,
         url: `${BASE_URL}`,
         name: "Namaa Agency",
-        alternateName:
-          "\u0648\u0643\u0627\u0644\u0629 \u062d\u0627\u0645\u0644 \u0627\u0644\u0631\u0627\u064a\u0629",
+        alternateName: "Namma",
         publisher: { "@id": `${BASE_URL}/#organization` },
         inLanguage: isAr ? "ar-SA" : "en-US"
       },
@@ -150,11 +153,13 @@ export default async function AboutUsPage({
         "@type": "AboutPage",
         "@id": `${url}#webpage`,
         url: url,
-        name: "\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0639\u0646\u0627 Namaa Agency",
+        name: isAr
+          ? "نماء: أفضل-شركات-التسويق-الإلكترونى-عبر-الإنترنت"
+          : "Namaa Agency",
         datePublished: "2020-09-05T09:42:36+02:00",
         dateModified: "2025-02-11T13:43:42+02:00",
         isPartOf: { "@id": `${BASE_URL}/#website` },
-        primaryImageOfPage: `${BASE_URL}/ensign-otg.png`,
+        primaryImageOfPage: `${BASE_URL}/namaa-otg.jpg`,
         inLanguage: isAr ? "ar-SA" : "en-US"
       }
     ]

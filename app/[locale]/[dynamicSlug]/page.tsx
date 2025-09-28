@@ -39,9 +39,29 @@ export async function generateMetadata({
         }
       },
       openGraph: {
+        title: post.meta_title ?? "Blog title",
+        description: post.meta_description ?? "blog description",
+        images: [
+           {
+            url: post.image,
+            secureUrl: post.image, // og:image:secure_url
+            alt: post.title
+          },
+          {
+            url: "/namaa-otg.jpg",
+            secureUrl: `${BASE_URL}/namaa-otg.jpg`, // og:image:secure_url
+            width: 1200,
+            height: 630,
+            alt: "social media agency egypt",
+            type: "image/png"
+          }
+        ],
         url: url // <-- override og:url here
       },
       twitter: {
+        title: post.meta_title ?? "Blog title",
+        description: post.meta_description ?? "blog description",
+        card: "summary_large_image",
         site: url // <-- override og:url here
       }
     }
@@ -54,8 +74,8 @@ export async function generateMetadata({
         : `${BASE_URL}/${service.slug}`
 
     return {
-      title: service.meta_title ?? "Serice title",
-      description: service.meta_description ?? "blog description",
+      title: service.meta_title ?? "Service title",
+      description: service.meta_description ?? "Service description",
       alternates: {
         canonical: url,
         languages: {
@@ -65,9 +85,14 @@ export async function generateMetadata({
         }
       },
       openGraph: {
+        title: service.meta_title ?? "Service title",
+        description: service.meta_description ?? "Service description",
         url: url // <-- override og:url here
       },
       twitter: {
+        title: service.meta_title ?? "Service title",
+        description: service.meta_description ?? "Service description",
+        card: "summary_large_image",
         site: url // <-- override og:url here
       }
     }

@@ -109,10 +109,10 @@ export default async function HomePage({
         }
       },
       {
-        "@type": "Organization",
-        "@id": `${BASE_URL}/#organization`,
+        "@type": "LocalBusiness",
+        "@id": `${BASE_URL}/#LocalBusiness`,
         name: "Namaa Agency",
-        alternateName: "وكالة حامل الراية",
+        alternateName: isAr ? "الصفحة الرئيسية لوكالة Namaa" : "Namaa Agency",
         url: BASE_URL,
         email: "info@namaasolutions.com",
         logo: `${BASE_URL}/NAMAA_LOGO.svg`,
@@ -121,20 +121,18 @@ export default async function HomePage({
           telephone: "+966536322194",
           contactType: "customer support"
         },
-        description: {
-          "@value":
-            "Namaa Agency is a full-service digital marketing agency offering professional services in web design, branding, social media management, and tailored online marketing strategies.",
-          "@language": "en"
-        },
-        legalName: "وكالة حامل الراية",
+        description: isAr
+          ? "وكالة نماء هي وكالة تسويق رقمي متكاملة الخدمات تقدم خدمات احترافية في تصميم المواقع الإلكترونية، وبناء العلامات التجارية، وإدارة وسائل التواصل الاجتماعي، واستراتيجيات التسويق الإلكتروني المصممة خصيصًا"
+          : "Namaa Agency is a full-service digital marketing agency offering professional services in web design, branding, social media management, and tailored online marketing strategies.",
+        legalName: isAr ? "الصفحة الرئيسية لوكالة Namaa" : "Namaa Agency",
         location: { "@id": `${BASE_URL}/#place` }
       },
       {
         "@type": "WebSite",
         "@id": `${BASE_URL}/#website`,
         url: BASE_URL,
-        name: "Namaa Agency",
-        alternateName: "وكالة حامل الراية",
+        name: isAr ? "الصفحة الرئيسية لوكالة Namaa" : "Namaa Agency Home Page",
+        alternateName: isAr ? "الصفحة الرئيسية لوكالة Namaa" : "Namaa Agency",
         publisher: { "@id": `${BASE_URL}/#organization` },
         potentialAction: {
           "@type": "SearchAction",
@@ -146,8 +144,8 @@ export default async function HomePage({
         "@type": "WebPage",
         "@id": `${BASE_URL}/#webpage`,
         url: BASE_URL,
-        name: "Namaa Agency Home Page",
-        alternateName: "الصفحة الرئيسية لوكالة Namaa",
+        name: isAr ? "الصفحة الرئيسية لوكالة Namaa" : "Namaa Agency Home Page",
+        alternateName: isAr ? "الصفحة الرئيسية لوكالة Namaa" : "Namaa Agency",
         datePublished: "2020-09-03T15:57:47+02:00",
         dateModified: "2025-08-27T12:04:40+03:00",
         about: { "@id": `${BASE_URL}/#organization` },

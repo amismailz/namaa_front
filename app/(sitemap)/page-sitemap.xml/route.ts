@@ -19,33 +19,6 @@ export async function GET() {
     { path_ar: "/توظيف-namaa-agency", path_en: ROUTES.JOB, rate: 0.7 },
     { path_ar: "/الاسئلة-الشائعة", path_en: ROUTES.FAQ, rate: 0.8 },
     { path_ar: "/خدمات", path_en: ROUTES.SERVICES, rate: 0.9 },
-    // { path_ar: "/خدمات-namaa", path_en: ROUTES.ENSIGN_SERVICES, rate: 0.9 },
-    // { path_ar: "/تصميم-الموقع", path_en: ROUTES.WEBSITE_DESIGN, rate: 0.9 },
-    // { path_ar: "/التصميم-الجرافيك", path_en: ROUTES.GRAPHIC_DESIGN, rate: 0.9 },
-    // { path_ar: "/تصميم-شعار", path_en: ROUTES.LOGO_DESIGN, rate: 0.9 },
-    // {
-    //   path_ar: "/تطوير-الموقع",
-    //   path_en: ROUTES.WEBSITE_DEVELOPMENT,
-    //   rate: 0.9
-    // },
-    // {
-    //   path_ar: "/ويب-الوسائط-المتعددة",
-    //   path_en: ROUTES.WEB_MULTIMEDIA,
-    //   rate: 0.9
-    // },
-    // { path_ar: "/استضافة-الموقع", path_en: ROUTES.WEB_HOSTING, rate: 0.9 },
-    // { path_ar: "/التجارة-الإلكترونية", path_en: ROUTES.E_COMMERCE, rate: 0.9 },
-    // {
-    //   path_ar: "/التسويق-عبر-البريد-الإلكتروني",
-    //   path_en: ROUTES.EMAIL_MARTKETING,
-    //   rate: 0.9
-    // },
-    // {
-    //   path_ar: "/وسائل-التواصل-الاجتماعي",
-    //   path_en: ROUTES.SOCIAL_MEDIA,
-    //   rate: 0.9
-    // },
-
     { path_ar: "/إخلاء-المسؤولية-القانونية", path_en: ROUTES.LEGAL, rate: 0.7 },
     { path_ar: "/سياسة-خاصة", path_en: ROUTES.PRIVACY, rate: 0.7 },
     { path_ar: "/شروط", path_en: ROUTES.TERMS, rate: 0.7 }
