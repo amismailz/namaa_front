@@ -136,7 +136,6 @@ export default async function DynamicSlug({ params }: Props) {
 
   return (
     <>
-    
       <BlogPostHideLocale />
       {renderContent(data.type)}
     </>

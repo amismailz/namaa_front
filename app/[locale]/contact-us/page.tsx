@@ -16,6 +16,7 @@ import Translate from "@/components/Translate"
 import { JsonLd } from "@/components/JsonLd"
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
 import { getTranslations } from "next-intl/server"
+import { TFunction } from "@/i18n/types"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY!
@@ -71,32 +72,11 @@ export default async function ContactUsPage({
 }: {
   params: Promise<{ locale: "ar" | "en" }>
 }) {
-  const [{ locale } ,t]= await Promise.all([params, getTranslations()])
+  const [{ locale }, t] = await Promise.all([params, getTranslations()])
   const zoom = 18
-
-  const pageKey = `/${ROUTES.CONTACT_US}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
-
-  // Get localized paths safely
-  const localizedPaths = localizationPathname[pageKey] || {
-    en: pageKey,
-    ar: pageKey
-  }
-
-  const url =
-    locale === "en"
-      ? `${BASE_URL}/${locale}${localizedPaths.en}`
-      : `${BASE_URL}${localizedPaths.ar}`
 
   return (
     <>
-      <BreadcrumbJsonLd
-        id={`breadcrumb-${url}`}
-        items={[
-          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
-          { name: t("navbar.contat_us"), url: `${url}/` }
-        ]}
-      />
-
       <HeroPage
         heading={<Translate id="navbar.contact_us" />}
         breadcrumb={[{ text: <Translate id="navbar.home" />, link: `/` }]}
@@ -127,7 +107,7 @@ export default async function ContactUsPage({
             </div>
 
             <Suspense fallback={null}>
-              <ContactInfo locale={locale} />
+              <ContactInfo locale={locale} t={t} />
             </Suspense>
           </div>
           <div className="col-span-1 ">
@@ -156,7 +136,13 @@ export default async function ContactUsPage({
   )
 }
 
-async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
+async function ContactInfo({
+  locale,
+  t
+}: {
+  locale: "ar" | "en"
+  t: TFunction
+}) {
   const data = await getContactInfo()
 
   const isAr = locale === "ar"
@@ -258,6 +244,14 @@ async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.contat_us"), url: `${url}/` }
+        ]}
+      />
+
       <JsonLd schema={schema} id="contact-shema" />
 
       <ol className="mt-16 flex flex-col gap-7">

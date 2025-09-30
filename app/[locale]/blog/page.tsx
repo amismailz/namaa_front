@@ -15,6 +15,7 @@ import { BlogItemType } from "@/types.type"
 import { JsonLd } from "@/components/JsonLd"
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
 import { getTranslations } from "next-intl/server"
+import { TFunction } from "@/i18n/types"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -76,28 +77,9 @@ export default async function BlogPage({
     getTranslations()
   ])
 
-  const pageKey = `/${ROUTES.BLOG}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
-
-  // Get localized paths safely
-  const localizedPaths = localizationPathname[pageKey] || {
-    en: pageKey,
-    ar: pageKey
-  }
-
-  const url =
-    locale === "en"
-      ? `${BASE_URL}/en${localizedPaths.en}`
-      : `${BASE_URL}${localizedPaths.ar}`
-
   return (
     <>
-      <BreadcrumbJsonLd
-        id={`breadcrumb-${url}`}
-        items={[
-          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
-          { name: t("navbar.blog"), url: `${url}/` }
-        ]}
-      />
+      
 
       <HeroPage
         heading={<Translate id="blog.hero_title" />}
@@ -107,7 +89,7 @@ export default async function BlogPage({
       <Section className="py-10">
         {queries?.search ? <BlogSearchTags searchKey={queries.search} /> : null}
         <Suspense fallback={<BlogListSkeleton count={6} />}>
-          <BlogAsync queries={queries} locale={locale} />
+          <BlogAsync queries={queries} locale={locale} t={t} />
         </Suspense>
       </Section>
     </>
@@ -116,10 +98,12 @@ export default async function BlogPage({
 
 async function BlogAsync({
   locale,
-  queries
+  queries,
+  t
 }: {
   locale: "ar" | "en"
   queries: Record<string, string>
+  t: TFunction
 }) {
   const result = await getBlogList(queries)
   const { list, pagination } = result
@@ -194,6 +178,13 @@ async function BlogAsync({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.blog"), url: `${url}/` }
+        ]}
+      />
       <JsonLd schema={schema} id="blog-schema" />
       <BlogList data={list} />
     </>

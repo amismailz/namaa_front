@@ -54,10 +54,7 @@ const ServiceDetails = ({
     dateModified: data?.created_at,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id":
-        currentLocale === "en"
-          ? `${baseUrl}/en/${data.slug}`
-          : `${baseUrl}/${data.slug}`
+      "@id": `${url}`
     }
   }
 

@@ -12,6 +12,7 @@ const WhatsAppChat = () => {
         statusMessage="we are online."
         chatMessage={`Any questions? \nChat Us! We Are Here To Help \n🥰`}
         allowEsc
+        avatar="/default_avatar.jpg"
         allowClickAway={false}
         notification
         notificationSound

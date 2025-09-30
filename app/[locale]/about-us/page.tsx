@@ -172,7 +172,7 @@ export default async function AboutUsPage({
       <BreadcrumbJsonLd
         id={`breadcrumb-${url}`}
         items={[
-          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.home"), url: `${BASE_URL}/` },
           { name: t("navbar.about_us"), url: url }
         ]}
       />

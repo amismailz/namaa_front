@@ -64,12 +64,8 @@ export default async function JobsPage({
 }) {
   const { locale } = await params
 
-  
-
   return (
     <>
-    
-
       <HeroPage
         heading={<Translate id="jobs.hero_title" />}
         breadcrumb={[
@@ -113,7 +109,7 @@ async function JobsAsync({ locale }: { locale: "ar" | "en" }) {
 
   const url =
     locale === "en"
-      ? `${BASE_URL}/en${localizedPaths.en}`
+      ? `${BASE_URL}/${locale}${localizedPaths.en}`
       : `${BASE_URL}${localizedPaths.ar}`
 
   const schema = {
