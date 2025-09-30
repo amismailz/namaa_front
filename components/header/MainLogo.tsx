@@ -1,13 +1,12 @@
 import Image from "next/image"
 import React from "react"
 import { cn } from "@/lib/utils"
-import { ROUTES } from "@/constants"
 import { Link } from "@/i18n/routing"
 
 const MainLogo = ({ className }: { className?: string }) => {
   return (
     <div className={cn("", className)}>
-      <Link href={`/${ROUTES.HOME}`} className="block py-2 relative ">
+      <Link href={`/`} className="block py-2 relative ">
         <Image
           src="/NAMAA_LOGO.svg"
           alt="Namaa logo"

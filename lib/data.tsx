@@ -9,7 +9,7 @@ export type NavItem = {
 }
 
 export const navigation = [
-  { href: `/${ROUTES.HOME}`, label: "navbar.home", localed: true },
+  { href: `/`, label: "navbar.home", localed: true },
   { href: `/${ROUTES.ABOUT_US}`, label: "navbar.about_us" , localed: true},
   { href: `/${ROUTES.PORTOFILIO}`, label: "navbar.portfilio", localed: true },
   {

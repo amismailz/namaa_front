@@ -14,11 +14,24 @@ import { getLocale, getTranslations } from "next-intl/server"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
 import { getServices } from "@/data-layer/services"
+import { getSeoBySlug, getServersNavigation } from "@/data-layer/common"
+import { JsonLd } from "@/components/JsonLd"
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
-export async function generateMetadata(): Promise<Metadata> {
-  const [locale, t] = await Promise.all([getLocale(), getTranslations()])
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: "ar" | "en" }>
+}): Promise<Metadata> {
+  const [{ locale }, t, results] = await Promise.all([
+    params,
+    getTranslations(),
+    getSeoBySlug("services")
+  ])
+
+  const isAr = locale === "ar"
 
   const pageKey = `/${ROUTES.SERVICES}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
 
@@ -56,11 +69,70 @@ export async function generateMetadata(): Promise<Metadata> {
       site: url // optionally override twitter:site/url if needed
     }
   }
-} 
+}
 
-export default function ServicesPage() {
+export default async function ServicesPage({
+  params
+}: {
+  params: Promise<{ locale: "ar" | "en" }>
+}) {
+  const [{ locale }, t, servicesItems] = await Promise.all([
+    params,
+    getTranslations(),
+    getServersNavigation()
+  ])
+
+  const isAr = locale === "ar"
+
+  const pageKey = `/${ROUTES.SERVICES}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+
+  // Get localized paths safely
+  const localizedPaths = localizationPathname[pageKey] || {
+    en: pageKey,
+    ar: pageKey
+  }
+
+  const url =
+    locale === "en"
+      ? `${BASE_URL}/en${localizedPaths.en}`
+      : `${BASE_URL}${localizedPaths.ar}`
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: isAr ? "خدمات Namaa " : "Namaa services",
+    description: isAr
+      ? "تصميم الموقع تصميم الموقع الخطوة الأساسية والأكثر أهمية في عملية الحصول على موقع ويب هي اختيار التصميم الجيد. مع Namaa ، الهدف هو تسهيل مهمتك ومساعدتك في"
+      : "At Namaa , we provide integrated digital marketing solutions designed to elevate your brand. From crafting data-driven strategies to flawless",
+    url: `${url}`,
+    provider: {
+      "@type": "Organization",
+      name: isAr ? "وكالة Namaa" : "Namaa Agency",
+      url: `${BASE_URL}`,
+      logo: `${BASE_URL}/NAMAA_LOGO.svg`
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: servicesItems.map((item) => ({
+        "@type": "Service",
+        name: item.label,
+        url: isAr ? `${BASE_URL}${item.href}/` : `${BASE_URL}/en${item.href}/`
+      }))
+    }
+  }
+
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.services"), url: `${url}/` }
+        ]}
+      />
+
+      <JsonLd schema={schema} id="services-schema" />
+
       <HeroPage
         heading={<Translate id="services.hero_title" />}
         description={<Translate id="services.hero_subtitle" />}
@@ -170,8 +242,7 @@ export default function ServicesPage() {
 async function ServicesAsync() {
   const data = await getServices()
 
-  if (!data) return null 
+  if (!data) return null
 
   return <ServicesTabs showMore={true} data={data} />
 }
-

@@ -6,7 +6,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
 export async function GET() {
   const staticPages = [
-    { path_ar: "/", path_en: ROUTES.HOME, rate: 1 },
+    { path_ar: "/", path_en: "/", rate: 1 },
     { path_ar: "/معلومات-عنا", path_en: ROUTES.ABOUT_US, rate: 0.9 },
     { path_ar: "/اتصل-بنا", path_en: ROUTES.CONTACT_US, rate: 0.8 },
     {

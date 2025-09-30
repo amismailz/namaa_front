@@ -8,6 +8,8 @@ import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
 import { JsonLd } from "@/components/JsonLd"
 import { getAboutUs } from "@/data-layer/about"
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
+import { getTranslations } from "next-intl/server"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -16,7 +18,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: "ar" | "en" }>
 }): Promise<Metadata> {
-  const [{locale}, results] = await Promise.all([
+  const [{ locale }, results] = await Promise.all([
     params,
     getSeoBySlug("about-us")
   ])
@@ -59,7 +61,7 @@ export default async function AboutUsPage({
   params: Promise<{ locale: "ar" | "en" }>
 }) {
   const { locale } = await params
-  const data = await getAboutUs()
+  const [t, data] = await Promise.all([getTranslations(), getAboutUs()])
   const isAr = locale === "ar"
 
   const pageKey = `/${ROUTES.ABOUT_US}`
@@ -90,12 +92,12 @@ export default async function AboutUsPage({
         address: {
           "@type": "PostalAddress",
           streetAddress: isAr
-            ? " Umm Al-Qura University , 4299, 7310, wadi Makkah 24381"
-            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى , مكه المكرمه , المملكه العربيه السعودية 1111",
+            ? "جامعة ام القرى العوالى مبنى وادى مكه الادارى , مكه المكرمه , المملكه العربيه السعودية 1111"
+            : " Umm Al-Qura University , 4299, 7310, wadi Makkah 24381",
           addressLocality: isAr ? "مكه" : "Macca",
           addressRegion: isAr
-            ? "Umm Al-Qura University"
-            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
+            ? "جامعة ام القرى العوالى مبنى وادى مكه الادارى"
+            : "Umm Al-Qura University",
           postalCode: "11331",
           addressCountry: "SA"
         }
@@ -103,18 +105,18 @@ export default async function AboutUsPage({
       {
         "@type": "LocalBusiness",
         "@id": `${BASE_URL}/#LocalBusiness`,
-        name: "Namaa Agency",
+        name: isAr ? "وكالة نماء" : "Namaa Agency",
         url: `${BASE_URL}`,
         email: "info@namaasolutions.com",
         address: {
           "@type": "PostalAddress",
           streetAddress: isAr
-            ? " Umm Al-Qura University , 4299, 7310, wadi Makkah 24381"
-            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى , مكه المكرمه , المملكه العربيه السعودية 1111",
+            ? "جامعة ام القرى العوالى مبنى وادى مكه الادارى , مكه المكرمه , المملكه العربيه السعودية 1111"
+            : " Umm Al-Qura University , 4299, 7310, wadi Makkah 24381",
           addressLocality: isAr ? "مكه" : "Macca",
           addressRegion: isAr
-            ? "Umm Al-Qura University"
-            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
+            ? "جامعة ام القرى العوالى مبنى وادى مكه الادارى"
+            : "Umm Al-Qura University",
           postalCode: "11331",
           addressCountry: "SA"
         },
@@ -122,7 +124,7 @@ export default async function AboutUsPage({
           "@type": "ImageObject",
           "@id": `${BASE_URL}/#logo`,
           url: `${BASE_URL}/NAMAA_LOGO.svg`,
-          caption: "Namaa Agency",
+          caption: isAr ? "وكالة نماء" : "Namaa Agency",
           inLanguage: isAr ? "ar-SA" : "en-US",
           width: "1000",
           height: "615"
@@ -131,7 +133,7 @@ export default async function AboutUsPage({
           {
             "@type": "ContactPoint",
             telephone: "+966536322194",
-            contactType: "customer support"
+            contactType: isAr ? "الدعم الفني" : "customer support"
           }
         ],
         description: isAr
@@ -144,8 +146,8 @@ export default async function AboutUsPage({
         "@type": "WebSite",
         "@id": `${BASE_URL}/#website`,
         url: `${BASE_URL}`,
-        name: "Namaa Agency",
-        alternateName: "Namma",
+        name: isAr ? "وكالة نماء" : "Namaa Agency",
+        alternateName: isAr ? "نماء" : "Namma",
         publisher: { "@id": `${BASE_URL}/#organization` },
         inLanguage: isAr ? "ar-SA" : "en-US"
       },
@@ -167,16 +169,20 @@ export default async function AboutUsPage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.about_us"), url: url }
+        ]}
+      />
       <JsonLd schema={schema} id="about-schema" />
       <HeroPage
         heading={<Translate id="navbar.about_us" />}
-        breadcrumb={[
-          { text: <Translate id="navbar.home" />, link: `/${ROUTES.HOME}` }
-        ]}
+        breadcrumb={[{ text: <Translate id="navbar.home" />, link: `/` }]}
       />
 
       <AboutSection className="py-16" data={data} />
-
     </>
   )
 }

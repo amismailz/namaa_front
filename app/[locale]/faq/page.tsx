@@ -1,7 +1,6 @@
 import Container from "@/components/Container"
 import FaqList from "@/components/FaqList"
 import HeroPage from "@/components/HeroPage"
-import JobsList from "@/components/JobsList"
 import NoResult from "@/components/NoResult"
 import Section from "@/components/Section"
 import Translate from "@/components/Translate"

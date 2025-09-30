@@ -15,6 +15,8 @@ import Translate from "@/components/Translate"
 import { JsonLd } from "@/components/JsonLd"
 import { ProtfolioType } from "@/types.type"
 import NoResult from "@/components/NoResult"
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
+import { getTranslations } from "next-intl/server"
 
 type PageParams = {
   params: Promise<{ locale: "ar" | "en" }>
@@ -80,7 +82,7 @@ export default async function PortfolioPage({
       <HeroPage
         heading={<Translate id="navbar.portfilio" />}
         breadcrumb={[
-          { text: <Translate id="navbar.home" />, link: `/${ROUTES.HOME}` }
+          { text: <Translate id="navbar.home" />, link: `/` }
         ]}
       />
 
@@ -111,10 +113,13 @@ async function PortofiliAsync({
   service_slug: string
   locale: "ar" | "en"
 }) {
-  const { list, pagination, filters } = await getPortofilioList({
-    page,
-    service_slug
-  })
+  const [t, { list, pagination, filters }] = await Promise.all([
+    getTranslations(),
+    getPortofilioList({
+      page,
+      service_slug
+    })
+  ])
 
   const isAr = locale === "ar"
 
@@ -135,7 +140,7 @@ async function PortofiliAsync({
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": `${BASE_URL}/${locale}/portfolio/#webpage`,
+        "@id": `${BASE_URL}/${locale}/${ROUTES.PORTOFILIO}/#webpage`,
         url: url,
         name: isAr ? "أعمالنا - وكالة Namaa" : "Portfolio - Namaa Agency",
         description: isAr
@@ -164,6 +169,14 @@ async function PortofiliAsync({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.portfilio"), url: `${url}/` }
+        ]}
+      />
+
       <JsonLd schema={schema} id="portfilio-schema" />
 
       <PortofilioFilterationNav service_slug={service_slug} filters={filters} />

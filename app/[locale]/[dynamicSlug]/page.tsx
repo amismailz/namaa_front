@@ -4,6 +4,7 @@ import PostDetails from "@/components/PostDetails"
 import ServiceDetails from "@/components/ServiceDetails"
 import BlogPostHideLocale from "@/components/BlogPostHideLocale"
 import { Metadata } from "next"
+import { getTranslations } from "next-intl/server"
 
 type Props = {
   params: Promise<{ locale: "ar" | "en"; dynamicSlug: string }>
@@ -100,7 +101,7 @@ export async function generateMetadata({
 }
 
 export default async function DynamicSlug({ params }: Props) {
-  const { locale, dynamicSlug } = await params
+  const [{ locale, dynamicSlug }, t] = await Promise.all([params, getTranslations()])
   const data = await getSlugDetails(dynamicSlug)
 
   function renderContent(type: "service" | "blog") {
@@ -112,6 +113,7 @@ export default async function DynamicSlug({ params }: Props) {
             popular={data.popular_blogs}
             currentLocale={locale}
             baseUrl={BASE_URL}
+            t={t}
           />
         )
 
@@ -121,6 +123,7 @@ export default async function DynamicSlug({ params }: Props) {
             data={data.service}
             currentLocale={locale}
             baseUrl={BASE_URL}
+            t={t}
           />
         )
 
@@ -129,8 +132,11 @@ export default async function DynamicSlug({ params }: Props) {
     }
   }
 
+  
+
   return (
     <>
+    
       <BlogPostHideLocale />
       {renderContent(data.type)}
     </>

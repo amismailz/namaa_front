@@ -11,16 +11,26 @@ import ServiceRequestDialog from "@/components/ServiceRequestDialog"
 import ServiceWhatsAppButton from "@/components/ServiceWhatsAppButton"
 import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/JsonLd"
+import { TFunction } from "@/i18n/types"
+import { BreadcrumbJsonLd } from "./BreadcrumbJsonLd"
 
 const ServiceDetails = ({
   data,
   currentLocale,
-  baseUrl
+  baseUrl,
+  t
 }: {
   data: ServiceItemType
   currentLocale: "ar" | "en"
   baseUrl: string
+  t: TFunction
 }) => {
+
+  const url =
+    currentLocale === "ar"
+      ? `${baseUrl}/${data.slug}`
+      : `${baseUrl}/${currentLocale}/${data.slug}`
+
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -53,12 +63,20 @@ const ServiceDetails = ({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), url: `${baseUrl}/` },
+          { name: data.title, url: `${url}/` }
+        ]}
+      />
+
       <JsonLd schema={schemaData} id="service-schema" />
 
       <HeroPage
         heading={data.title}
         breadcrumb={[
-          { text: <Translate id="navbar.home" />, link: `/${ROUTES.HOME}` },
+          { text: <Translate id="navbar.home" />, link: `/` },
           {
             text: <Translate id="navbar.services" />,
             link: `/${ROUTES.SERVICES}`
@@ -89,7 +107,13 @@ const ServiceDetails = ({
       <Section className="pb-10">
         <Container>
           <div className="flex items-center justify-center gap-3">
-            <ServiceRequestDialog slug={currentLocale === "ar" ?  `/${data.slug}` : `/${currentLocale}/${data.slug}`} />
+            <ServiceRequestDialog
+              slug={
+                currentLocale === "ar"
+                  ? `/${data.slug}`
+                  : `/${currentLocale}/${data.slug}`
+              }
+            />
             <ServiceWhatsAppButton currentUrl={`/${data.slug}`} />
             <Button variant="link" size="icon" asChild>
               <a href="tel:966544175137" target="_blank" rel="follow">

@@ -13,17 +13,21 @@ import BlogPostContent from "@/components/BlogPostContent"
 import { JsonLd } from "@/components/JsonLd"
 import { getDateFnsLocale } from "@/lib/date-utils"
 import { BlogItemType, FaqItem } from "@/types.type"
+import { BreadcrumbJsonLd } from "./BreadcrumbJsonLd"
+import { TFunction } from "@/i18n/types"
 
 const PostDetails = ({
   post,
   popular,
   currentLocale,
-  baseUrl
+  baseUrl,
+  t
 }: {
   post: BlogItemType
   popular: BlogItemType[]
   currentLocale: "ar" | "en"
   baseUrl: string
+  t: TFunction
 }) => {
   const dateFnsLocale = getDateFnsLocale(currentLocale)
 
@@ -77,6 +81,14 @@ const PostDetails = ({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${shareLink}`}
+        items={[
+          { name: t("navbar.home"), url: `${baseUrl}/` },
+          { name: post.title, url: `${shareLink}/` }
+        ]}
+      />
+
       <JsonLd schema={schemaData} id="blog-post-schema" />
 
       <HeroPage

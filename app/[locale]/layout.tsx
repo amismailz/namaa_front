@@ -124,12 +124,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       // images: ["/Namaa-otg.png"],
       images: [
         {
-          url: "/namaa-otg.jpg",
+          url: `${BASE_URL}/namaa-otg.jpg`,
           secureUrl: `${BASE_URL}/namaa-otg.jpg`, // og:image:secure_url
           width: 1200,
           height: 630,
           alt: "social media agency egypt",
-          type: "image/png"
+          type: "image/jpeg"
         }
       ]
     },
@@ -137,7 +137,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${t("seo.home.title")}`,
       description: `${t("seo.home.description")}`,
-      images: ["/namaa-otg.jpg"]
+      images: [`${BASE_URL}/namaa-otg.jpg`]
     },
     other: {
       "twitter:label1": "Written by",
@@ -159,7 +159,10 @@ type Props = {
 
 export default async function RootLayout({ children, params }: Props) {
   const { locale } = await params
-  const [data, servicesChildren] = await Promise.all([getContactInfo(), getServersNavigation()])
+  const [data, servicesChildren] = await Promise.all([
+    getContactInfo(),
+    getServersNavigation()
+  ])
   const isArabic = locale === "ar"
   const dir = locale === "ar" ? "rtl" : "ltr"
 

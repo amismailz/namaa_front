@@ -1,6 +1,3 @@
-"use client"
-
-import Script from "next/script"
 
 type JsonLdProps = {
   id: string
@@ -9,10 +6,10 @@ type JsonLdProps = {
 
 export function JsonLd({ id, schema }: JsonLdProps) {
   return (
-    <Script
-      id={id}
+    <script
+      id={id || "schema"}
       type="application/ld+json"
-      strategy="beforeInteractive"
+      // strategy="afterInteractive"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
   )

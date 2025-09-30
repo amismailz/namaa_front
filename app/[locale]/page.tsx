@@ -19,6 +19,8 @@ import BlogList from "@/components/BlogList"
 import { JsonLd } from "@/components/JsonLd"
 import HomeBanner from "@/components/HomeBanner"
 import { Link } from "@/i18n/routing"
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
+import { getTranslations } from "next-intl/server"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -70,7 +72,7 @@ export default async function HomePage({
 }: {
   params: Promise<{ locale: "ar" | "en" }>
 }) {
-  const { locale } = await params
+  const [{ locale }, t] = await Promise.all([params, getTranslations()])
   const {
     banners,
     protfolio,
@@ -98,12 +100,12 @@ export default async function HomePage({
         address: {
           "@type": "PostalAddress",
           streetAddress: isAr
-            ? " Umm Al-Qura University , 4299, 7310, wadi Makkah 24381"
-            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى , مكه المكرمه , المملكه العربيه السعودية 1111",
+            ? "جامعة ام القرى العوالى مبنى وادى مكه الادارى , مكه المكرمه , المملكه العربيه السعودية 1111"
+            : " Umm Al-Qura University , 4299, 7310, wadi Makkah 24381",
           addressLocality: isAr ? "مكه" : "Macca",
           addressRegion: isAr
-            ? "Umm Al-Qura University"
-            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
+            ? "جامعة ام القرى العوالى مبنى وادى مكه الادارى"
+            : "Umm Al-Qura University",
           postalCode: "11331",
           addressCountry: "SA"
         }
@@ -119,7 +121,7 @@ export default async function HomePage({
         contactPoint: {
           "@type": "ContactPoint",
           telephone: "+966536322194",
-          contactType: "customer support"
+          contactType: isAr ? "الدعم الفني" : "customer support"
         },
         description: isAr
           ? "وكالة نماء هي وكالة تسويق رقمي متكاملة الخدمات تقدم خدمات احترافية في تصميم المواقع الإلكترونية، وبناء العلامات التجارية، وإدارة وسائل التواصل الاجتماعي، واستراتيجيات التسويق الإلكتروني المصممة خصيصًا"
@@ -151,13 +153,18 @@ export default async function HomePage({
         about: { "@id": `${BASE_URL}/#organization` },
         isPartOf: { "@id": `${BASE_URL}/#website` },
         primaryImageOfPage: `${BASE_URL}/namaa-otg.jpg`,
-        inLanguage: ["en", "ar"]
+        inLanguage: ["ar", "en"]
       }
     ]
   }
 
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-home`}
+        items={[{ name: t("navbar.home"), localed: true, url: `${BASE_URL}/` }]}
+      />
+
       <JsonLd id="main-jsonld" schema={schema} />
 
       <HomeBanner data={banners} className="py-12 lg:py-20 bg-[#F9F9F9]" />

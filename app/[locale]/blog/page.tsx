@@ -7,13 +7,14 @@ import { BlogListSkeleton } from "@/components/BlogListSkeleton"
 import NoResult from "@/components/NoResult"
 import BlogSearchTags from "@/components/BlogSearchTags"
 import { ROUTES } from "@/constants"
-import { getLocale } from "next-intl/server"
 import { getSeoBySlug } from "@/data-layer/common"
 import { Metadata } from "next"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
 import { BlogItemType } from "@/types.type"
 import { JsonLd } from "@/components/JsonLd"
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
+import { getTranslations } from "next-intl/server"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -69,15 +70,38 @@ export default async function BlogPage({
   params: Promise<{ locale: "ar" | "en" }>
   searchParams: Promise<Record<string, string>>
 }) {
-  const { locale } = await params
-  const queries = await searchParams
+  const [{ locale }, queries, t] = await Promise.all([
+    params,
+    searchParams,
+    getTranslations()
+  ])
+
+  const pageKey = `/${ROUTES.BLOG}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+
+  // Get localized paths safely
+  const localizedPaths = localizationPathname[pageKey] || {
+    en: pageKey,
+    ar: pageKey
+  }
+
+  const url =
+    locale === "en"
+      ? `${BASE_URL}/en${localizedPaths.en}`
+      : `${BASE_URL}${localizedPaths.ar}`
+
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.blog"), url: `${url}/` }
+        ]}
+      />
+
       <HeroPage
         heading={<Translate id="blog.hero_title" />}
-        breadcrumb={[
-          { text: <Translate id="navbar.home" />, link: `/${ROUTES.HOME}` }
-        ]}
+        breadcrumb={[{ text: <Translate id="navbar.home" />, link: `/` }]}
       />
 
       <Section className="py-10">

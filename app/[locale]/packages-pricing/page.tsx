@@ -6,13 +6,15 @@ import { getHostingPlans } from "@/data-layer/package"
 import { ROUTES } from "@/constants"
 import { Metadata } from "next"
 import { getSeoBySlug } from "@/data-layer/common"
-import WebHostingPackages from "@/components/WebHostingPackages" 
+import WebHostingPackages from "@/components/WebHostingPackages"
 import WebsiteDesignPackage from "@/components/WebsiteDesignPackage"
 import MarketingManagePackage from "@/components/MarketingManagePackage"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
 import { JsonLd } from "@/components/JsonLd"
 import { HostingPlansType } from "@/types.type"
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
+import { getTranslations } from "next-intl/server"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -66,7 +68,7 @@ export default async function PackagesPage({
 }: {
   params: Promise<{ locale: "ar" | "en" }>
 }) {
-  const { locale } = await params
+  const [{ locale },t] = await Promise.all([params, getTranslations()])
   const data = await getHostingPlans()
 
   const webHosting = data?.filter((item) => [6, 7, 8].includes(item.id))
@@ -94,7 +96,7 @@ export default async function PackagesPage({
       {
         "@type": "WebPage",
         "@id": `${url}#webpage`,
-        url: url,
+        url: `${url}`,
         name: isAr
           ? "باقات الأسعار - وكالة Namaa"
           : "Packages & Pricing - Namaa Agency",
@@ -135,13 +137,19 @@ export default async function PackagesPage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.packages"), url: `${url}/` }
+        ]}
+      />
+
       <JsonLd schema={schema} id="pricing-schema" />
 
       <HeroPage
         heading={<Translate id="navbar.packages" />}
-        breadcrumb={[
-          { text: <Translate id="navbar.home" />, link: `/${ROUTES.HOME}` }
-        ]}
+        breadcrumb={[{ text: <Translate id="navbar.home" />, link: `/` }]}
       />
 
       <Section className="py-12">

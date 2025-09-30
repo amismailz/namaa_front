@@ -14,6 +14,8 @@ import { ROUTES } from "@/constants"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import Translate from "@/components/Translate"
 import { JsonLd } from "@/components/JsonLd"
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
+import { getTranslations } from "next-intl/server"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY!
@@ -69,16 +71,35 @@ export default async function ContactUsPage({
 }: {
   params: Promise<{ locale: "ar" | "en" }>
 }) {
-  const { locale } = await params
+  const [{ locale } ,t]= await Promise.all([params, getTranslations()])
   const zoom = 18
+
+  const pageKey = `/${ROUTES.CONTACT_US}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+
+  // Get localized paths safely
+  const localizedPaths = localizationPathname[pageKey] || {
+    en: pageKey,
+    ar: pageKey
+  }
+
+  const url =
+    locale === "en"
+      ? `${BASE_URL}/${locale}${localizedPaths.en}`
+      : `${BASE_URL}${localizedPaths.ar}`
 
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.contat_us"), url: `${url}/` }
+        ]}
+      />
+
       <HeroPage
         heading={<Translate id="navbar.contact_us" />}
-        breadcrumb={[
-          { text: <Translate id="navbar.home" />, link: `/${ROUTES.HOME}` }
-        ]}
+        breadcrumb={[{ text: <Translate id="navbar.home" />, link: `/` }]}
       />
 
       <Section className="py-12">
@@ -169,11 +190,12 @@ async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
           streetAddress: data.address[locale],
           addressLocality: isAr ? "مكة" : "Macca",
           addressRegion: isAr
-            ? "Umm Al-Qura University"
-            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
+            ? "جامعة ام القرى العوالى مبنى وادى مكه الادارى"
+            : "Umm Al-Qura University",
           postalCode: data.postal_code,
           addressCountry: "EG"
-        }
+        },
+        sameAs: [data.facebook_link, data.instagram_link, data.linkedIn_link]
       },
       {
         "@type": "LocalBusiness",
@@ -186,7 +208,7 @@ async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
           "@type": "ImageObject",
           "@id": `${BASE_URL}/#logo`,
           url: `${BASE_URL}/NAMAA_LOGO.svg`,
-          caption: "Namaa Agency",
+          caption: isAr ? "وكالة نماء" : "Namaa Agency",
           inLanguage: isAr ? "ar-SA" : "en-US",
           width: "1000",
           height: "615"
@@ -196,8 +218,8 @@ async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
           streetAddress: data.address[locale],
           addressLocality: isAr ? "مكة" : "Macca",
           addressRegion: isAr
-            ? "Umm Al-Qura University"
-            : "جامعة ام القرى العوالى مبنى وادى مكه الادارى",
+            ? "جامعة ام القرى العوالى مبنى وادى مكه الادارى"
+            : "Umm Al-Qura University",
           postalCode: data.postal_code,
           addressCountry: "SA"
         },
@@ -216,7 +238,7 @@ async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
         "@type": "WebSite",
         "@id": `${BASE_URL}/#website`,
         url: BASE_URL,
-        name: "Namaa Agency",
+        name: isAr ? "وكالة نماء" : "Namaa Agency",
         alternateName: isAr ? "وكالة حامل الراية" : "Namaa Agency",
         publisher: { "@id": `${BASE_URL}/#organization` },
         inLanguage: isAr ? "ar-SA" : "en-US"
@@ -225,7 +247,7 @@ async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
         "@type": "ContactPage",
         "@id": `${url}#webpage`,
         url: url,
-        name: isAr ? "اتصل بنا Namaa" : "Contact Us - Namaa",
+        name: isAr ? "اتصل بنا" : "Contact Us",
         datePublished: data.created_at,
         dateModified: data.updated_at,
         isPartOf: { "@id": `${BASE_URL}/#website` },
@@ -233,7 +255,6 @@ async function ContactInfo({ locale }: { locale: "ar" | "en" }) {
       }
     ]
   }
-
 
   return (
     <>

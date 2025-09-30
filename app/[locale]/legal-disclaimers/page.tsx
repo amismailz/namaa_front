@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
 import Container from "@/components/Container"
 import HeroPage from "@/components/HeroPage"
 import Section from "@/components/Section"
@@ -52,9 +53,36 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const LegalDisclaimersPage = () => {
+const LegalDisclaimersPage = async ({
+  params
+}: {
+  params: Promise<{ locale: "ar" | "en" }>
+}) => {
+  const [{ locale }, t] = await Promise.all([params, translation()])
+
+  const pageKey = `/${ROUTES.LEGAL}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+
+  // Get localized paths safely
+  const localizedPaths = localizationPathname[pageKey] || {
+    en: pageKey,
+    ar: pageKey
+  }
+
+  const url =
+    locale === "en"
+      ? `${BASE_URL}/en${localizedPaths.en}`
+      : `${BASE_URL}${localizedPaths.ar}`
+
   return (
     <>
+      <BreadcrumbJsonLd
+        id={`breadcrumb-${url}`}
+        items={[
+          { name: t("navbar.home"), localed: true, url: `${BASE_URL}/` },
+          { name: t("navbar.legal_disclaimers"), url: `${url}/` }
+        ]}
+      />
+
       <HeroPage
         heading={<Translate id="navbar.legal_disclaimers" />}
         breadcrumb={[

@@ -3,7 +3,6 @@
 import Link from "next/link"
 import React from "react"
 import Translate from "@/components/Translate"
-import { ROUTES } from "@/constants"
 
 const CopyRight = () => {
   const date = new Date()
@@ -18,7 +17,7 @@ const CopyRight = () => {
         }}
         components={{
           linkTag: (
-            <Link href={`/${ROUTES.HOME}`} className=" hover:underline" />
+            <Link href={`/`} className=" hover:underline" />
           )
         }}
       />
