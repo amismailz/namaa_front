@@ -42,13 +42,13 @@ export async function generateMetadata({
   }
 
   const url =
-    locale === "en"
-      ? `${BASE_URL}/en${localizedPaths.en}`
-      : `${BASE_URL}${localizedPaths.ar}`
+    locale === "ar"
+      ? `${BASE_URL}${localizedPaths.ar}`
+      : `${BASE_URL}/${locale}${localizedPaths.en}`
 
   return {
-    title: t("seo.services.title"),
-    description: t("seo.services.description"),
+    title: results.title || t("seo.services.title"), // undefined = use layout default
+    description: results.description || results.og_description || t("seo.services.description"),
     alternates: {
       canonical: url,
       languages: {
@@ -58,14 +58,22 @@ export async function generateMetadata({
       }
     },
     openGraph: {
-      title: t("seo.services.title"),
-      description: t("seo.services.description"),
+      title: results.title || t("seo.services.title"),
+      description:
+        results.og_description ||
+        results.description ||
+        t("seo.services.description"),
+      images: results.og_image ? [{ url: results.og_image }] : undefined,
       url: url // <-- override og:url here
     },
     twitter: {
       card: "summary_large_image",
-      title: t("seo.services.title"),
-      description: t("seo.services.description"),
+      title: results.title || t("seo.services.title"),
+      description:
+        results.twitter_description ||
+        results.description ||
+        t("seo.services.description"),
+      images: results.twitter_image ? [results.twitter_image] : undefined,
       site: url // optionally override twitter:site/url if needed
     }
   }

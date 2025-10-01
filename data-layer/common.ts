@@ -33,12 +33,7 @@ export async function getSeoBySlug(slug: string) {
   const result: SeoItemType = await response.json()
   const data = result.msg_data
 
-  return data
-    ? {
-        title: data?.title,
-        description: data?.description
-      }
-    : {}
+  return data ? data : {}
 }
 
 export async function getContactInfo() {

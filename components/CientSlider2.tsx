@@ -3,11 +3,10 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Autoplay } from "swiper/modules"
 import Image from "next/image"
-import "swiper/css"
-import "swiper/css/pagination"
 import { useLocale } from "next-intl"
 import { ClientItemType } from "@/types.type"
-
+import "swiper/css"
+import "swiper/css/pagination"
 
 const CientSlider2 = ({ data }: { data: ClientItemType[] }) => {
   const locale = useLocale()
@@ -21,6 +20,7 @@ const CientSlider2 = ({ data }: { data: ClientItemType[] }) => {
         slidesPerView={6} // ✅ Show 6 items
         spaceBetween={12} // ✅ Gap between slides
         loop={true} // ✅ Infinite loop
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
         pagination={{ clickable: true, el: ".custom-pagination" }}
         breakpoints={{
           0: {
@@ -42,12 +42,7 @@ const CientSlider2 = ({ data }: { data: ClientItemType[] }) => {
           <SwiperSlide key={index}>
             <div className="flex aspect-square items-center justify-center">
               <div className="flex items-center justify-center p-6 bg-background rounded-xl border border-black/5">
-                <Image
-                  src={image}
-                  alt={title}
-                  width={160}
-                  height={140}
-                />
+                <Image src={image} alt={title} width={160} height={140} />
               </div>
             </div>
           </SwiperSlide>

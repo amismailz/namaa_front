@@ -36,7 +36,8 @@ export async function generateMetadata(): Promise<Metadata> {
       : `${BASE_URL}${localizedPaths.ar}`
 
   return {
-    ...results,
+    title: results.title || undefined, // undefined = use layout default
+    description: results.description || results.og_description || undefined,
     alternates: {
       canonical: url,
       languages: {
@@ -46,12 +47,17 @@ export async function generateMetadata(): Promise<Metadata> {
       }
     },
     openGraph: {
-      ...results,
+      title: results.title || undefined,
+      description: results.og_description || results.description || undefined,
+      images: results.og_image ? [{ url: results.og_image }] : undefined,
       url: url // <-- override og:url here
     },
     twitter: {
-      ...results,
       card: "summary_large_image",
+      title: results.title || undefined,
+      description:
+        results.twitter_description || results.description || undefined,
+      images: results.twitter_image ? [results.twitter_image] : undefined,
       site: url // optionally override twitter:site/url if needed
     }
   }

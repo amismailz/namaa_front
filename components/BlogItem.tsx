@@ -9,8 +9,8 @@ const BlogItem = ({ item, locale }: { item: BlogItemType, locale: string }) => {
   const ArrowComponent = locale === "ar" ? <IoArrowBack /> : <IoArrowForward />
   return (
     <article className="group">
-      <Link href={`/${item?.slug}`} className="inline-block" scroll={true}>
-        <figure>
+      <Link href={`/${item?.slug}`} className="block" scroll={true}>
+        <figure className="relative w-full">
           <Image
             src={item.image}
             width={540}
@@ -20,14 +20,16 @@ const BlogItem = ({ item, locale }: { item: BlogItemType, locale: string }) => {
           />
         </figure>
         <div className="space-y-3 mt-4 lg:space-y-5 lg:relative lg:z-10 lg:mx-auto max-w-full lg:max-w-[96%] lg:p-6 lg:bg-background lg:-mt-20 lg:rounded-xl ">
-          <h3 className="text-primary font-medium text-lg">{item.title}</h3>
+          <h3 className="text-primary min-h-14 font-medium text-lg">
+            {item.title}
+          </h3>
           <p className="text-muted-foreground">{item.short_description}</p>
 
           <div className="flex justify-end pointer-events-none">
             <Button
               variant="outline"
               size="icon"
-              className="bg-secondary border-none w-[52px] h-[52px] rounded-xl"
+              className="bg-secondary border-none w-[48px] h-[48px] rounded-xl"
             >
               {ArrowComponent}
             </Button>
