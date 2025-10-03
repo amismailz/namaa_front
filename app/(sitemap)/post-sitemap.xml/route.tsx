@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-export const revalidate = 86400 // revalidate at most every 1 day
+export const revalidate = 43200 // revalidate at most every 1 day
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 const BASE_API = process.env.API_URL!
@@ -25,7 +25,7 @@ export async function GET() {
         "Content-Type": "application/json"
       },
       // Cache control: RSS doesn’t need to re-fetch every time
-      next: { revalidate: 86400 } // refresh every 1 min
+      next: { revalidate: 43200 } // refresh every 1 min
     })
 
     if (!response.ok) {

@@ -1,6 +1,6 @@
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
-export const revalidate = 86400 // revalidate at most every 1 day
+export const revalidate = 43200 // revalidate at most every 1 day
 
 export async function GET() {
   const sitemaps = [
