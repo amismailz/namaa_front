@@ -47,7 +47,7 @@ const ServiceDetails = ({
       name: currentLocale === "en" ? "Namaa Agency" : "نماء",
       logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}/NAMAA_LOGO.svg`
+        url: `${baseUrl}/NAMAA_LOGO.jpg`
       }
     },
     datePublished: data?.created_at,

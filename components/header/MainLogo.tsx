@@ -8,12 +8,12 @@ const MainLogo = ({ className }: { className?: string }) => {
     <div className={cn("", className)}>
       <Link href={`/`} className="block py-2 relative ">
         <Image
-          src="/NAMAA_LOGO.svg"
+          src="/NAMAA_LOGO.jpg"
           alt="Namaa logo"
           width={169}
           height={100}
           // fill
-          className="w-auto min-w-[100px] h-auto lg:h-[80px]"
+          className="w-auto bg-transparent min-w-[100px] h-[90px] lg:h-[100px]"
           // className="object-contain"
           priority
           quality={100}

@@ -132,7 +132,7 @@ export default async function AboutUsPage({
         logo: {
           "@type": "ImageObject",
           "@id": `${BASE_URL}/#logo`,
-          url: `${BASE_URL}/NAMAA_LOGO.svg`,
+          url: `${BASE_URL}/NAMAA_LOGO.jpg`,
           caption: isAr ? "وكالة نماء" : "Namaa Agency",
           inLanguage: isAr ? "ar-SA" : "en-US",
           width: "1000",

@@ -92,7 +92,7 @@ export default async function HomePage({
   } = await getHome()
 
   const isAr = locale === "ar"
-
+ 
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -125,7 +125,7 @@ export default async function HomePage({
         alternateName: isAr ? "الصفحة الرئيسية لوكالة Namaa" : "Namaa Agency",
         url: BASE_URL,
         email: "info@namaasolutions.com",
-        logo: `${BASE_URL}/NAMAA_LOGO.svg`,
+        logo: `${BASE_URL}/NAMAA_LOGO.jpg`,
         contactPoint: {
           "@type": "ContactPoint",
           telephone: "+966536322194",
