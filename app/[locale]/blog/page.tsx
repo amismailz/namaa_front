@@ -170,7 +170,7 @@ async function BlogAsync({
             name: "Namaa Agency",
             logo: {
               "@type": "ImageObject",
-              url: `${BASE_URL}/NAMAA_LOGO.jpg`
+              url: `${BASE_URL}/NAMAA_LOGO.png`
             }
           }
         }))

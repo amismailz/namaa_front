@@ -54,7 +54,7 @@ const PostDetails = ({
           name: currentLocale === "en" ? "Namaa Agency" : "نماء",
           logo: {
             "@type": "ImageObject",
-            url: `${baseUrl}/NAMAA_LOGO.jpg`
+            url: `${baseUrl}/NAMAA_LOGO.png`
           }
         },
         datePublished: post.published_date,

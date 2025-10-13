@@ -117,7 +117,7 @@ export default async function ServicesPage({
       "@type": "Organization",
       name: isAr ? "وكالة Namaa" : "Namaa Agency",
       url: `${BASE_URL}`,
-      logo: `${BASE_URL}/NAMAA_LOGO.jpg`
+      logo: `${BASE_URL}/NAMAA_LOGO.png`
     },
     mainEntity: {
       "@type": "ItemList",

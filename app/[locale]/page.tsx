@@ -125,7 +125,7 @@ export default async function HomePage({
         alternateName: isAr ? "الصفحة الرئيسية لوكالة Namaa" : "Namaa Agency",
         url: BASE_URL,
         email: "info@namaasolutions.com",
-        logo: `${BASE_URL}/NAMAA_LOGO.jpg`,
+        logo: `${BASE_URL}/NAMAA_LOGO.png`,
         contactPoint: {
           "@type": "ContactPoint",
           telephone: "+966536322194",
