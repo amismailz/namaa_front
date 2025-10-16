@@ -8,7 +8,7 @@ const MainLogo = ({ className }: { className?: string }) => {
     <div className={cn("", className)}>
       <Link href={`/`} className="block py-2 relative ">
         <Image
-          src="/NAMAA_LOGO.png"
+          src="/NAMAA_LOGO.png?v=1"
           alt="Namaa logo"
           width={4181}
           height={4181}
