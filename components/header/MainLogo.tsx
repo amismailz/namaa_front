@@ -10,8 +10,8 @@ const MainLogo = ({ className }: { className?: string }) => {
         <Image
           src="/NAMAA_LOGO.png"
           alt="Namaa logo"
-          width={1600}
-          height={1600}
+          width={4181}
+          height={4181}
           // fill
           className="w-auto bg-transparent h-[90px] lg:h-[100px]"
           // className="object-contain"

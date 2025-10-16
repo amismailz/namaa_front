@@ -202,8 +202,8 @@ async function ContactInfo({
           url: `${BASE_URL}/NAMAA_LOGO.png`,
           caption: isAr ? "وكالة نماء" : "Namaa Agency",
           inLanguage: isAr ? "ar-SA" : "en-US",
-          width: "1000",
-          height: "615"
+          width: "4181",
+          height: "4181"
         },
         address: {
           "@type": "PostalAddress",
