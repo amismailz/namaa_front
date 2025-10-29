@@ -33,8 +33,8 @@ const PostDetails = ({
 
   const shareLink =
     currentLocale === "ar"
-      ? `${baseUrl}/${post.slug}`
-      : `${baseUrl}/${currentLocale}/${post.slug}`
+      ? `${baseUrl}/${post.slug.ar}`
+      : `${baseUrl}/en/${post.slug.en}`
 
   const schemaData = {
     "@context": "https://schema.org",

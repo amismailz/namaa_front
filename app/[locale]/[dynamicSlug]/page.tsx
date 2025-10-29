@@ -25,8 +25,8 @@ export async function generateMetadata({
 
     const url =
       locale === "en"
-        ? `${BASE_URL}/${locale}/${post.slug}`
-        : `${BASE_URL}/${post.slug}`
+        ? `${BASE_URL}/${locale}/${post.slug.en}`
+        : `${BASE_URL}/${post.slug.ar}`
 
     return {
       title: post.meta_title ?? "Blog title",
@@ -34,9 +34,9 @@ export async function generateMetadata({
       alternates: {
         canonical: url,
         languages: {
-          en: `${BASE_URL}/en/${post.slug}`,
-          ar: `${BASE_URL}/${post.slug}`,
-          "x-default": `${BASE_URL}/${post.slug}`
+          en: `${BASE_URL}/en/${post.slug.en}`,
+          ar: `${BASE_URL}/${post.slug.ar}`,
+          "x-default": `${BASE_URL}/${post.slug.ar}`
         }
       },
       openGraph: {

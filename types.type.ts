@@ -117,7 +117,10 @@ export interface PortofilioResponse {
 
 export interface BlogItemType {
   id: number
-  slug: string
+  slug: {
+    "ar": string 
+    "en": string
+  }
   title: string
   short_description: string
   description: string
