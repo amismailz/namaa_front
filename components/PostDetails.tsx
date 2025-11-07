@@ -116,13 +116,16 @@ const PostDetails = ({
               </span>
             </div>
 
-            <figure>
+            <figure className="aspect-[16/9] relative w-full rounded-xl overflow-hidden">
               <Image
                 src={post.image}
-                width={1147}
-                height={1147}
+                // width={1147}
+                // height={1147}
+                // className="w-full h-full object-cover"
+
                 alt={post.title}
-                className="w-full rounded-xl object-cover h-auto"
+                fill
+                className="object-cover"
               />
             </figure>
 

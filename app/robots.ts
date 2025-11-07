@@ -4,10 +4,18 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
+    rules: [{
       userAgent: "*",
-      allow: "/"
+      disallow: ["/_next/", "/api/"],
+      allow: ["/"],
+    }, {
+      userAgent: "Googlebot",
+      allow: ["/"],
     },
+    {
+      userAgent: "Bingbot",
+      allow: ["/"],
+    }],
     sitemap: `${baseUrl}/sitemap.xml`
   }
 }
