@@ -21,6 +21,7 @@ import HomeBanner from "@/components/HomeBanner"
 import { Link } from "@/i18n/routing"
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
 import { getTranslations } from "next-intl/server"
+import { safeMetadata } from "@/lib/safeMetadata"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -29,51 +30,54 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const [{ locale }, t, results] = await Promise.all([
-    params,
-    getTranslations(),
-    getSeoBySlug("home")
-  ])
+  return safeMetadata(async () => {
+    const [{ locale }, t] = await Promise.all([
+      params,
+      getTranslations()
+    ])
 
-  const pageKey = `/${ROUTES.HOME}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+    const results = await getSeoBySlug("home")
 
-  // Get localized paths safely
-  const localizedPaths = localizationPathname[pageKey] || {
-    en: pageKey,
-    ar: pageKey
-  }
+    const pageKey = `/${ROUTES.HOME}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
 
-  const url =
-    locale === "en"
-      ? `${BASE_URL}/en${localizedPaths.en}`
-      : `${BASE_URL}${localizedPaths.ar}`
-
-  return {
-    title: results.title || `${t("seo.home.title")}`, // undefined = use layout default
-    description: results.description || results.og_description || `${t("seo.home.description")}`,
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `${BASE_URL}/en${localizedPaths.en}`,
-        ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": `${BASE_URL}${localizedPaths.ar}`
-      }
-    },
-    openGraph: {
-      title: results.title || `${t("seo.home.title")}`,
-      description: results.og_description || results.description || `${t("seo.home.description")}`,
-      images: results.og_image ? [{ url: results.og_image }] : undefined,
-      url: url // <-- override og:url here
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: results.title || `${t("seo.home.title")}`,
-      description:
-        results.twitter_description || results.description || `${t("seo.home.description")}`,
-      images: results.twitter_image ? [results.twitter_image] : undefined,
-      site: url // optionally override twitter:site/url if needed
+    // Get localized paths safely
+    const localizedPaths = localizationPathname[pageKey] || {
+      en: pageKey,
+      ar: pageKey
     }
-  }
+
+    const url =
+      locale === "en"
+        ? `${BASE_URL}/en${localizedPaths.en}`
+        : `${BASE_URL}${localizedPaths.ar}`
+
+    return {
+      title: results.title || `${t("seo.home.title")}`, // undefined = use layout default
+      description: results.description || results.og_description || `${t("seo.home.description")}`,
+      alternates: {
+        canonical: url,
+        languages: {
+          en: `${BASE_URL}/en${localizedPaths.en}`,
+          ar: `${BASE_URL}${localizedPaths.ar}`,
+          "x-default": `${BASE_URL}${localizedPaths.ar}`
+        }
+      },
+      openGraph: {
+        title: results.title || `${t("seo.home.title")}`,
+        description: results.og_description || results.description || `${t("seo.home.description")}`,
+        images: results.og_image ? [{ url: results.og_image }] : undefined,
+        url: url // <-- override og:url here
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: results.title || `${t("seo.home.title")}`,
+        description:
+          results.twitter_description || results.description || `${t("seo.home.description")}`,
+        images: results.twitter_image ? [results.twitter_image] : undefined,
+        site: url // optionally override twitter:site/url if needed
+      }
+    }
+  })
 }
 
 export default async function HomePage({

@@ -40,7 +40,6 @@ export const viewport = {
   width: "device-width", // Keeps width responsive
   initialScale: 1.0, // Default zoom level
   userScalable: true, // Allows zooming (fixes accessibility issue)
-  interactiveWidget: "resizes-content", // Android widget behavior
   themeColor: "#FFFFFF",
   colorScheme: "light",
   viewportFit: "cover"

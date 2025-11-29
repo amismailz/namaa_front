@@ -1,3 +1,4 @@
+import Script from "next/script"
 
 type Crumb = {
   name: string
@@ -27,13 +28,14 @@ export function BreadcrumbJsonLd({
     })
   }
 
+  const jsonString = JSON.stringify(jsonLd);
+
   return (
-    <script
+    <Script
       id={id || "breadcrumb-jsonld"}
       type="application/ld+json"
-      // strategy="afterInteractive"
-      // Danger: stringify must produce valid JSON
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: jsonString }}
+      strategy="beforeInteractive"
     />
   )
 }

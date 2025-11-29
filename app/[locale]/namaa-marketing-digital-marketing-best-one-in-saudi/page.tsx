@@ -17,6 +17,7 @@ import { getServices } from "@/data-layer/services"
 import { getSeoBySlug, getServersNavigation } from "@/data-layer/common"
 import { JsonLd } from "@/components/JsonLd"
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
+import { safeMetadata } from "@/lib/safeMetadata"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -25,58 +26,59 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: "ar" | "en" }>
 }): Promise<Metadata> {
-  const [{ locale }, t, results] = await Promise.all([
-    params,
-    getTranslations(),
-    getSeoBySlug("services")
-  ])
+  return safeMetadata(async () => {
+    const [{ locale }, t] = await Promise.all([
+      params,
+      getTranslations()
+    ])
 
-  const isAr = locale === "ar"
+    const results = await getSeoBySlug("services")
 
-  const pageKey = `/${ROUTES.SERVICES}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+    const pageKey = `/${ROUTES.SERVICES}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
 
-  // Get localized paths safely
-  const localizedPaths = localizationPathname[pageKey] || {
-    en: pageKey,
-    ar: pageKey
-  }
-
-  const url =
-    locale === "ar"
-      ? `${BASE_URL}${localizedPaths.ar}`
-      : `${BASE_URL}/${locale}${localizedPaths.en}`
-
-  return {
-    title: results.title || t("seo.services.title"), // undefined = use layout default
-    description: results.description || results.og_description || t("seo.services.description"),
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `${BASE_URL}/en${localizedPaths.en}`,
-        ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": `${BASE_URL}${localizedPaths.ar}`
-      }
-    },
-    openGraph: {
-      title: results.title || t("seo.services.title"),
-      description:
-        results.og_description ||
-        results.description ||
-        t("seo.services.description"),
-      images: results.og_image ? [{ url: results.og_image }] : undefined,
-      url: url // <-- override og:url here
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: results.title || t("seo.services.title"),
-      description:
-        results.twitter_description ||
-        results.description ||
-        t("seo.services.description"),
-      images: results.twitter_image ? [results.twitter_image] : undefined,
-      site: url // optionally override twitter:site/url if needed
+    // Get localized paths safely
+    const localizedPaths = localizationPathname[pageKey] || {
+      en: pageKey,
+      ar: pageKey
     }
-  }
+
+    const url =
+      locale === "ar"
+        ? `${BASE_URL}${localizedPaths.ar}`
+        : `${BASE_URL}/${locale}${localizedPaths.en}`
+
+    return {
+      title: results.title || t("seo.services.title"), // undefined = use layout default
+      description: results.description || results.og_description || t("seo.services.description"),
+      alternates: {
+        canonical: url,
+        languages: {
+          en: `${BASE_URL}/en${localizedPaths.en}`,
+          ar: `${BASE_URL}${localizedPaths.ar}`,
+          "x-default": `${BASE_URL}${localizedPaths.ar}`
+        }
+      },
+      openGraph: {
+        title: results.title || t("seo.services.title"),
+        description:
+          results.og_description ||
+          results.description ||
+          t("seo.services.description"),
+        images: results.og_image ? [{ url: results.og_image }] : undefined,
+        url: url // <-- override og:url here
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: results.title || t("seo.services.title"),
+        description:
+          results.twitter_description ||
+          results.description ||
+          t("seo.services.description"),
+        images: results.twitter_image ? [results.twitter_image] : undefined,
+        site: url // optionally override twitter:site/url if needed
+      }
+    }
+  })
 }
 
 export default async function ServicesPage({

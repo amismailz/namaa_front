@@ -15,6 +15,7 @@ import { JsonLd } from "@/components/JsonLd"
 import { HostingPlansType } from "@/types.type"
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd"
 import { getTranslations } from "next-intl/server"
+import { safeMetadata } from "@/lib/safeMetadata"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -23,50 +24,51 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: "ar" | "en" }>
 }): Promise<Metadata> {
-  const [{ locale }, results] = await Promise.all([
-    params,
-    getSeoBySlug("hosting-plans")
-  ])
+  return safeMetadata(async () => {
+    const { locale } = await params
 
-  const pageKey = `/${ROUTES.PACKAGES}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+    const results = await getSeoBySlug("hosting-plans")
 
-  // Get localized paths safely
-  const localizedPaths = localizationPathname[pageKey] || {
-    en: pageKey,
-    ar: pageKey
-  }
+    const pageKey = `/${ROUTES.PACKAGES}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
 
-  const url =
-    locale === "en"
-      ? `${BASE_URL}/en${localizedPaths.en}`
-      : `${BASE_URL}${localizedPaths.ar}`
-
-  return {
-    title: results.title || undefined, // undefined = use layout default
-    description: results.description || results.og_description || undefined,
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `${BASE_URL}/en${localizedPaths.en}`,
-        ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": `${BASE_URL}${localizedPaths.ar}`
-      }
-    },
-    openGraph: {
-      title: results.title || undefined,
-      description: results.og_description || results.description || undefined,
-      images: results.og_image ? [{ url: results.og_image }] : undefined,
-      url: url // <-- override og:url here
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: results.title || undefined,
-      description:
-        results.twitter_description || results.description || undefined,
-      images: results.twitter_image ? [results.twitter_image] : undefined,
-      site: url // optionally override twitter:site/url if needed
+    // Get localized paths safely
+    const localizedPaths = localizationPathname[pageKey] || {
+      en: pageKey,
+      ar: pageKey
     }
-  }
+
+    const url =
+      locale === "en"
+        ? `${BASE_URL}/en${localizedPaths.en}`
+        : `${BASE_URL}${localizedPaths.ar}`
+
+    return {
+      title: results.title || undefined, // undefined = use layout default
+      description: results.description || results.og_description || undefined,
+      alternates: {
+        canonical: url,
+        languages: {
+          en: `${BASE_URL}/en${localizedPaths.en}`,
+          ar: `${BASE_URL}${localizedPaths.ar}`,
+          "x-default": `${BASE_URL}${localizedPaths.ar}`
+        }
+      },
+      openGraph: {
+        title: results.title || undefined,
+        description: results.og_description || results.description || undefined,
+        images: results.og_image ? [{ url: results.og_image }] : undefined,
+        url: url // <-- override og:url here
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: results.title || undefined,
+        description:
+          results.twitter_description || results.description || undefined,
+        images: results.twitter_image ? [results.twitter_image] : undefined,
+        site: url // optionally override twitter:site/url if needed
+      }
+    }
+  })
 }
 
 export default async function PackagesPage({
@@ -74,7 +76,7 @@ export default async function PackagesPage({
 }: {
   params: Promise<{ locale: "ar" | "en" }>
 }) {
-  const [{ locale },t] = await Promise.all([params, getTranslations()])
+  const [{ locale }, t] = await Promise.all([params, getTranslations()])
   const data = await getHostingPlans()
 
   const webHosting = data?.filter((item) => [6, 7, 8].includes(item.id))

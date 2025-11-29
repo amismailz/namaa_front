@@ -5,6 +5,7 @@ import ServiceDetails from "@/components/ServiceDetails"
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import HideLocale from "@/components/HideLocale"
+import { safeMetadata } from "@/lib/safeMetadata"
 
 type Props = {
   params: Promise<{ locale: "ar" | "en"; dynamicSlug: string }>
@@ -17,87 +18,90 @@ export async function generateMetadata({
 }: {
   params: Promise<{ dynamicSlug: string; locale: "ar" | "en" }>
 }): Promise<Metadata> {
-  const { locale, dynamicSlug } = await params
-  const data = await getSlugDetails(dynamicSlug)
+  return safeMetadata(async () => {
+    const { locale, dynamicSlug } = await params
+    const data = await getSlugDetails(dynamicSlug)
 
-  if (data.type === "blog") {
-    const post = data.blog
+    if (data.type === "blog") {
+      const post = data.blog
 
-    const url =
-      locale === "en"
-        ? `${BASE_URL}/${locale}/${post.slug.en}`
-        : `${BASE_URL}/${post.slug.ar}`
+      const url =
+        locale === "en"
+          ? `${BASE_URL}/${locale}/${post.slug.en}`
+          : `${BASE_URL}/${post.slug.ar}`
 
-    return {
-      title: post.meta_title ?? "Blog title",
-      description: post.meta_description ?? "blog description",
-      alternates: {
-        canonical: url,
-        languages: {
-          en: `${BASE_URL}/en/${post.slug.en}`,
-          ar: `${BASE_URL}/${post.slug.ar}`,
-          "x-default": `${BASE_URL}/${post.slug.ar}`
-        }
-      },
-      openGraph: {
+      return {
         title: post.meta_title ?? "Blog title",
         description: post.meta_description ?? "blog description",
-        images: [
-           {
-            url: post.image,
-            secureUrl: post.image, // og:image:secure_url
-            alt: post.title
-          },
-          {
-            url: "/namaa-otg.jpg",
-            secureUrl: `${BASE_URL}/namaa-otg.jpg`, // og:image:secure_url
-            width: 1200,
-            height: 630,
-            alt: "social media agency egypt",
-            type: "image/png"
+        alternates: {
+          canonical: url,
+          languages: {
+            en: `${BASE_URL}/en/${post.slug.en}`,
+            ar: `${BASE_URL}/${post.slug.ar}`,
+            "x-default": `${BASE_URL}/${post.slug.ar}`
           }
-        ],
-        url: url // <-- override og:url here
-      },
-      twitter: {
-        title: post.meta_title ?? "Blog title",
-        description: post.meta_description ?? "blog description",
-        card: "summary_large_image",
-        site: url // <-- override og:url here
-      }
-    }
-  } else {
-    const { service } = data
-
-    const url =
-      locale === "en"
-        ? `${BASE_URL}/${locale}/${service.slug}`
-        : `${BASE_URL}/${service.slug}`
-
-    return {
-      title: service.meta_title ?? "Service title",
-      description: service.meta_description ?? "Service description",
-      alternates: {
-        canonical: url,
-        languages: {
-          en: `${BASE_URL}/en/${service.slug}`,
-          ar: `${BASE_URL}/${service.slug}`,
-          "x-default": `${BASE_URL}/${service.slug}`
+        },
+        openGraph: {
+          title: post.meta_title ?? "Blog title",
+          description: post.meta_description ?? "blog description",
+          images: [
+            {
+              url: post.image,
+              secureUrl: post.image, // og:image:secure_url
+              alt: post.title
+            },
+            {
+              url: "/namaa-otg.jpg",
+              secureUrl: `${BASE_URL}/namaa-otg.jpg`, // og:image:secure_url
+              width: 1200,
+              height: 630,
+              alt: "social media agency egypt",
+              type: "image/png"
+            }
+          ],
+          url: url // <-- override og:url here
+        },
+        twitter: {
+          title: post.meta_title ?? "Blog title",
+          description: post.meta_description ?? "blog description",
+          card: "summary_large_image",
+          site: url // <-- override og:url here
         }
-      },
-      openGraph: {
+      }
+    } else {
+      const { service } = data
+
+      const url =
+        locale === "en"
+          ? `${BASE_URL}/${locale}/${service.slug}`
+          : `${BASE_URL}/${service.slug}`
+
+      return {
         title: service.meta_title ?? "Service title",
         description: service.meta_description ?? "Service description",
-        url: url // <-- override og:url here
-      },
-      twitter: {
-        title: service.meta_title ?? "Service title",
-        description: service.meta_description ?? "Service description",
-        card: "summary_large_image",
-        site: url // <-- override og:url here
+        alternates: {
+          canonical: url,
+          languages: {
+            en: `${BASE_URL}/en/${service.slug}`,
+            ar: `${BASE_URL}/${service.slug}`,
+            "x-default": `${BASE_URL}/${service.slug}`
+          }
+        },
+        openGraph: {
+          title: service.meta_title ?? "Service title",
+          description: service.meta_description ?? "Service description",
+          url: url // <-- override og:url here
+        },
+        twitter: {
+          title: service.meta_title ?? "Service title",
+          description: service.meta_description ?? "Service description",
+          card: "summary_large_image",
+          site: url // <-- override og:url here
+        }
       }
     }
-  }
+  })
+
 }
 
 export default async function DynamicSlug({ params }: Props) {
@@ -132,7 +136,7 @@ export default async function DynamicSlug({ params }: Props) {
     }
   }
 
-  
+
 
   return (
     <>

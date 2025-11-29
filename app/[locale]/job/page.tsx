@@ -10,57 +10,59 @@ import { ROUTES } from "@/constants"
 import { getSeoBySlug } from "@/data-layer/common"
 import { getJobsList } from "@/data-layer/jobs"
 import { localizationPathname } from "@/i18n/localizationPathname"
+import { safeMetadata } from "@/lib/safeMetadata"
 import { Metadata } from "next"
 import { getLocale, getTranslations } from "next-intl/server"
 import React, { Suspense } from "react"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
-export async function generateMetadata(): Promise<Metadata> {
-  const [locale, results] = await Promise.all([
-    getLocale(),
-    getSeoBySlug("jobs")
-  ])
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  return safeMetadata(async () => {
+    const { locale } = await params
 
-  const pageKey = `/${ROUTES.JOB}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
+    const results = await getSeoBySlug("jobs")
 
-  // Get localized paths safely
-  const localizedPaths = localizationPathname[pageKey] || {
-    en: pageKey,
-    ar: pageKey
-  }
+    const pageKey = `/${ROUTES.JOB}` // <-- replace with current page route // e.g., 'contact-us', 'about-us', etc.
 
-  const url =
-    locale === "en"
-      ? `${BASE_URL}/en${localizedPaths.en}`
-      : `${BASE_URL}${localizedPaths.ar}`
-
-  return {
-    title: results.title || undefined, // undefined = use layout default
-    description: results.description || results.og_description || undefined,
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `${BASE_URL}/en${localizedPaths.en}`,
-        ar: `${BASE_URL}${localizedPaths.ar}`,
-        "x-default": `${BASE_URL}${localizedPaths.ar}`
-      }
-    },
-    openGraph: {
-      title: results.title || undefined,
-      description: results.og_description || results.description || undefined,
-      images: results.og_image ? [{ url: results.og_image }] : undefined,
-      url: url // <-- override og:url here
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: results.title || undefined,
-      description:
-        results.twitter_description || results.description || undefined,
-      images: results.twitter_image ? [results.twitter_image] : undefined,
-      site: url // optionally override twitter:site/url if needed
+    // Get localized paths safely
+    const localizedPaths = localizationPathname[pageKey] || {
+      en: pageKey,
+      ar: pageKey
     }
-  }
+
+    const url =
+      locale === "en"
+        ? `${BASE_URL}/en${localizedPaths.en}`
+        : `${BASE_URL}${localizedPaths.ar}`
+
+    return {
+      title: results.title || undefined, // undefined = use layout default
+      description: results.description || results.og_description || undefined,
+      alternates: {
+        canonical: url,
+        languages: {
+          en: `${BASE_URL}/en${localizedPaths.en}`,
+          ar: `${BASE_URL}${localizedPaths.ar}`,
+          "x-default": `${BASE_URL}${localizedPaths.ar}`
+        }
+      },
+      openGraph: {
+        title: results.title || undefined,
+        description: results.og_description || results.description || undefined,
+        images: results.og_image ? [{ url: results.og_image }] : undefined,
+        url: url // <-- override og:url here
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: results.title || undefined,
+        description:
+          results.twitter_description || results.description || undefined,
+        images: results.twitter_image ? [results.twitter_image] : undefined,
+        site: url // optionally override twitter:site/url if needed
+      }
+    }
+  })
 }
 
 export default async function JobsPage({
@@ -91,14 +93,14 @@ export default async function JobsPage({
       </Section>
 
       {/* <Suspense fallback={null}> */}
-        <JobsAsync locale={locale} />
+      <JobsAsync locale={locale} />
       {/* </Suspense> */}
     </>
   )
 }
 
 async function JobsAsync({ locale }: { locale: "ar" | "en" }) {
-  const [t, data] = await Promise.all([getTranslations(),getJobsList()])
+  const [t, data] = await Promise.all([getTranslations(), getJobsList()])
   const isAr = locale === "ar"
 
   if (!data || data.length === 0) {
