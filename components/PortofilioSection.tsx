@@ -8,30 +8,30 @@ import { ButtonWithIcon } from "@/components/ui/button-with-icon"
 import { GoArrowUpRight } from "react-icons/go"
 import { ProtfolioType } from "@/types.type"
 import { cn } from "@/lib/utils"
-import { motion, Variants } from "framer-motion"
+// import { motion, Variants } from "framer-motion"
 import PortofilioLightBox from "@/components/PortofilioLightBox"
 import { ROUTES } from "@/constants"
 import Translate from "@/components/Translate"
 import { Link } from "@/i18n/routing"
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15 // delay between items
-    }
-  }
-}
+// const containerVariants: Variants = {
+//   hidden: { opacity: 0 },
+//   visible: {
+//     opacity: 1,
+//     transition: {
+//       staggerChildren: 0.15 // delay between items
+//     }
+//   }
+// }
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: "easeOut" }
-  }
-}
+// const itemVariants: Variants = {
+//   hidden: { opacity: 0, y: 30 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: { duration: 0.4, ease: "easeOut" }
+//   }
+// }
 
 const PortofilioSection = ({
   list,
@@ -62,17 +62,17 @@ const PortofilioSection = ({
         </div>
 
         <Container className="mt-5 space-y-10">
-          <motion.div
+          <div
             className="columns-2 md:columns-3 lg:columns-4 space-y-4 gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+            // variants={containerVariants}
+            // initial="hidden"
+            // animate="visible"
           >
             {list?.map((item, idx) => (
-              <motion.div
+              <div
                 key={idx}
                 className="break-inside-avoid cursor-zoom-in rounded-xl overflow-hidden shadow"
-                variants={itemVariants}
+                // variants={itemVariants}
                 onClick={() => setOpenGallery({ isShown: true, index: idx })}
               >
                 <img
@@ -80,9 +80,9 @@ const PortofilioSection = ({
                   src={item.image}
                   style={{ width: "100%", height: "auto" }}
                 />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           <div className="mx-auto flex justify-center items-center p-6">
             <Link href={`/${ROUTES.PORTOFILIO}`}>

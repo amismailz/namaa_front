@@ -6,27 +6,27 @@ import { GoArrowUpRight } from "react-icons/go"
 import { useTranslations } from "next-intl"
 import { Loader } from "lucide-react"
 import { usePortfolio } from "@/providers/PortfolioProvider"
-import { motion, Variants } from "framer-motion"
+// import { motion, Variants } from "framer-motion"
 import PortofilioLightBox from "@/components/PortofilioLightBox"
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15 // delay between items
-    }
-  }
-}
+// const containerVariants: Variants = {
+//   hidden: { opacity: 0 },
+//   visible: {
+//     opacity: 1,
+//     transition: {
+//       staggerChildren: 0.15 // delay between items
+//     }
+//   }
+// }
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: "easeOut" }
-  }
-}
+// const itemVariants: Variants = {
+//   hidden: { opacity: 0, y: 30 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: { duration: 0.4, ease: "easeOut" }
+//   }
+// }
 
 const PortofilioList = () => {
   const t = useTranslations()
@@ -37,17 +37,17 @@ const PortofilioList = () => {
 
   return (
     <>
-      <motion.div
+      <div
         className="columns-2 md:columns-3 lg:columns-4 space-y-4 gap-6 mt-12"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        // variants={containerVariants}
+        // initial="hidden"
+        // animate="visible"
       >
         {items?.map((item, idx) => (
-          <motion.div
+          <div
             key={item.id}
             className="break-inside-avoid cursor-zoom-in rounded-xl overflow-hidden shadow"
-            variants={itemVariants}
+            // variants={itemVariants}
             onClick={() => setOpenGallery({isShown:true, index:idx})}
           >
             <img
@@ -55,9 +55,9 @@ const PortofilioList = () => {
               src={item.image}
               style={{ width: "100%", height: "auto" }}
             />
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
       {pagination && pagination.current_page < pagination.last_page ? (
         <div className="mx-auto flex justify-center items-center p-6">

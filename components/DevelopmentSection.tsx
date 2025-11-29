@@ -22,12 +22,12 @@ const DevelopmentSection = ({
   return (
     <Section className={cn("", className)}>
       <Container className="lg:grid lg:grid-cols-[1.4fr_1fr] lg:gap-6">
-        <motion.div
+        <div
           className="space-y-7 py-16 relative z-10"
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.4 }} // 👈 animate each time it's in view
+          // initial={{ opacity: 0, y: 60 }}
+          // whileInView={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 0.7, ease: "easeOut" }}
+          // viewport={{ once: false, amount: 0.4 }} // 👈 animate each time it's in view
         >
           <div>
             <p className="text-muted-foreground">
@@ -53,7 +53,7 @@ const DevelopmentSection = ({
               </ButtonWithIcon>
             </Link>
           </div>
-        </motion.div>
+        </div>
       </Container>
 
       {/* shape */}
@@ -70,7 +70,7 @@ const DevelopmentSection = ({
       </div>
 
       <div className=" opacity-10 lg:opacity-100">
-        <motion.div
+        <div
           className="w-full bounce-animation max-w-full lg:max-w-[560px] h-full absolute lg:ltr:right-10 lg:rtl:left-10 ltr:right-0 rtl:left-0 bottom-0"
           style={{
             backgroundImage: `url(${data.image})`,
@@ -78,10 +78,10 @@ const DevelopmentSection = ({
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center center"
           }}
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.3 }} // 👈 same here
+          // initial={{ opacity: 0, y: 80 }}
+          // whileInView={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 0.8, ease: "easeOut" }}
+          // viewport={{ once: false, amount: 0.3 }} // 👈 same here
         />
       </div>
     </Section>

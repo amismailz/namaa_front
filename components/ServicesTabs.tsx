@@ -171,9 +171,9 @@ const ServicesTabs = memo(function ServicesTabs({
   ]
 
   const tabsNew = useMemo(() => {
-    return data.map((item) => ({
+    return data.map((item, index) => ({
       value: item.id.toString(),
-      bg: colors[Math.floor(Math.random() * colors.length)],
+      bg: colors[index % colors.length],
       url: `/${item.slug}`,
       label: item.title,
       description: item.description,
@@ -182,6 +182,11 @@ const ServicesTabs = memo(function ServicesTabs({
       icon: item.icon
     }))
   }, [])
+
+  if (!tabsNew || tabsNew.length === 0) {
+    // Handle case where data is empty (return null or a loading state)
+    return null; 
+  }
 
   return (
     <Tabs

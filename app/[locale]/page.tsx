@@ -92,7 +92,7 @@ export default async function HomePage({
   } = await getHome()
 
   const isAr = locale === "ar"
- 
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [

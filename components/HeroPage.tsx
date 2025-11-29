@@ -6,22 +6,22 @@ import { cn } from "@/lib/utils"
 import AnimatedLetters from "@/components/AnimatedLetters"
 import Container from "@/components/Container"
 import { Link } from "@/i18n/routing"
-import { motion, Variants } from "framer-motion"
+// import { motion, Variants } from "framer-motion"
 
 // ✨ Corner animation
-const cornerVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.5, y: -5 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      // delay: i * 0.15,
-      duration: 0.4,
-      ease: "easeOut"
-    }
-  }
-}
+// const cornerVariants: Variants = {
+//   hidden: { opacity: 0, scale: 0.5, y: -5 },
+//   show: {
+//     opacity: 1,
+//     scale: 1,
+//     y: 0,
+//     transition: {
+//       // delay: i * 0.15,
+//       duration: 0.4,
+//       ease: "easeOut"
+//     }
+//   }
+// }
 
 type BreadCrumbItem = {
   text: string | React.ReactNode
@@ -47,12 +47,12 @@ const HeroCorners = () => {
   return (
     <>
       {positions.map((pos, i) => (
-        <motion.span
+        <span
           key={pos}
-          custom={i}
-          initial="hidden"
-          animate="show"
-          variants={cornerVariants}
+          // custom={i}
+          // initial="hidden"
+          // animate="show"
+          // variants={cornerVariants}
           className={cn(
             "absolute w-3 h-3 border border-primary/50 rounded",
             pos

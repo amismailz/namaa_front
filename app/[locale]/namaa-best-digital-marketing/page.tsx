@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import React from "react"
 import Container from "@/components/Container"
 import Section from "@/components/Section"
 import HeroPage from "@/components/HeroPage"
@@ -6,7 +6,7 @@ import { getPortofilioList } from "@/data-layer/portofilio"
 import PortofilioList from "@/components/PortofilioList"
 import PortofilioFilterationNav from "@/components/PortofilioFilterationNav"
 import { PortfolioProvider } from "@/providers/PortfolioProvider"
-import { MasonrySkeleton } from "@/components/MasonerySkeleton"
+// import { MasonrySkeleton } from "@/components/MasonerySkeleton"
 import { ROUTES } from "@/constants"
 import { getSeoBySlug } from "@/data-layer/common"
 import { Metadata } from "next"
@@ -97,13 +97,13 @@ export default async function PortfolioPage({
           <h2 className="mx-auto text-center font-semibold text-primary text-2xl lg:text-3xl">
             <Translate id="portfilio.title" />
           </h2>
-          <Suspense fallback={<MasonrySkeleton />}>
+          {/* <Suspense fallback={<MasonrySkeleton />}> */}
             <PortofiliAsync
               page={page}
               service_slug={service_slug}
               locale={locale}
             />
-          </Suspense>
+          {/* </Suspense> */}
         </Container>
       </Section>
     </>

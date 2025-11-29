@@ -1,9 +1,8 @@
 "use client"
 
-import { useTransitionRouter } from "next-view-transitions"
 import React, { ReactNode, useRef } from "react"
 import { cn } from "@/lib/utils"
-import { Link } from "@/i18n/routing"
+import { Link, useRouter } from "@/i18n/routing"
 
 type AnimatedPageLinkProps = React.ComponentProps<typeof Link> & {
   isActive?: boolean
@@ -25,7 +24,7 @@ const AnimatedPageLink = ({
   onClicked,
   ...props
 }: AnimatedPageLinkProps) => {
-  const router = useTransitionRouter()
+  const router = useRouter()
   const ref = useRef<HTMLAnchorElement>(null)
 
   return (
@@ -41,9 +40,7 @@ const AnimatedPageLink = ({
            // ✅ Convert full absolute URL → relative pathname (locale preserved)
            const relativePath = new URL(fullUrl).pathname
 
-           router.push(relativePath, {
-             onTransitionReady: pageAnimation
-           })
+           router.push(relativePath)
          }, closeDelay)
       }}
       className={cn("", isActive, className)}

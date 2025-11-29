@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import React from "react"
 import Section from "@/components/Section"
 import HeroPage from "@/components/HeroPage"
 import BlogList from "@/components/BlogList"
@@ -85,8 +85,6 @@ export default async function BlogPage({
 
   return (
     <>
-      
-
       <HeroPage
         heading={<Translate id="blog.hero_title" />}
         breadcrumb={[{ text: <Translate id="navbar.home" />, link: `/` }]}
@@ -94,9 +92,9 @@ export default async function BlogPage({
 
       <Section className="py-10">
         {queries?.search ? <BlogSearchTags searchKey={queries.search} /> : null}
-        <Suspense fallback={<BlogListSkeleton count={6} />}>
+        {/* <Suspense fallback={<BlogListSkeleton count={6} />}> */}
           <BlogAsync queries={queries} locale={locale} t={t} />
-        </Suspense>
+        {/* </Suspense> */}
       </Section>
     </>
   )

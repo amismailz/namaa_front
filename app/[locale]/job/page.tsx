@@ -90,9 +90,9 @@ export default async function JobsPage({
         </Container>
       </Section>
 
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}> */}
         <JobsAsync locale={locale} />
-      </Suspense>
+      {/* </Suspense> */}
     </>
   )
 }

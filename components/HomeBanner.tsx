@@ -77,7 +77,7 @@ const HomeBanner = ({
               <h2 className="scroll-m-20 text-4xl lg:text-6xl font-semibold">
                 <Counter
                   value={data.years_of_experience}
-                  defaultValue={0}
+                  defaultValue={data.years_of_experience}
                   suffix="+"
                 />
               </h2>
@@ -89,7 +89,7 @@ const HomeBanner = ({
               <h2 className="scroll-m-20 text-4xl lg:text-6xl font-semibold">
                 <Counter
                   value={data.completed_projects}
-                  defaultValue={0}
+                  defaultValue={data.completed_projects}
                   suffix="+"
                 />
               </h2>

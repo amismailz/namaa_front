@@ -11,6 +11,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.2.1
         version: 5.2.1(react-hook-form@7.62.0(react@19.1.0))
+      '@next/third-parties':
+        specifier: ^16.0.5
+        version: 16.0.5(next@15.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-accordion':
         specifier: ^1.2.12
         version: 1.2.12(@types/react-dom@19.1.9(@types/react@19.1.12))(@types/react@19.1.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -74,6 +77,9 @@ importers:
       framer-motion:
         specifier: ^12.23.12
         version: 12.23.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      google:
+        specifier: link:@next/third-parties/google
+        version: link:@next/third-parties/google
       html-react-parser:
         specifier: ^5.2.6
         version: 5.2.6(@types/react@19.1.12)(react@19.1.0)
@@ -95,9 +101,6 @@ importers:
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      next-view-transitions:
-        specifier: ^0.3.4
-        version: 0.3.4(next@15.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       nextjs-toploader:
         specifier: ^3.8.16
         version: 3.8.16(next@15.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -399,6 +402,12 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
+
+  '@next/third-parties@16.0.5':
+    resolution: {integrity: sha512-0WJh02NI3QAIbczKWXKn9pbpMomej/apc+4MjYplTL2ogBgLJ3E9tEkJrO4Osi6u0yEgILq/cEWLdAXkjiwOIg==}
+    peerDependencies:
+      next: ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0-beta.0
+      react: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
 
   '@radix-ui/number@1.1.1':
     resolution: {integrity: sha512-MkKCwxlXTgz6CFoJx3pCwn07GKp36+aZyu/u2Ln2VrA5DcdyCZkASEDBTd8x5whTQQL5CiYf4prXKLcgQdv29g==}
@@ -1521,13 +1530,6 @@ packages:
       react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
       react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
 
-  next-view-transitions@0.3.4:
-    resolution: {integrity: sha512-SSiskenQ8JkEFGzPjvFwC5LGGoqgTxM5dxexkeugxvcXFLpWI2ZUh4IsCURD3ovW+8Ue7xXlrtrpy8b7XR7IwQ==}
-    peerDependencies:
-      next: '>=14.0.0'
-      react: ^18.2.0
-      react-dom: ^18.2.0
-
   next@15.5.2:
     resolution: {integrity: sha512-H8Otr7abj1glFhbGnvUt3gz++0AF1+QoCXEBmd/6aKbfdFwrn0LpA836Ed5+00va/7HQSDD+mOoVhn3tNy3e/Q==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
@@ -1723,6 +1725,9 @@ packages:
   tar@7.4.3:
     resolution: {integrity: sha512-5S7Va8hKfV7W5U6g3aYxXmlPoZVAwUMy9AOKyF2fVuZa2UD3qZjg578OrLRt8PcNN1PleVaL/5/yYATNL0ICUw==}
     engines: {node: '>=18'}
+
+  third-party-capital@1.0.20:
+    resolution: {integrity: sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==}
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
@@ -1987,6 +1992,12 @@ snapshots:
 
   '@next/swc-win32-x64-msvc@15.5.2':
     optional: true
+
+  '@next/third-parties@16.0.5(next@15.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      next: 15.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react: 19.1.0
+      third-party-capital: 1.0.20
 
   '@radix-ui/number@1.1.1': {}
 
@@ -3113,12 +3124,6 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  next-view-transitions@0.3.4(next@15.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
-    dependencies:
-      next: 15.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-
   next@15.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@next/env': 15.5.2
@@ -3374,6 +3379,8 @@ snapshots:
       minizlib: 3.0.2
       mkdirp: 3.0.1
       yallist: 5.0.0
+
+  third-party-capital@1.0.20: {}
 
   tslib@2.8.1: {}
 

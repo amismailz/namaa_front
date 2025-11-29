@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { motion, type Variants } from "framer-motion"
 import { useLocale } from "next-intl";
 
@@ -8,6 +8,16 @@ const AnimatedLetters = ({ text }: { text: string | React.ReactNode }) => {
 
   const locale = useLocale()
   const isArabic = locale === "ar"
+
+  const [isJSEnabled, setIsJSEnabled] = useState(false);
+
+  useEffect(() => {
+    // This code ONLY runs on the client after successful hydration.
+    // Therefore, if it runs, JavaScript is enabled.
+    setIsJSEnabled(true);
+  }, []);
+
+
 
   const variants: Variants = {
     hidden: { opacity: 0, y: 25, scale: 0.9 },
@@ -17,6 +27,14 @@ const AnimatedLetters = ({ text }: { text: string | React.ReactNode }) => {
       scale: 1,
       transition: { duration: 0.5, ease: "easeOut" }
     }
+  }
+
+  if (!isJSEnabled) {
+    return (
+      <span className={isArabic ? "relative lg:-top-2" : ""}>
+        <span className="inline-block relative">{text}</span>
+      </span>
+    )
   }
 
   return (

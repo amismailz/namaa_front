@@ -7,10 +7,32 @@ import { useLocale } from "next-intl"
 import { ClientItemType } from "@/types.type"
 import "swiper/css"
 import "swiper/css/pagination"
+import { useEffect, useState } from "react"
 
 const CientSlider2 = ({ data }: { data: ClientItemType[] }) => {
   const locale = useLocale()
   const dir = locale === "ar" ? "rtl" : "ltr"
+
+  const [isJSEnabled, setIsJSEnabled] = useState(false);
+
+  useEffect(() => {
+    // This code ONLY runs on the client after successful hydration.
+    // Therefore, if it runs, JavaScript is enabled.
+    setIsJSEnabled(true);
+  }, []);
+
+
+  if (!isJSEnabled) {
+    return <div className="flex flex-col lg:flex-row items-center justify-center gap-3">
+      {data.map(({ image, title }, index) => (
+        <div key={index} className="flex  items-center justify-center">
+          <div className="flex items-center justify-center p-6 bg-background rounded-xl border border-black/5">
+            <Image src={image} alt={title} width={160} height={140} />
+          </div>
+        </div>
+      ))}
+    </div>
+  }
 
   return (
     <div className="relative mt-3">
