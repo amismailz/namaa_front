@@ -2,9 +2,9 @@ import React from "react"
 import { getSlugDetails } from "@/data-layer/common"
 import PostDetails from "@/components/PostDetails"
 import ServiceDetails from "@/components/ServiceDetails"
-import BlogPostHideLocale from "@/components/BlogPostHideLocale"
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
+import HideLocale from "@/components/HideLocale"
 
 type Props = {
   params: Promise<{ locale: "ar" | "en"; dynamicSlug: string }>
@@ -136,7 +136,7 @@ export default async function DynamicSlug({ params }: Props) {
 
   return (
     <>
-      <BlogPostHideLocale />
+      <HideLocale />
       {renderContent(data.type)}
     </>
   )

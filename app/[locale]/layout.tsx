@@ -13,7 +13,6 @@ import { Toaster } from "@/components/ui/sonner"
 import NextTopLoader from "nextjs-toploader"
 import { ROUTES } from "@/constants"
 import WhatsAppChat from "@/components/WhatsAppChat"
-import { LocaleSwitcherProvider } from "@/providers/LocaleSwitcherProvider"
 import { ScrollToTop } from "@/components/ScrollToTop"
 import { localizationPathname } from "@/i18n/localizationPathname"
 import { getTranslations } from "next-intl/server"
@@ -198,20 +197,18 @@ export default async function RootLayout({ children, params }: Props) {
 
         <LocaleLayout locale={locale}>
           <ReactQueryProvider>
-            <LocaleSwitcherProvider>
-              <Direction direction={dir}>
-                <div className="page-wrapper min-h-dvh ">
-                  <Navbar data={data} services={servicesChildren} />
-                  <main className="min-h-[400px]">
-                    <ScrollToTop />
-                    {children}
-                  </main>
-                  <CallToAction />
-                  <Footer data={data} services={servicesChildren} />
-                </div>
-                <Toaster position="bottom-center" />
-              </Direction>
-            </LocaleSwitcherProvider>
+            <Direction direction={dir}>
+              <div className="page-wrapper min-h-dvh ">
+                <Navbar data={data} services={servicesChildren} />
+                <main className="min-h-[400px]">
+                  <ScrollToTop />
+                  {children}
+                </main>
+                <CallToAction />
+                <Footer data={data} services={servicesChildren} />
+              </div>
+              <Toaster position="bottom-center" />
+            </Direction>
           </ReactQueryProvider>
         </LocaleLayout>
 

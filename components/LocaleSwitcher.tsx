@@ -5,7 +5,6 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { LOCALES } from "@/constants"
 import { useLocale } from "next-intl"
-import { useLocaleSwitcher } from "@/providers/LocaleSwitcherProvider"
 import { cn } from "@/lib/utils"
 
 const LOCALE_LABELS: Record<string, { label: string; flag: string }> = {
@@ -16,7 +15,6 @@ const LOCALE_LABELS: Record<string, { label: string; flag: string }> = {
 export default function LocaleSwitcher() {
   const locale = useLocale()
   const pathname = usePathname()
-  const { hidden } = useLocaleSwitcher()
 
   // determine target locale (toggle for now, but can scale later)
   const targetLocale = locale === LOCALES.EN ? LOCALES.AR : LOCALES.EN
@@ -29,9 +27,9 @@ export default function LocaleSwitcher() {
     <Button
       asChild
       variant="link"
+      id="switcher-control"
       className={cn(
-        "flex items-center gap-2 font-semibold text-muted-foreground cursor-pointer",
-        hidden && "opacity-0"
+        "flex items-center gap-2 font-semibold text-muted-foreground cursor-pointer"
       )}
     >
       <Link
