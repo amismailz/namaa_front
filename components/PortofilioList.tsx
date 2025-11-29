@@ -53,6 +53,7 @@ const PortofilioList = () => {
             <img
               key={item.id}
               src={item.image}
+              alt={item.title ?? "Portfolio image"}
               style={{ width: "100%", height: "auto" }}
             />
           </div>

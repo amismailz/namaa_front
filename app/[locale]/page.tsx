@@ -29,8 +29,9 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const [{ locale }, results] = await Promise.all([
+  const [{ locale }, t, results] = await Promise.all([
     params,
+    getTranslations(),
     getSeoBySlug("home")
   ])
 
@@ -48,8 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : `${BASE_URL}${localizedPaths.ar}`
 
   return {
-    title: results.title || undefined, // undefined = use layout default
-    description: results.description || results.og_description || undefined,
+    title: results.title || `${t("seo.home.title")}`, // undefined = use layout default
+    description: results.description || results.og_description || `${t("seo.home.description")}`,
     alternates: {
       canonical: url,
       languages: {
@@ -59,16 +60,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       }
     },
     openGraph: {
-      title: results.title || undefined,
-      description: results.og_description || results.description || undefined,
+      title: results.title || `${t("seo.home.title")}`,
+      description: results.og_description || results.description || `${t("seo.home.description")}`,
       images: results.og_image ? [{ url: results.og_image }] : undefined,
       url: url // <-- override og:url here
     },
     twitter: {
       card: "summary_large_image",
-      title: results.title || undefined,
+      title: results.title || `${t("seo.home.title")}`,
       description:
-        results.twitter_description || results.description || undefined,
+        results.twitter_description || results.description || `${t("seo.home.description")}`,
       images: results.twitter_image ? [results.twitter_image] : undefined,
       site: url // optionally override twitter:site/url if needed
     }

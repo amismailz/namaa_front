@@ -27,7 +27,7 @@ const CientSlider2 = ({ data }: { data: ClientItemType[] }) => {
       {data.map(({ image, title }, index) => (
         <div key={index} className="flex  items-center justify-center">
           <div className="flex items-center justify-center p-6 bg-background rounded-xl border border-black/5">
-            <Image src={image} alt={title} width={160} height={140} />
+            <Image src={image} alt={title ?? "client image"} width={160} height={140} />
           </div>
         </div>
       ))}
@@ -64,7 +64,7 @@ const CientSlider2 = ({ data }: { data: ClientItemType[] }) => {
           <SwiperSlide key={index}>
             <div className="flex aspect-square items-center justify-center">
               <div className="flex items-center justify-center p-6 bg-background rounded-xl border border-black/5">
-                <Image src={image} alt={title} width={160} height={140} />
+                <Image src={image} alt={title ?? "client image"} width={160} height={140} />
               </div>
             </div>
           </SwiperSlide>

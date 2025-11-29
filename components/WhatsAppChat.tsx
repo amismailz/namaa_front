@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { FloatingWhatsApp } from "react-floating-whatsapp"
 
-
 const WhatsAppChat = () => {
   const [isJSEnabled, setIsJSEnabled] = useState(false);
 

@@ -7,7 +7,6 @@ import CallToAction from "@/components/CallToAction"
 import LocaleLayout from "@/providers/LocaleLayout"
 import ReactQueryProvider from "@/lib/ReactQueryProvider"
 import { Direction } from "@/providers/DirectionProvider"
-// import AnimateRoutes from "@/components/AnimateRoutes"
 import { getContactInfo, getServersNavigation } from "@/data-layer/common"
 import { Toaster } from "@/components/ui/sonner"
 import NextTopLoader from "nextjs-toploader"
@@ -172,17 +171,6 @@ export default async function RootLayout({ children, params }: Props) {
     >
       <head>
         <meta name="apple-mobile-web-app-title" content="Namaa" />
-
-        {/* <Script id="gtm-script" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id=${googleGtmId}'+dl;
-              f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${googleGtmId}');
-          `}
-        </Script> */}
       </head>
       <body
         className={`${isArabic ? IBMPlexSansArabic.variable : outfit.variable

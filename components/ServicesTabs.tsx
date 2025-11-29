@@ -166,7 +166,7 @@ const ServicesTabs = memo(function ServicesTabs({
   const colors = [
     "bg-[#F0FFFC]",
     "bg-[#F5F5F5]",
-    "bg-[#FEEFF4]",
+    "bg-[#FEEFF4]", 
     "bg-[#EDFDFF]"
   ]
 

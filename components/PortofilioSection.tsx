@@ -78,6 +78,7 @@ const PortofilioSection = ({
                 <img
                   key={idx}
                   src={item.image}
+                  alt={item.title ?? "portfilio image"}
                   style={{ width: "100%", height: "auto" }}
                 />
               </div>

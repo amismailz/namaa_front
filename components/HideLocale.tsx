@@ -12,10 +12,11 @@ const HideLocale = () => {
       }
 
       return () => {
-         switcherControl!.style.display = "block"
-
+         if (switcherControl) {
+            switcherControl.style.display = "flex"
+         }
       }
-   })
+   }, [])
    return null
 }
 

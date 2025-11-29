@@ -24,10 +24,10 @@ export default function LocaleSwitcher() {
   // const targetPath = getPathname({ locale: targetLocale, pathname })
 
   return (
+    <div className="" id="switcher-control">
     <Button
       asChild
       variant="link"
-      id="switcher-control"
       className={cn(
         "flex items-center gap-2 font-semibold text-muted-foreground cursor-pointer"
       )}
@@ -46,5 +46,6 @@ export default function LocaleSwitcher() {
         />
       </Link>
     </Button>
+    </div>
   )
 }
