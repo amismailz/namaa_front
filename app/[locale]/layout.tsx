@@ -142,7 +142,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       // preconnect
       rel: "preconnect",
       href: "https://fonts.gstatic.com/",
-      crossorigin: "anonymous"
+      crossorigin: "anonymous",
+      // for google verification
+      "google-site-verification": "w9zTrXDSsnbnBtUWXMliV5dSXEIL8s_21ofxDqpyJJ0"
     }
   }
 }
