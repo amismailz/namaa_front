@@ -37,7 +37,9 @@ export async function getSeoBySlug(slug: string) {
 }
 
 export async function getContactInfo() {
-  const response = await apiFetch<ContactInfoResponse>(`/contact-info`)
+  const response = await apiFetch<ContactInfoResponse>(`/contact-info`, {
+    cache: "no-store"
+  })
   return response.msg_data
 }
 
@@ -47,7 +49,9 @@ export async function getSlugDetails(slug: string) {
 }
 
 export const getServersNavigation = cache(async () => {
-  const res = await apiFetch<NavigationResp>(`/navbar/services`)
+  const res = await apiFetch<NavigationResp>(`/navbar/services`, {
+    cache:"no-store"
+  })
   const result = res.msg_data || []
   return result?.map((i) => ({
     label: i.title,
