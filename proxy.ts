@@ -4,7 +4,6 @@ import { getDeviceType } from "@/lib/deviceDetection";
 import createMiddleware from "next-intl/middleware";
 import {NextResponse, type NextRequest } from 'next/server'
 
-
 // next-intl middleware
 const intlMiddleware = createMiddleware({
   ...routing,
