@@ -2,6 +2,16 @@ import type { NextConfig } from "next"
 import createNextIntlPlugin from "next-intl/plugin"
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source:
+          "/social-media-agency-expert-social-marketing-agency-management-agency",
+        destination: "/",
+        permanent: true, // 301
+      },
+    ];
+  },
   async headers() {
     return [
       {
