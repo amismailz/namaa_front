@@ -6,8 +6,14 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [{
       userAgent: "*",
-      disallow: ["/_next/", "/api/"],
       allow: ["/"],
+      disallow: [
+        '/api/',
+        '/_next/static/webpack/',
+        '/*_buildManifest.js$',
+        '/*_middlewareManifest.js$',
+        '/*_ssgManifest.js$',
+      ]
     }, {
       userAgent: "Googlebot",
       allow: ["/"],
