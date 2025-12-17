@@ -14,14 +14,16 @@ export default function robots(): MetadataRoute.Robots {
         '/*_middlewareManifest.js$',
         '/*_ssgManifest.js$',
       ]
-    }, {
-      userAgent: "Googlebot",
-      allow: ["/"],
-    },
-    {
-      userAgent: "Bingbot",
-      allow: ["/"],
-    }],
+    }
+    // {
+    //   userAgent: "Googlebot",
+    //   allow: ["/"],
+    // },
+    // {
+    //   userAgent: "Bingbot",
+    //   allow: ["/"],
+    // }
+    ],
     sitemap: `${baseUrl}/sitemap.xml`
   }
 }
